@@ -12,7 +12,7 @@
 #include "stagechoosePage.h"
 
 #include "checker/CheckerContainer.h"
-#include "ui_WelcomePage.h"
+#include "ui_stagechoosePage.h"
 
 #include "Branding.h"
 #include "CalamaresAbout.h"
