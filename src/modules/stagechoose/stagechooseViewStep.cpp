@@ -8,10 +8,10 @@
  *
  */
 
-#include "WelcomeViewStep.h"
+#include "stagechooseViewStep.h"
 
 #include "Config.h"
-#include "WelcomePage.h"
+#include "stagechoosePage.h"
 
 #include "Branding.h"
 #include "modulesystem/ModuleManager.h"
