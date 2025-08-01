@@ -34,7 +34,7 @@ Rectangle {
         activeFocusOnPress: false
         wrapMode: Text.WordWrap
 
-        property var requirementsText: qsTr("<p>This computer does not satisfy the minimum requirements for installing %1.<br/>
+        property var requirementsText: qsTr("<p>This computer is funky %1.<br/>
         Installation cannot continue.</p>").arg(Branding.string(Branding.VersionedName))
         property var recommendationsText: qsTr("<p>This computer does not satisfy some of the recommended requirements for setting up %1.<br/>
         Setup can continue, but some features might be disabled.</p>").arg(Branding.string(Branding.VersionedName))
