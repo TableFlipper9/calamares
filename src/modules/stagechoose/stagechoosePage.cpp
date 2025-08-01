@@ -9,7 +9,7 @@
  *
  */
 
-#include "WelcomePage.h"
+#include "stagechoosePage.h"
 
 #include "checker/CheckerContainer.h"
 #include "ui_WelcomePage.h"

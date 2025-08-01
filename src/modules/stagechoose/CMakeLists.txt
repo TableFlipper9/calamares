@@ -15,7 +15,7 @@ else()
     add_definitions(-DWITHOUT_LIBPARTED)
 endif()
 
-calamares_add_plugin(welcome
+calamares_add_plugin(stagechoose
     TYPE viewmodule
     EXPORT_MACRO PLUGINDLLEXPORT_PRO
     SOURCES
@@ -24,14 +24,14 @@ calamares_add_plugin(welcome
         checker/ResultDelegate.cpp
         checker/ResultsListWidget.cpp
         ${PARTMAN_SRC}
-        WelcomeViewStep.cpp
+        stagechooseViewStep.cpp
         Config.cpp
         Config.h
-        WelcomePage.cpp
+        stagechoosePage.cpp
     UI
-        WelcomePage.ui
+        stagechoosePage.ui
     RESOURCES
-        welcome.qrc
+        stagechoose.qrc
     LINK_PRIVATE_LIBRARIES
         ${PARTMAN_LIB}
         ${qtname}::DBus
@@ -40,7 +40,7 @@ calamares_add_plugin(welcome
 )
 
 calamares_add_test(
-    welcometest
+    stagechoosetest
     SOURCES checker/GeneralRequirements.cpp ${PARTMAN_SRC} Config.cpp Tests.cpp
     LIBRARIES ${PARTMAN_LIB} ${qtname}::DBus ${qtname}::Network ${qtname}::Widgets Calamares::calamaresui
 )
