@@ -37,7 +37,7 @@ WelcomeQmlViewStep::WelcomeQmlViewStep( QObject* parent )
 QString
 WelcomeQmlViewStep::prettyName() const
 {
-    return tr( "Welcome", "@title" );
+    return tr( "StageChoose", "@title" );
 }
 
 bool
