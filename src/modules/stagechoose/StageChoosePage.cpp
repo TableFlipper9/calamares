@@ -15,7 +15,7 @@
 #include <QComboBox>
 #include <QLabel>
 
-StageChoosePage::StageChoosePage(QWidget* parent, Config* config)
+StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     : QWidget(parent)
     , ui(new Ui::StageChoosePage)
     , m_config(config)
