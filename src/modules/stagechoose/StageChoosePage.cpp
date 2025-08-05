@@ -38,16 +38,49 @@ StageChoosePage::~StageChoosePage()
 void StageChoosePage::populateArchs()
 {
     if (!m_config)
+    {
+        qWarning() << "[populateArchs] Config pointer is null!";
         return;
+    }
 
-    // Populate architecture combo box
+    if (!ui || !ui->architectureComboBox)
+    {
+        qWarning() << "[populateArchs] UI or combo box is null!";
+        return;
+    }
+
     const auto archList = m_config->architectures();
-    for (const auto& pair : archList) {
-        ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
+    qDebug() << "[populateArchs] architectures count:" << archList.count();
+
+    for (const auto& pair : archList)
+    {
+        qDebug() << "[populateArchs] adding:" << pair.first << "=>" << pair.second;
+        if (!pair.first.isEmpty() && !pair.second.isEmpty())
+        {
+            ui->architectureComboBox->addItem(pair.first, pair.second);
+        }
+        else
+        {
+            qWarning() << "[populateArchs] Empty value found, skipping.";
+        }
     }
 
     updateSelectedTarballLabel();
 }
+
+// void StageChoosePage::populateArchs()
+// {
+//     if (!m_config)
+//         return;
+
+//     // Populate architecture combo box
+//     const auto archList = m_config->architectures();
+//     for (const auto& pair : archList) {
+//         ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
+//     }
+
+//     updateSelectedTarballLabel();
+// }
 
 void StageChoosePage::onArchitectureChanged(int index)
 {
