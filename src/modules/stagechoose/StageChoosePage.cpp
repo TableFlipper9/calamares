@@ -37,39 +37,39 @@ StageChoosePage::~StageChoosePage()
 
 void StageChoosePage::populateArchs()
 {
+    qInfo() << "[DEBUG] ui=" << ui;
+    qInfo() << "[DEBUG] architectureComboBox=" << ui->architectureComboBox;
+
     if (!m_config)
     {
-        qWarning() << "[populateArchs] Config pointer is null!";
+        qWarning() << "[populateArchs] m_config is null";
         return;
     }
 
     const auto archList = m_config->architectures();
     if (archList.isEmpty())
     {
-        qWarning() << "[populateArchs] Architecture list is empty!";
+        qWarning() << "[populateArchs] Architecture list is empty";
         return;
     }
 
     for (const auto& pair : archList)
     {
-        // Defensive checks before using values
-        if (pair.first.isNull() || pair.second.isNull())
-        {
-            qWarning() << "[populateArchs] Skipping null entry";
-            continue;
-        }
-
         if (pair.first.isEmpty() || pair.second.isEmpty())
         {
-            qWarning() << "[populateArchs] Skipping empty entry";
+            qWarning() << "[populateArchs] Invalid entry:" << pair.first << "=>" << pair.second;
             continue;
         }
 
-        ui->architectureComboBox->addItem(pair.first, pair.second);
+        qInfo() << "[populateArchs] Adding:" << pair.first << "=>" << pair.second;
+
+        // SAFE usage of QVariant to avoid crash
+        ui->architectureComboBox->addItem(QString(pair.first), QVariant(QString(pair.second)));
     }
 
     updateSelectedTarballLabel();
 }
+
 
 
 // void StageChoosePage::populateArchs()
