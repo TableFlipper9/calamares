@@ -43,7 +43,7 @@ void StageChoosePage::populateArchs()
     // Populate architecture combo box
     const auto archList = m_config->architectures();
     for (const auto& pair : archList) {
-        ui->architectureComboBox->addItem(pair.first, pair.second);
+        ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
     }
 
     updateSelectedTarballLabel();
@@ -61,7 +61,7 @@ void StageChoosePage::onArchitectureChanged(int index)
     ui->variantComboBox->clear();
     const auto variants = m_config->variants();
     for (const auto& pair : variants) {
-        ui->variantComboBox->addItem(pair.first, pair.second);
+        ui->variantComboBox->addItem(pair.first, QVariant(pair.second));
     }
 
     updateSelectedTarballLabel();
