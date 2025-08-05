@@ -19,6 +19,11 @@ Config::Config(QObject* parent)
         { "AMD64 (x86_64)", "amd64" },
         { "ARM64 (aarch64)", "arm64" }
     };
+
+    qInfo() << "[Config] Architectures initialized:";
+    for (const auto& a : m_architectures)
+        qInfo() << "  -" << a.first << "=>" << a.second;
+
 }
 
 QList<Config::Entry> Config::architectures() const
