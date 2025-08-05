@@ -1,46 +1,35 @@
-# === This file is part of Calamares - <https://calamares.io> ===
-#
-#   SPDX-FileCopyrightText: 2020 Adriaan de Groot <groot@kde.org>
-#   SPDX-License-Identifier: BSD-2-Clause
-#
-find_package(${qtname} ${QT_VERSION} CONFIG REQUIRED DBus Network)
+# === Calamares - stagechooser module ===
 
-find_package(LIBPARTED)
-if(LIBPARTED_FOUND)
-    set(PARTMAN_SRC checker/partman_devices.c)
-    set(PARTMAN_LIB ${LIBPARTED_LIBRARY})
-else()
-    set(PARTMAN_SRC)
-    set(PARTMAN_LIB)
-    add_definitions(-DWITHOUT_LIBPARTED)
-endif()
+set(module_name "stagechooser")
 
-calamares_add_plugin(stagechoose
-    TYPE viewmodule
-    EXPORT_MACRO PLUGINDLLEXPORT_PRO
-    SOURCES
-        checker/CheckerContainer.cpp
-        checker/GeneralRequirements.cpp
-        checker/ResultDelegate.cpp
-        checker/ResultsListWidget.cpp
-        ${PARTMAN_SRC}
-        stagechooseViewStep.cpp
-        Config.cpp
-        Config.h
-        stagechoosePage.cpp
-    UI
-        stagechoosePage.ui
-    RESOURCES
-        stagechoose.qrc
-    LINK_PRIVATE_LIBRARIES
-        ${PARTMAN_LIB}
-        ${qtname}::DBus
-        ${qtname}::Network
-    SHARED_LIB
+# List of all source files
+set(${module_name}_SRCS
+    Config.cpp
+    StageChooserPage.cpp
+    StageChooserViewStep.cpp
+    SetStage3Job.cpp
 )
 
-calamares_add_test(
-    stagechoosetest
-    SOURCES checker/GeneralRequirements.cpp ${PARTMAN_SRC} Config.cpp Tests.cpp
-    LIBRARIES ${PARTMAN_LIB} ${qtname}::DBus ${qtname}::Network ${qtname}::Widgets Calamares::calamaresui
+# List of all header files (for installation or IDEs)
+set(${module_name}_HDRS
+    Config.h
+    StageChooserPage.h
+    StageChooserViewStep.h
+    SetStage3Job.h
+)
+
+# UI file
+set(${module_name}_UIS
+    StageChooserPage.ui
+)
+
+# Optional: If you embed any resources (e.g., icons)
+# set(${module_name}_RCCS stagechooser.qrc)
+
+# Register the module with Calamares
+calamares_add_viewmodule(${module_name}
+    SOURCES ${${module_name}_SRCS}
+    HEADERS ${${module_name}_HDRS}
+    UIS ${${module_name}_UIS}
+    # RCCS ${${module_name}_RCCS}  # Uncomment if you use .qrc files
 )
