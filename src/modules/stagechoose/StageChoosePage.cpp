@@ -31,33 +31,6 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
             this, &StageChoosePage::onVariantChanged);
 }
 
-StageChoosePage::~StageChoosePage()
-{
-    delete ui;
-}
-
-// void StageChoosePage::populateArchs()
-// {
-//     qDebug() << "[StageChoosePage] populateArchs() called.";
-//     if (!m_config)
-//     {
-//         qCritical() << "[StageChoosePage] m_config is NULL!";
-//         return;
-//     }
-
-//     qDebug() << "[StageChoosePage] m_config pointer =" << m_config;
-
-//     const auto archList = m_config->architectures();  // <-- where crash occurs
-//     qDebug() << "[StageChoosePage] Retrieved architecture list, count =" << archList.size();
-
-//     for (const auto& pair : archList) {
-//         ui->architectureComboBox->addItem(pair.first, pair.second);
-//     }
-
-//     updateSelectedTarballLabel();
-// }
-
-
 void StageChoosePage::populateArchs()
 {
     if (!m_config)
@@ -109,4 +82,9 @@ void StageChoosePage::updateSelectedTarballLabel()
          ui->selectedTarballLabel->setText("Selected: None");
     else
         ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
+}
+
+StageChoosePage::~StageChoosePage()
+{
+    delete ui;
 }
