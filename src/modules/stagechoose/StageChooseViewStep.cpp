@@ -23,9 +23,9 @@ StageChooseViewStep::StageChooseViewStep(QObject* parent)
     , m_config(new Config(this))
     , m_widget(new StageChoosePage(m_config))
 {
-qInfo() << "[DEBUG] Created Config at" << m_config;
+// qInfo() << "[DEBUG] Created Config at" << m_config;
 
-qInfo() << "[DEBUG] Created StageChoosePage at" << m_widget;
+// qInfo() << "[DEBUG] Created StageChoosePage at" << m_widget;
 
 }
 

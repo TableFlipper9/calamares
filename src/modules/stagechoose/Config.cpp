@@ -20,20 +20,20 @@ Config::Config(QObject* parent)
         { "ARM64 (aarch64)", "arm64" }
     };
 
-    qInfo() << "[Config] Architectures initialized:";
-    for (const auto& a : m_architectures)
-        qInfo() << "  -" << a.first << "=>" << a.second;
+    // qInfo() << "[Config] Architectures initialized:";
+    // for (const auto& a : m_architectures)
+    //     qInfo() << "  -" << a.first << "=>" << a.second;
 
 }
 
 QList<Config::Entry> Config::architectures() const
 {
-    qDebug() << "[DEBUG] architectures() called, this=" << this;
-    qDebug() << "[DEBUG] m_architectures size=" << m_architectures.size();
-    for (const auto& entry : m_architectures)
-    {
-        qDebug() << "  Label:" << entry.first << ", Value:" << entry.second;
-    }
+    // qDebug() << "[DEBUG] architectures() called, this=" << this;
+    // qDebug() << "[DEBUG] m_architectures size=" << m_architectures.size();
+    // for (const auto& entry : m_architectures)
+    // {
+    //     qDebug() << "  Label:" << entry.first << ", Value:" << entry.second;
+    // }
     return m_architectures;
 }
 
