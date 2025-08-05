@@ -3,11 +3,11 @@ calamares_add_plugin(stagechooser
     EXPORT_MACRO PLUGINDLLEXPORT_PRO
     SOURCES
         Config.cpp
-        StageChooserViewStep.cpp
-        StageChooserPage.cpp
+        StageChooseViewStep.cpp
+        StageChoosePage.cpp
         SetStage3Job.cpp
     UI
-        StageChooserPage.ui
+        StageChoosePage.ui
     SHARED_LIB
     LINK_LIBRARIES
         Qt5::Core
