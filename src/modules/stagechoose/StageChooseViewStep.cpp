@@ -16,6 +16,8 @@
 
 #include "utils/Logger.h"
 
+CALAMARES_PLUGIN_FACTORY_DEFINITION(StageChooserViewStepFactory, registerPlugin<StageChooserViewStep>();)
+
 StageChooseViewStep::StageChooseViewStep(QObject* parent)
     : Calamares::ViewStep(parent)
     , m_config(new Config(this))
