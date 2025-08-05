@@ -43,30 +43,34 @@ void StageChoosePage::populateArchs()
         return;
     }
 
-    if (!ui || !ui->architectureComboBox)
+    const auto archList = m_config->architectures();
+    if (archList.isEmpty())
     {
-        qWarning() << "[populateArchs] UI or combo box is null!";
+        qWarning() << "[populateArchs] Architecture list is empty!";
         return;
     }
 
-    const auto archList = m_config->architectures();
-    qDebug() << "[populateArchs] architectures count:" << archList.count();
-
     for (const auto& pair : archList)
     {
-        qDebug() << "[populateArchs] adding:" << pair.first << "=>" << pair.second;
-        if (!pair.first.isEmpty() && !pair.second.isEmpty())
+        // Defensive checks before using values
+        if (pair.first.isNull() || pair.second.isNull())
         {
-            ui->architectureComboBox->addItem(pair.first, pair.second);
+            qWarning() << "[populateArchs] Skipping null entry";
+            continue;
         }
-        else
+
+        if (pair.first.isEmpty() || pair.second.isEmpty())
         {
-            qWarning() << "[populateArchs] Empty value found, skipping.";
+            qWarning() << "[populateArchs] Skipping empty entry";
+            continue;
         }
+
+        ui->architectureComboBox->addItem(pair.first, pair.second);
     }
 
     updateSelectedTarballLabel();
 }
+
 
 // void StageChoosePage::populateArchs()
 // {
