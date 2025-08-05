@@ -22,7 +22,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
 {
     ui->setupUi(this);
 
-    populateArchs();
+    QTimer::singleShot(0, this, &StageChoosePage::populateArchs);
 
     connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onArchitectureChanged);
@@ -35,41 +35,41 @@ StageChoosePage::~StageChoosePage()
     delete ui;
 }
 
-void StageChoosePage::populateArchs()
-{
-    qDebug() << "[StageChoosePage] populateArchs() called.";
-    if (!m_config)
-    {
-        qCritical() << "[StageChoosePage] m_config is NULL!";
-        return;
-    }
-
-    qDebug() << "[StageChoosePage] m_config pointer =" << m_config;
-
-    const auto archList = m_config->architectures();  // <-- where crash occurs
-    qDebug() << "[StageChoosePage] Retrieved architecture list, count =" << archList.size();
-
-    for (const auto& pair : archList) {
-        ui->architectureComboBox->addItem(pair.first, pair.second);
-    }
-
-    updateSelectedTarballLabel();
-}
-
-
 // void StageChoosePage::populateArchs()
 // {
+//     qDebug() << "[StageChoosePage] populateArchs() called.";
 //     if (!m_config)
+//     {
+//         qCritical() << "[StageChoosePage] m_config is NULL!";
 //         return;
+//     }
 
-//     // Populate architecture combo box
-//     const auto archList = m_config->architectures();
+//     qDebug() << "[StageChoosePage] m_config pointer =" << m_config;
+
+//     const auto archList = m_config->architectures();  // <-- where crash occurs
+//     qDebug() << "[StageChoosePage] Retrieved architecture list, count =" << archList.size();
+
 //     for (const auto& pair : archList) {
-//         ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
+//         ui->architectureComboBox->addItem(pair.first, pair.second);
 //     }
 
 //     updateSelectedTarballLabel();
 // }
+
+
+void StageChoosePage::populateArchs()
+{
+    if (!m_config)
+        return;
+
+    // Populate architecture combo box
+    const auto archList = m_config->architectures();
+    for (const auto& pair : archList) {
+        ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
+    }
+
+    updateSelectedTarballLabel();
+}
 
 void StageChoosePage::onArchitectureChanged(int index)
 {
