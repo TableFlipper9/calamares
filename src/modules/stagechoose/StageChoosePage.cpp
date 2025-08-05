@@ -37,9 +37,7 @@ StageChoosePage::~StageChoosePage()
 
 void StageChoosePage::populateArchs()
 {
-    qInfo() << "[DEBUG] ui=" << ui;
-    qInfo() << "[DEBUG] architectureComboBox=" << ui->architectureComboBox;
-
+    qInfo() << "[DEBUG] m_config =" << m_config;
     if (!m_config)
     {
         qWarning() << "[populateArchs] m_config is null";

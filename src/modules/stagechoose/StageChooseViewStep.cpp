@@ -23,12 +23,18 @@ StageChooseViewStep::StageChooseViewStep(QObject* parent)
     , m_config(new Config(this))
     , m_widget(new StageChoosePage(m_config))
 {
-    //m_widget->setConfig(m_config);
+qInfo() << "[DEBUG] Created Config at" << m_config;
+
+qInfo() << "[DEBUG] Created StageChoosePage at" << m_widget;
+
 }
 
 StageChooseViewStep::~StageChooseViewStep()
 {
-    delete m_widget;
+    if ( m_widget && m_widget->parent() == nullptr )
+    {
+        m_widget->deleteLater();
+    }
 }
 
 QString StageChooseViewStep::prettyName() const
