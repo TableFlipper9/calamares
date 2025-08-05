@@ -39,16 +39,6 @@ QWidget* StageChooseViewStep::widget()
     return m_widget;
 }
 
-void StageChooseViewStep::next()
-{
-    emit nextStatusChanged(true);
-}
-
-void StageChooseViewStep::back()
-{
-    emit backStatusChanged(true);
-}
-
 bool StageChooseViewStep::isNextEnabled() const
 {
     return m_config->isValid();
@@ -74,7 +64,7 @@ Calamares::JobList StageChooseViewStep::jobs() const
     Calamares::JobList list;
     if (m_config->isValid())
     {
-        list.append(new SetStage3Job(m_config->selectedStage3()));
+        list.append(QSharedPointer<SetStage3Job>::create(m_config->selectedStage3()));
     }
     return list;
 }
