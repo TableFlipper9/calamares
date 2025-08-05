@@ -9,5 +9,4 @@ calamares_add_plugin(stagechoose
     UI
         StageChoosePage.ui
     SHARED_LIB
-    LINK_LIBRARIES
 )
