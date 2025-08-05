@@ -14,6 +14,7 @@
 
 #include <QComboBox>
 #include <QLabel>
+#include <QTimer>
 
 StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     : QWidget(parent)
