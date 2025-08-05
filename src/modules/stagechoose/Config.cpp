@@ -28,8 +28,15 @@ Config::Config(QObject* parent)
 
 QList<Config::Entry> Config::architectures() const
 {
+    qDebug() << "[DEBUG] architectures() called, this=" << this;
+    qDebug() << "[DEBUG] m_architectures size=" << m_architectures.size();
+    for (const auto& entry : m_architectures)
+    {
+        qDebug() << "  Label:" << entry.first << ", Value:" << entry.second;
+    }
     return m_architectures;
 }
+
 
 QList<Config::Entry> Config::variants() const
 {
