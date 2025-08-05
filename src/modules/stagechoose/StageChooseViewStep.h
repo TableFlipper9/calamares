@@ -10,6 +10,7 @@
 #ifndef STAGECHOOSEVIEWSTEP_H
 #define STAGECHOOSEVIEWSTEP_H
 
+#include "DllMacro.h"
 #include <QObject>
 #include <QWidget>
 #include <QString>
@@ -20,7 +21,7 @@
 class StageChoosePage;
 class Config;
 
-class StageChooseViewStep : public Calamares::ViewStep
+class PLUGINDLLEXPORT StageChooseViewStep : public Calamares::ViewStep
 {
     Q_OBJECT
 
@@ -43,6 +44,8 @@ private:
     StageChoosePage* m_widget;
     Config* m_config;
 };
+
+CALAMARES_PLUGIN_FACTORY_DECLARATION( StageChooseViewStepFactory )
 
 #endif // STAGECHOOSEVIEWSTEP_H
 
