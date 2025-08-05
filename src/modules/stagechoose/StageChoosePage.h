@@ -26,7 +26,7 @@ class StageChoosePage : public QWidget
     Q_OBJECT
 
 public:
-    explicit StageChoosePage(QWidget* parent = nullptr);
+    explicit StageChoosePage( Config* config, QWidget* parent = nullptr);
     ~StageChoosePage() override;
 
     void populateArchs();
