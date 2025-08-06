@@ -43,7 +43,9 @@ void StageChoosePage::populateArchs()
     // }
 
     QStringList archs = m_config->availableArchitectures();
-    ui->architectureComboBox->addItems(archs);
+    for(const QString& arch : archs){
+        ui->architectureComboBox->addItem(arch,arch);
+    }
 
     updateSelectedTarballLabel();
 }
@@ -67,8 +69,11 @@ void StageChoosePage::onArchitectureChanged(int index)
     m_config->selectArchitecture(archKey);
 
     ui->variantComboBox->clear();
+    
     QStringList stages = m_config->availableStagesFor(archKey);
-    ui->variantComboBox->addItems(stages);
+    for(const QString& stage : stages){
+        ui->variantComboBox->addItem( stage, stage);
+    }
 
     ui->variantComboBox->setCurrentIndex(0);
     onVariantChanged(0);
