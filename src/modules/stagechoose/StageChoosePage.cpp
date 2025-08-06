@@ -36,11 +36,14 @@ void StageChoosePage::populateArchs()
     if (!m_config)
         return;
 
-    // Populate architecture combo box
-    const auto archList = m_config->architectures();
-    for (const auto& pair : archList) {
-        ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
-    }
+    // // Populate architecture combo box
+    // const auto archList = m_config->architectures();
+    // for (const auto& pair : archList) {
+    //     ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
+    // }
+
+    QStringList archs = m_config->availableArchitectures();
+    ui->architectureComboBox->addItems(archs);
 
     updateSelectedTarballLabel();
 }
@@ -50,15 +53,21 @@ void StageChoosePage::onArchitectureChanged(int index)
     if (!m_config)
         return;
 
-    const QString archKey = ui->architectureComboBox->itemData(index).toString();
-    m_config->selectArchitecture(archKey);
+    // const QString archKey = ui->architectureComboBox->itemData(index).toString();
+    // m_config->selectArchitecture(archKey);
 
-    // Clear and repopulate variant combo box
+    // // Clear and repopulate variant combo box
+    // ui->variantComboBox->clear();
+    // const auto variants = m_config->variants();
+    // for (const auto& pair : variants) {
+    //     ui->variantComboBox->addItem(pair.first, QVariant(pair.second));
+    // }
+
+    const QString archKey = ui->architectureComboBox->itemData(index).toString();
+    
     ui->variantComboBox->clear();
-    const auto variants = m_config->variants();
-    for (const auto& pair : variants) {
-        ui->variantComboBox->addItem(pair.first, QVariant(pair.second));
-    }
+    QStringList stages = m_config->availableStagesFor(archKey);
+    ui->variantComboBox->addItems(stages);
 
     updateSelectedTarballLabel();
 }

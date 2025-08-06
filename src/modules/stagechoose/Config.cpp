@@ -27,15 +27,39 @@ QList<Config::Entry> Config::architectures() const
     return m_architectures;
 }
 
-
 QList<Config::Entry> Config::variants() const
 {
     return m_variants;
 }
 
+QStringList Config::availableArchitectures()
+{
+    return { "amd64", "arm", "arm64", "x86" };
+}
+
+QStringList Config::availableStagesFor(const QString& arch)
+{
+    m_selectedArch = arch;
+    m_selectedVariant.clear();
+    m_selectedTarball.clear();
+
+    if (arch == "amd64") {
+        return {
+            "stage3-amd64-desktop-systemd-20250801T123456Z.tar.xz",
+            "stage3-amd64-hardened-20250801T123456Z.tar.xz"
+        };
+    } else if (arch == "arm") {
+        return {
+            "stage3-armv7a-20250801T123456Z.tar.xz"
+        };
+    }
+
+    return {};
+}
+
 void Config::selectArchitecture(const QString& archKey)
 {
-    m_selectedArch = archKey;
+     m_selectedArch = archKey;
     m_selectedVariant.clear();
     m_selectedTarball.clear();
 

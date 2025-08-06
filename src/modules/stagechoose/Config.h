@@ -30,6 +30,9 @@ public:
     void selectArchitecture(const QString& archKey);
     void selectVariant(const QString& variantKey);
 
+    QStringList availableArchitectures();
+    QStringList availableStagesFor(const QString& architecture);
+
     QString selectedStage3() const;
     bool isValid() const;
 
