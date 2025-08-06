@@ -24,8 +24,7 @@ public:
 
     explicit Config(QObject* parent = nullptr);
 
-    QList<Entry> architectures() const;
-    QList<Entry> variants() const;
+    void selectVariant(const QString& variantKey);
 
     QStringList availableArchitectures();
     QStringList availableStagesFor(const QString& architecture);
