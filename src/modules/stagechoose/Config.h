@@ -27,9 +27,6 @@ public:
     QList<Entry> architectures() const;
     QList<Entry> variants() const;
 
-    void selectArchitecture(const QString& archKey);
-    void selectVariant(const QString& variantKey);
-
     QStringList availableArchitectures();
     QStringList availableStagesFor(const QString& architecture);
 
@@ -37,9 +34,6 @@ public:
     bool isValid() const;
 
 private:
-    QList<Entry> m_architectures;
-    QList<Entry> m_variants;
-
     QString m_selectedArch;
     QString m_selectedVariant;
     QString m_selectedTarball;

@@ -14,22 +14,7 @@
 Config::Config(QObject* parent)
     : QObject(parent)
 {
-    // Hardcoded architectures (label, key)
-    m_architectures = {
-        { "AMD64 (x86_64)", "amd64" },
-        { "ARM64 (aarch64)", "arm64" }
-    };
 
-}
-
-QList<Config::Entry> Config::architectures() const
-{
-    return m_architectures;
-}
-
-QList<Config::Entry> Config::variants() const
-{
-    return m_variants;
 }
 
 QStringList Config::availableArchitectures()
@@ -57,38 +42,14 @@ QStringList Config::availableStagesFor(const QString& arch)
     return {"stage3-generic"+arch+""};
 }
 
-void Config::selectArchitecture(const QString& archKey)
+void Config::selectVariant(const QString& variant)
 {
-     m_selectedArch = archKey;
-    m_selectedVariant.clear();
-    m_selectedTarball.clear();
+    m_selectedVariant = variant;
 
-    // Hardcoded variants for each arch
-    if (archKey == "amd64") {
-        m_variants = {
-            { "Desktop Systemd", "current-stage3-amd64-desktop-systemd" },
-            { "OpenRC Minimal", "current-stage3-amd64-openrc" }
-        };
-    } else if (archKey == "arm64") {
-        m_variants = {
-            { "Default", "current-stage3-arm64" },
-            { "OpenRC", "current-stage3-arm64-openrc" }
-        };
-    } else {
-        m_variants.clear();
-    }
-}
-
-void Config::selectVariant(const QString& variantKey)
-{
-    m_selectedVariant = variantKey;
-
-    // Simulate tarball name as: stage3-<variant>-<timestamp>.tar.xz
-    QString now = QDateTime::currentDateTimeUtc().toString("yyyyMMdd'T'hhmmss'Z'");
-    QString archSuffix = variantKey;
+    QString archSuffix = variant;
     archSuffix.replace("current-", "");
 
-    m_selectedTarball = QString("stage3-%1-%2.tar.xz").arg(archSuffix, now);
+    m_selectedTarball = QString("stage3-%1.tar.xz").arg(archSuffix);
 }
 
 QString Config::selectedStage3() const

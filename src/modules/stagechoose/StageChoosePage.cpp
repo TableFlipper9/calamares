@@ -36,12 +36,6 @@ void StageChoosePage::populateArchs()
     if (!m_config)
         return;
 
-    // // Populate architecture combo box
-    // const auto archList = m_config->architectures();
-    // for (const auto& pair : archList) {
-    //     ui->architectureComboBox->addItem(pair.first, QVariant(pair.second));
-    // }
-
     QStringList archs = m_config->availableArchitectures();
     for(const QString& arch : archs){
         ui->architectureComboBox->addItem(arch,arch);
@@ -55,18 +49,7 @@ void StageChoosePage::onArchitectureChanged(int index)
     if (!m_config)
         return;
 
-    // const QString archKey = ui->architectureComboBox->itemData(index).toString();
-    // m_config->selectArchitecture(archKey);
-
-    // // Clear and repopulate variant combo box
-    // ui->variantComboBox->clear();
-    // const auto variants = m_config->variants();
-    // for (const auto& pair : variants) {
-    //     ui->variantComboBox->addItem(pair.first, QVariant(pair.second));
-    // }
-
     const QString archKey = ui->architectureComboBox->itemData(index).toString();
-    m_config->selectArchitecture(archKey);
 
     ui->variantComboBox->clear();
 
