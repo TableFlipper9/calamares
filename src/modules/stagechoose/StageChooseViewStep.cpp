@@ -21,15 +21,22 @@ CALAMARES_PLUGIN_FACTORY_DEFINITION(StageChooseViewStepFactory, registerPlugin<S
 StageChooseViewStep::StageChooseViewStep(QObject* parent)
     : Calamares::ViewStep(parent)
     , m_config(new Config(this))
-    , m_widget(new StageChoosePage(m_config, this))
+    , m_widget(new StageChoosePage(m_config))
 {
+   // m_widget->setParent(this)
 }
 
-StageChooseViewStep::~StageChooseViewStep() = default;
+StageChooseViewStep::~StageChooseViewStep() 
+{
+    if ( m_widget && m_widget->parent() == nullptr )
+    {
+        m_widget->deleteLater();
+    }
+}
 
 QString StageChooseViewStep::prettyName() const
 {
-    return tr("Select Gentoo Stage3");
+    return tr("Select Gentoo");
 }
 
 QWidget* StageChooseViewStep::widget()
