@@ -23,12 +23,12 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
 {
     ui->setupUi(this);
 
-    QTimer::singleShot(0, this, &StageChoosePage::populateArchs);
-
     connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onArchitectureChanged);
     connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onVariantChanged);
+
+    populateArchs();
 }
 
 void StageChoosePage::populateArchs()
@@ -69,14 +69,16 @@ void StageChoosePage::onArchitectureChanged(int index)
     m_config->selectArchitecture(archKey);
 
     ui->variantComboBox->clear();
-    
+
     QStringList stages = m_config->availableStagesFor(archKey);
     for(const QString& stage : stages){
         ui->variantComboBox->addItem( stage, stage);
     }
 
-    ui->variantComboBox->setCurrentIndex(0);
-    onVariantChanged(0);
+    if(!stages.isEmpty()){
+        ui->variantComboBox->setCurrentIndex(0);
+        onVariantChanged(0);
+    }
 
     updateSelectedTarballLabel();
 }
