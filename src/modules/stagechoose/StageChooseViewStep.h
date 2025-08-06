@@ -41,8 +41,8 @@ public:
     Calamares::JobList jobs() const override;
 
 private:
-    StageChoosePage* m_widget;
     Config* m_config;
+    StageChoosePage* m_widget;
 };
 
 CALAMARES_PLUGIN_FACTORY_DECLARATION( StageChooseViewStepFactory )

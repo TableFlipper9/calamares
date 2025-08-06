@@ -54,7 +54,7 @@ QStringList Config::availableStagesFor(const QString& arch)
         };
     }
 
-    return {};
+    return {"stage3-generic"+arch+""};
 }
 
 void Config::selectArchitecture(const QString& archKey)
