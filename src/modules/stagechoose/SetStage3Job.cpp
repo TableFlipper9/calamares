@@ -17,6 +17,12 @@ QString SetStage3Job::prettyName() const
 
 Calamares::JobResult SetStage3Job::exec()
 {
+    if(m_tarballName.isEmpty()){
+        return Calamares::JobResult::error(
+            "No stage3 tarball selected.","Stage3 tarball name is empty."
+        );
+    }
+
     QString configPath = "/etc/calamares.conf";
     QFile file(configPath);
     QString contents;

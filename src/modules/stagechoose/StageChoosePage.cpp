@@ -64,10 +64,14 @@ void StageChoosePage::onArchitectureChanged(int index)
     // }
 
     const QString archKey = ui->architectureComboBox->itemData(index).toString();
-    
+    m_config->selectArchitecture(archKey);
+
     ui->variantComboBox->clear();
     QStringList stages = m_config->availableStagesFor(archKey);
     ui->variantComboBox->addItems(stages);
+
+    ui->variantComboBox->setCurrentIndex(0);
+    onVariantChanged(0);
 
     updateSelectedTarballLabel();
 }
