@@ -62,8 +62,6 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setCurrentIndex(0);
         onVariantChanged(0);
     }
-
-    updateSelectedTarballLabel();
 }
 
 void StageChoosePage::onVariantChanged(int index)
