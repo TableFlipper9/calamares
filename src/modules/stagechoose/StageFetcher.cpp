@@ -1,11 +1,14 @@
 #include "StageFetcher.h"
 
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QEventLoop>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+#include <QRegularExpressionMatchIterator>
+#include <QStringList>
 
-StageFetcher::StageFetcher(QObject* parent)
-    : QObject(parent)
-{
-}
 
 QString StageFetcher::fetchHtml(const QUrl& url)
 {
@@ -31,7 +34,7 @@ QString StageFetcher::fetchHtml(const QUrl& url)
 
 QStringList StageFetcher::fetchVariants(const QString& arch)
 {
-    QstringList variants;
+    QStringList variants;
 
     QString urlStr = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);

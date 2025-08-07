@@ -36,7 +36,7 @@ StageChooseViewStep::~StageChooseViewStep()
 
 QString StageChooseViewStep::prettyName() const
 {
-    return tr("Select Gentoo");
+    return tr("Select Stage");
 }
 
 QWidget* StageChooseViewStep::widget()
