@@ -14,6 +14,8 @@ public:
 
     static QString fetchHtml(const QUrl& url);
 
+    static QString extractvariantBase(const QString& varaint);
+
     static QString fetchLatestTarball(const QString& arch, const QString& variant);
 };
 
