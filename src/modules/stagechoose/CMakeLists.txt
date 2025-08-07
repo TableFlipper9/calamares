@@ -6,6 +6,7 @@ calamares_add_plugin(stagechoose
         StageChooseViewStep.cpp
         StageChoosePage.cpp
         SetStage3Job.cpp
+        StageFetcher.cpp
     UI
         StageChoosePage.ui
     SHARED_LIB
