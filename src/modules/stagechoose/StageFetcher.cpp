@@ -59,6 +59,12 @@ QStringList StageFetcher::fetchVariants(const QString& arch)
     return variants;
 }
 
+QString StageFetcher::extractvariantBase(const QString& variant){
+    if(variant.startsWith("current-"))
+        return variant.mid(8);
+    return variant;
+}
+
 QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
 {
     QString latest;
@@ -71,7 +77,7 @@ QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& var
     if(html.isEmpty())
         return latest;
 
-    QRegularExpression re(QString("(%1-[\\dTZ]+\\.tar\\.xz)").arg(variant));
+    QRegularExpression re(QString("(%1-[\\dTZ]+\\.tar\\.xz)").arg(StageFetcher::extractvariantBase(variant)));
     QRegularExpressionMatchIterator iterator = re.globalMatch(html);
 
     while(iterator.hasNext()){
