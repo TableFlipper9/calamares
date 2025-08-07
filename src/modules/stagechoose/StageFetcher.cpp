@@ -58,3 +58,28 @@ QStringList StageFetcher::fetchVariants(const QString& arch)
 
     return variants;
 }
+
+QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
+{
+    QString latest;
+
+    const QString baseUrl = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
+    QUrl url(baseUrl);
+    QString html = fetchHtml(url);
+
+    if(html.isEmpty())
+        return latest;
+
+    QRegularExpression re(QString("(%1-[\\dTZ]+\\.tar\\.xz)").arg(variant));
+    QRegularExpressionMatchIterator iterator = re.globalMatch(html);
+
+    while(iterator.hasNext()){
+        QRegularExpressionMatch match = iterator.next();
+        QString filename = match.captured(1);
+        if(filename > latest){
+            latest = filename;
+        }
+    }
+
+    return latest;
+}

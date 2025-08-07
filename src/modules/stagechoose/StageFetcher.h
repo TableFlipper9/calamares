@@ -13,6 +13,8 @@ public:
     static QStringList fetchVariants(const QString& arch);
 
     static QString fetchHtml(const QUrl& url);
+
+    static QString fetchLatestTarball(const QString& arch, const QString& variant);
 };
 
 #endif //STAGEFETCHER_H
