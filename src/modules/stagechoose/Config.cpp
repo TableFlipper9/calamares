@@ -28,18 +28,7 @@ QStringList Config::availableStagesFor(const QString& arch)
     m_selectedVariant.clear();
     m_selectedTarball.clear();
 
-    if (arch == "amd64") {
-        return {
-            "stage3-amd64-desktop-systemd-20250801T123456Z.tar.xz",
-            "stage3-amd64-hardened-20250801T123456Z.tar.xz"
-        };
-    } else if (arch == "arm") {
-        return {
-            "stage3-armv7a-20250801T123456Z.tar.xz"
-        };
-    }
-
-    return {"stage3-generic"+arch+""};
+    return StageFetcher::fetchVariants(arch);
 }
 
 void Config::selectVariant(const QString& variant)
