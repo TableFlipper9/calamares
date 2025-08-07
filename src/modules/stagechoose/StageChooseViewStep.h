@@ -10,13 +10,13 @@
 #ifndef STAGECHOOSEVIEWSTEP_H
 #define STAGECHOOSEVIEWSTEP_H
 
-#include "DllMacro.h"
 #include <QObject>
 #include <QWidget>
 #include <QString>
 
-#include <utils/PluginFactory.h>
-#include <viewpages/ViewStep.h>
+#include "DllMacro.h"
+#include "utils/PluginFactory.h"
+#include "viewpages/ViewStep.h"
 
 class StageChoosePage;
 class Config;
@@ -39,6 +39,8 @@ public:
     bool isAtEnd() const override;
 
     Calamares::JobList jobs() const override;
+
+    void onLeave() override;
 
 private:
     Config* m_config;

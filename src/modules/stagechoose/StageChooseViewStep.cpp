@@ -64,6 +64,11 @@ bool StageChooseViewStep::isAtEnd() const
     return true;
 }
 
+void StageChooseViewStep::onLeave()
+{
+    m_config->updateGlobalStorage();
+}
+
 Calamares::JobList StageChooseViewStep::jobs() const
 {
     Calamares::JobList list;

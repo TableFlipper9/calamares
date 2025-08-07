@@ -32,6 +32,8 @@ public:
     QString selectedStage3() const;
     bool isValid() const;
 
+    void updateGlobalStorage();
+
 private:
     QString m_selectedArch;
     QString m_selectedVariant;

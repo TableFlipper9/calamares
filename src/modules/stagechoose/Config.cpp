@@ -8,6 +8,9 @@
  */
 
 #include "Config.h"
+#include "locale/Global.h"
+#include "JobQueue.h"
+#include "GlobalStorage.h"
 #include "StageFetcher.h"
 
 #include <QDateTime>
@@ -36,10 +39,7 @@ void Config::selectVariant(const QString& variant)
 {
     m_selectedVariant = variant;
 
-    QString archSuffix = variant;
-    archSuffix.replace("current-", "");
-
-    m_selectedTarball = QString("stage3-%1.tar.xz").arg(archSuffix);
+    m_selectedTarball = StageFetcher::fetchLatestTarball(m_selectedArch,variant);
 }
 
 QString Config::selectedStage3() const
@@ -50,6 +50,14 @@ QString Config::selectedStage3() const
 bool Config::isValid() const
 {
     return !m_selectedTarball.isEmpty();
+}
+
+void Config::updateGlobalStorage()
+{
+    Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
+
+    gs->insert( "FINAL_DOWNLOAD_URL",  QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
+    gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
 }
 
 
