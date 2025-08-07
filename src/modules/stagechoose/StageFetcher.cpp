@@ -22,9 +22,10 @@ QString StageFetcher::fetchHtml(const QUrl& url)
         html = reply->readAll();
     }
     else{
-        qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->error().toString();
+        qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->errorString();
     }
 
+    reply->deleteLater();
     return html;
 }
 
