@@ -8,6 +8,7 @@
  */
 
 #include "Config.h"
+#include "StageFetcher.h"
 
 #include <QDateTime>
 
