@@ -2,100 +2,36 @@
 <ui version="4.0">
  <class>StageChoosePage</class>
  <widget class="QWidget" name="StageChoosePage">
-  <layout class="QVBoxLayout" name="outerVerticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <spacer name="verticalSpacerTop">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+    <widget class="QLabel" name="archLabel">
+     <property name="text">
+      <string>Select Architecture:</string>
      </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalCenteringLayout">
-     <item>
-      <spacer name="horizontalSpacerLeft">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <layout class="QHBoxLayout" name="topLabelsLayout">
-         <item>
-          <widget class="QLabel" name="archLabel">
-           <property name="text">
-            <string>Select Architecture:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="variantLabel">
-           <property name="text">
-            <string>Select Stage3 Variant:</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="comboBoxesLayout">
-         <item>
-          <widget class="QComboBox" name="architectureComboBox"/>
-         </item>
-         <item>
-          <widget class="QComboBox" name="variantComboBox"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="selectedTarballLabel">
-         <property name="text">
-          <string>Selected: </string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="horizontalSpacerRight">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    <widget class="QComboBox" name="architectureComboBox"/>
    </item>
    <item>
-    <spacer name="verticalSpacerBottom">
+    <widget class="QLabel" name="variantLabel">
+     <property name="text">
+      <string>Select Stage3 Variant:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="variantComboBox"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="selectedTarballLabel">
+     <property name="text">
+      <string>Selected: </string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
