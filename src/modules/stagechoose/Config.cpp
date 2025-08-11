@@ -23,7 +23,7 @@ Config::Config(QObject* parent)
 
 QStringList Config::availableArchitectures()
 {
-    return { "amd64", "arm", "arm64", "x86" };
+    return { "amd64", "arm", "arm64", "x86", "livecd"};
 }
 
 QStringList Config::availableStagesFor(const QString& arch)
@@ -59,6 +59,11 @@ void Config::updateGlobalStorage()
     gs->insert( "BASE_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
     gs->insert( "FINAL_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/%3").arg(m_selectedArch,m_selectedVariant,m_selectedTarball));
     gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
+
+    if(m_selectedArch == "livecd")
+        gs->insert("GENTOO_LIVECD","yes");
+    else
+        gs->insert("GENTOO_LIVECD","no");
 }
 
 
