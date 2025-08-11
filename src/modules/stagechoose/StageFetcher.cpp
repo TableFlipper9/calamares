@@ -36,7 +36,7 @@ QStringList StageFetcher::fetchVariants(const QString& arch)
 {
     QStringList variants;
 
-    QString urlStr = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
+    QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);
     QString html = fetchHtml(url);
 
@@ -70,7 +70,7 @@ QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& var
     QString latest;
     latest = QString("No tar fetched");
 
-    const QString baseUrl = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
+    const QString baseUrl = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
     QUrl url(baseUrl);
     QString html = fetchHtml(url);
 
