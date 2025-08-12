@@ -31,6 +31,7 @@ public:
     bool isValid() const;
 
     void updateGlobalStorage();
+    void updateTarball(const QString &tarball);
 
 signals:
     void variantsReady(const QStringList& variants);
