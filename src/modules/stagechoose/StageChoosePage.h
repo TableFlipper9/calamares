@@ -30,6 +30,10 @@ public:
     ~StageChoosePage() override;
 
     void populateArchs();
+    void setFetcherStatus();
+    void showRestartFetcherButton();
+    void onRestartFetcherClicked();
+    void whenVariantsReady(const QStringList &stages);
 
 private slots:
     void onArchitectureChanged(int index);
