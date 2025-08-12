@@ -24,13 +24,16 @@ Config::Config(QObject* parent)
     });
 
     connect(m_fetcher, &StageFetcher::tarballFetched, this, [this](const QString &tarball) {
-        m_selectedTarball = tarball;
-        emit tarballReady(tarball);
+        updateTarball(tarball);
     });
 
     connect(m_fetcher, &StageFetcher::fetchStatusChanged,this,&Config::fetchStatusChanged);
     connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
     /// change Config into function handles the fetcher signals
+}
+void Config::updateTarball(const QString &tarball){
+    m_selectedTarball = tarball;
+    emit tarballReady(tarball);
 }
 
 QStringList Config::availableArchitectures()
