@@ -10,6 +10,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include "StageFetcher.h"
 #include <QObject>
 #include <QPair>
 #include <QString>

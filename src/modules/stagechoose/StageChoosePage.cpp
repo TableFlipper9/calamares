@@ -79,6 +79,18 @@ void StageChoosePage::onArchitectureChanged(int index)
         return;
 
     const QString archKey = ui->architectureComboBox->itemData(index).toString();
+    ui->variantComboBox->clear();
+
+    if(archKey == "livecd"){
+        ui->variantComboBox->setVisible(false);
+        setFetcherStatus("LiveCd mode - no variants");
+        showRestartFetcherButton(false);
+        return;
+    }
+    else{
+        ui->variantComboBox->setVisible(true);
+    }
+
     m_congif->requestVariant(archKey);
 }
 
