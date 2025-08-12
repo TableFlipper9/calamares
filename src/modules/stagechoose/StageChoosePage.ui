@@ -74,6 +74,28 @@
          </property>
         </widget>
        </item>
+       <!-- New Status Label -->
+       <item>
+        <widget class="QLabel" name="fetcherStatusLabel">
+         <property name="text">
+          <string>Status: Idle</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <!-- New Restart Button -->
+       <item>
+        <widget class="QPushButton" name="restartFetcherButton">
+         <property name="text">
+          <string>Restart Fetcher</string>
+         </property>
+         <property name="visible">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>

@@ -17,8 +17,20 @@
 
 Config::Config(QObject* parent)
     : QObject(parent)
+    , m_fetcher(new StageFetcher(this))
 {
+    connect(m_fetcher, &StageFetcher::variantsFetched, this, [this](const QStringList &variants) {
+        emit variantsReady(variants);
+    });
 
+    connect(m_fetcher, &StageFetcher::tarballFetched, this, [this](const QString &tarball) {
+        m_selectedTarball = tarball;
+        emit tarballReady(tarball);
+    });
+
+    connect(m_fetcher, &StageFetcher::fetchStatusChanged,this,&Config::fetchStatusChanged);
+    connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
+    /// change Config into function handles the fetcher signals
 }
 
 QStringList Config::availableArchitectures()
@@ -26,20 +38,20 @@ QStringList Config::availableArchitectures()
     return { "amd64", "arm", "arm64", "x86", "livecd"};
 }
 
-QStringList Config::availableStagesFor(const QString& arch)
+void Config::availableStagesFor(const QString& arch)
 {
     m_selectedArch = arch;
     m_selectedVariant.clear();
     m_selectedTarball.clear();
 
-    return StageFetcher::fetchVariants(arch);
+    m_fetcher->fetchVariants(arch);
 }
 
 void Config::selectVariant(const QString& variant)
 {
     m_selectedVariant = variant;
 
-    m_selectedTarball = StageFetcher::fetchLatestTarball(m_selectedArch,variant);
+    m_selectedTarball = m_fetcher->fetchLatestTarball(m_selectedArch,variant);
 }
 
 QString Config::selectedStage3() const
