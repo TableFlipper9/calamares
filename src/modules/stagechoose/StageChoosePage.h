@@ -30,8 +30,8 @@ public:
     ~StageChoosePage() override;
 
     void populateArchs();
-    void setFetcherStatus();
-    void showRestartFetcherButton();
+    void setFetcherStatus(const QString& status);
+    void showRestartFetcherButton(bool visible);
     void onRestartFetcherClicked();
     void whenVariantsReady(const QStringList &stages);
 
