@@ -82,7 +82,7 @@ void StageChoosePage::onArchitectureChanged(int index)
     ui->variantComboBox->clear();
 
     if(archKey == "livecd"){
-        m_config->updateTarball("livecd")
+        m_config->updateTarball("livecd");
         ui->variantComboBox->setVisible(false);
         setFetcherStatus("LiveCd mode - no variants");
         showRestartFetcherButton(false);
