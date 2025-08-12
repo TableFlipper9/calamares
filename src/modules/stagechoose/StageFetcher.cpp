@@ -24,6 +24,7 @@ void StageFetcher::cancelOngoingRequest()
     if(m_currentReply){
         m_currentReply->abort();
         m_currentReply->deleteLater();
+        m_currentReply.clear();
     }
 }
 
@@ -49,14 +50,14 @@ void StageFetcher::cancelOngoingRequest()
 void StageFetcher::fetchVariants(const QString& arch)
 {
     cancelOngoingRequest();
-    emit fetchStatusChanged("Fetching variants...");
+    emit fetchStatusChanged("Fetching variants for" + arch + "...");
 
     QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);
     QNetworkRequest request(url);
 
     m_currentReply = m_nam.get(request);
-    connect(m_currentReply, &QNetworkReply::finished, this,[this](){onVariantsReplyFinished(); m_currentReply.clear();});
+    connect(m_currentReply, &QNetworkReply::finished, this,[this](){onVariantsReplyFinished();});
 }
 
 void StageFetcher::onVariantsReplyFinished()
