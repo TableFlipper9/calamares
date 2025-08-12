@@ -34,7 +34,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     if(m_config){
         connect(m_config, &Config::fetchStatusChanged,this,&StageChoosePage::setFetcherStatus);
         connect(m_config, &Config::fetchError,this,[this](const QString& error){setFetcherStatus("Error" + error);showRestartFetcherButton(true);});
-        connect(m_config, &Config::variantsReady, this, StageChoosePage::whenVariantsReady);
+        connect(m_config, &Config::variantsReady, this, &StageChoosePage::whenVariantsReady);
         connect(m_config, &Config::tarballReady, this, [this](const QString&){updateSelectedTarballLabel();});
     }
 
@@ -91,7 +91,7 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setVisible(true);
     }
 
-    m_congif->requestVariant(archKey);
+    m_config->requestVariant(archKey);
 }
 
 void StageChoosePage::onVariantChanged(int index)
@@ -108,9 +108,8 @@ void StageChoosePage::whenVariantsReady(const QStringList &stages)
 {
     ui->variantComboBox->clear();
 
-    QStringList stages = m_config->availableStagesFor(archKey);
     for(const QString& stage : stages){
-        ui->variantComboBox->addItem( stage, stage);
+        ui->variantComboBox->addItem(stage, stage);
     }
 
     if(!stages.isEmpty()){
