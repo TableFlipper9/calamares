@@ -51,7 +51,7 @@ void Config::selectVariant(const QString& variant)
 {
     m_selectedVariant = variant;
 
-    m_selectedTarball = m_fetcher->fetchLatestTarball(m_selectedArch,variant);
+    m_fetcher->fetchLatestTarball(m_selectedArch,variant);
 }
 
 QString Config::selectedStage3() const
