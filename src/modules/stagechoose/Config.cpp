@@ -35,7 +35,7 @@ Config::Config(QObject* parent)
 
 QStringList Config::availableArchitectures()
 {
-    return { "amd64", "arm", "arm64", "x86", "livecd"};
+    return {"livecd", "amd64", "arm", "arm64", "x86"};
 }
 
 void Config::availableStagesFor(const QString& arch)
