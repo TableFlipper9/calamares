@@ -91,7 +91,7 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setVisible(true);
     }
 
-    m_config->requestVariant(archKey);
+    m_config->availableStagesFor(archKey);
 }
 
 void StageChoosePage::onVariantChanged(int index)
