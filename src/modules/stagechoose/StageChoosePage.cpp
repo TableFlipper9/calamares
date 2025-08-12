@@ -33,7 +33,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
 
     if(m_config){
         connect(m_config, &Config::fetchStatusChanged,this,&StageChoosePage::setFetcherStatus);
-        connect(m_config, &Config::fetchError,this,[this](const QString& error){setFetcherStatus("Error" + error);showRestartFetcherButton(true)});
+        connect(m_config, &Config::fetchError,this,[this](const QString& error){setFetcherStatus("Error" + error);showRestartFetcherButton(true);});
         connect(m_config, &Config::variantsReady, this, StageChoosePage::whenVariantsReady);
         connect(m_config, &Config::tarballReady, this, [this](const QString&){updateSelectedTarballLabel();});
     }
