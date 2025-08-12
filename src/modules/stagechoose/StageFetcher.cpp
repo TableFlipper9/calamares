@@ -46,7 +46,7 @@ void StageFetcher::cancelOngoingRequest()
 //     return html;
 // }
 
-QStringList StageFetcher::fetchVariants(const QString& arch)
+void StageFetcher::fetchVariants(const QString& arch)
 {
     cancelOngoingRequest();
     emit fetchStatusChanged("Fetching variants...");
@@ -56,7 +56,7 @@ QStringList StageFetcher::fetchVariants(const QString& arch)
     QNetworkRequest request(url);
 
     m_currentReply = m_nam.get(request);
-    connect(m_currentReply, QNetworkReply::finished, this,[this](){onVariantsReplyFinished(); m_currentReply.clear();});
+    connect(m_currentReply, &QNetworkReply::finished, this,[this](){onVariantsReplyFinished(); m_currentReply.clear();});
 }
 
 void StageFetcher::onVariantsReplyFinished()
@@ -93,7 +93,7 @@ void StageFetcher::onVariantsReplyFinished()
     m_currentReply.clear();
 }
 
-QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
+void StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
 {
     cancelOngoingRequest();
     emit fetchStatusChanged("Fetching Tarball ...");

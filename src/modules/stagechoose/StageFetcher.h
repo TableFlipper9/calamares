@@ -16,9 +16,9 @@ class StageFetcher : public QObject
 public: 
     explicit StageFetcher(QObject* parent =nullptr);
 
-    QStringList fetchVariants(const QString& arch);
+    void fetchVariants(const QString& arch);
     QString extractvariantBase(const QString& varaint);
-    QString fetchLatestTarball(const QString& arch, const QString& variant);
+    void fetchLatestTarball(const QString& arch, const QString& variant);
 
 signals:
     void fetchStatusChanged(const QString& status);
