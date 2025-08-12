@@ -100,7 +100,6 @@ void StageChoosePage::onVariantChanged(int index)
 
     const QString variantKey = ui->variantComboBox->itemData(index).toString();
     m_config->selectVariant(variantKey);
-    //updateSelectedTarballLabel();
 }
 
 void StageChoosePage::whenVariantsReady(const QStringList &stages)
@@ -113,7 +112,7 @@ void StageChoosePage::whenVariantsReady(const QStringList &stages)
 
     if(!stages.isEmpty()){
         ui->variantComboBox->setCurrentIndex(0);
-        onVariantChanged(0);
+        //onVariantChanged(0);
     }
 }
 
