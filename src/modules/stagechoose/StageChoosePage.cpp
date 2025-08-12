@@ -69,8 +69,6 @@ void StageChoosePage::populateArchs()
     for(const QString& arch : archs){
         ui->architectureComboBox->addItem(arch,arch);
     }
-
-    updateSelectedTarballLabel();
 }
 
 void StageChoosePage::onArchitectureChanged(int index)
@@ -102,7 +100,7 @@ void StageChoosePage::onVariantChanged(int index)
 
     const QString variantKey = ui->variantComboBox->itemData(index).toString();
     m_config->selectVariant(variantKey);
-    updateSelectedTarballLabel();
+    //updateSelectedTarballLabel();
 }
 
 void StageChoosePage::whenVariantsReady(const QStringList &stages)
