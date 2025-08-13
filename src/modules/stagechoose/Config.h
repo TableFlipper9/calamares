@@ -10,6 +10,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include "StageFetcher.h"
 #include <QObject>
 #include <QPair>
 #include <QString>
@@ -20,21 +21,26 @@ class Config : public QObject
     Q_OBJECT
 
 public:
-    using Entry = QPair<QString, QString>; // (label, value)
-
     explicit Config(QObject* parent = nullptr);
 
-    void selectVariant(const QString& variantKey);
-
     QStringList availableArchitectures();
-    QStringList availableStagesFor(const QString& architecture);
+    void availableStagesFor(const QString& architecture);
+    void selectVariant(const QString& variantKey);
 
     QString selectedStage3() const;
     bool isValid() const;
 
     void updateGlobalStorage();
+    void updateTarball(const QString &tarball);
+
+signals:
+    void variantsReady(const QStringList& variants);
+    void tarballReady(const QString& tarball);
+    void fetchStatusChanged(const QString& status);
+    void fetchError(const QString& error);
 
 private:
+    StageFetcher* m_fetcher;
     QString m_selectedArch;
     QString m_selectedVariant;
     QString m_selectedTarball;

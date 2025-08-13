@@ -9,39 +9,71 @@
 #include <QRegularExpressionMatchIterator>
 #include <QStringList>
 
-
-QString StageFetcher::fetchHtml(const QUrl& url)
+StageFetcher :: StageFetcher(QObject* parent):QObject(parent)
 {
-    QNetworkAccessManager manager;
-    QNetworkRequest request(url);
-
-    QEventLoop loop;
-    QNetworkReply* reply = manager.get(request);
-    QObject::connect(reply,&QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec(); 
-
-    QString html;
-    if(reply->error() == QNetworkReply::NoError){
-        html = reply->readAll();
-    }
-    else{
-        qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->errorString();
-    }
-
-    reply->deleteLater();
-    return html;
 }
 
-QStringList StageFetcher::fetchVariants(const QString& arch)
+QString StageFetcher::extractvariantBase(const QString& variant){
+    if(variant.startsWith("current-"))
+        return variant.mid(8);
+    return variant;
+}
+
+void StageFetcher::cancelOngoingRequest()
 {
-    QStringList variants;
+    if(m_currentReply){
+        m_currentReply->abort();
+        m_currentReply->deleteLater();
+        m_currentReply.clear();
+    }
+}
+
+// QString StageFetcher::fetchHtml(const QUrl& url)
+// {
+//     QNetworkAccessManager manager;
+//     QNetworkRequest request(url);
+//     QEventLoop loop;
+//     QNetworkReply* reply = manager.get(request);
+//     QObject::connect(reply,&QNetworkReply::finished, &loop, &QEventLoop::quit);
+//     loop.exec(); 
+//     QString html;
+//     if(reply->error() == QNetworkReply::NoError){
+//         html = reply->readAll();
+//     }
+//     else{
+//         qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->errorString();
+//     }
+//     reply->deleteLater();
+//     return html;
+// }
+
+void StageFetcher::fetchVariants(const QString& arch)
+{
+    cancelOngoingRequest(); 
+    emit fetchStatusChanged("Fetching variants for " + arch + "...");
 
     QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);
-    QString html = fetchHtml(url);
+    QNetworkRequest request(url);
 
-    if(html.isEmpty())
-        return variants;
+    m_currentReply = m_nam.get(request);
+    connect(m_currentReply, &QNetworkReply::finished, this,[this](){onVariantsReplyFinished();});
+}
+
+void StageFetcher::onVariantsReplyFinished()
+{
+    if(!m_currentReply)
+        return;
+
+    QStringList variants;
+    if(m_currentReply->error() != QNetworkReply::NoError){
+        emit fetchError(m_currentReply->errorString());
+        return;
+    }
+
+    QString html = m_currentReply->readAll();
+     if(html.isEmpty())
+        emit variantsFetched(variants);
 
     QRegularExpression re(R"((current-stage3-[^"/]+)[/])");
     QRegularExpressionMatchIterator iterator = re.globalMatch(html);
@@ -56,26 +88,39 @@ QStringList StageFetcher::fetchVariants(const QString& arch)
         }
     }
 
-    return variants;
+    emit variantsFetched(variants);
+    emit fetchStatusChanged("Idle");
+    m_currentReply->deleteLater();
+    m_currentReply.clear();
 }
 
-QString StageFetcher::extractvariantBase(const QString& variant){
-    if(variant.startsWith("current-"))
-        return variant.mid(8);
-    return variant;
-}
-
-QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
+void StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
 {
-    QString latest;
-    latest = QString("No tar fetched");
-
+    cancelOngoingRequest();
+    emit fetchStatusChanged("Fetching Tarball for "+ variant +"...");
     const QString baseUrl = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
     QUrl url(baseUrl);
-    QString html = fetchHtml(url);
+    QNetworkRequest request(url);
 
+    m_currentReply = m_nam.get(request);
+    connect(m_currentReply, &QNetworkReply::finished, this, [this, variant](){onTarballReplyFinished(variant);});
+}
+
+void StageFetcher::onTarballReplyFinished(const QString& variant)
+{
+    if(!m_currentReply)
+        return;
+
+    QString latest;
+    latest = QString("No tar fetched");
+    if(m_currentReply->error() != QNetworkReply::NoError){
+        emit fetchError(m_currentReply->errorString());
+        return;
+    }
+
+    QString html = m_currentReply->readAll();
     if(html.isEmpty())
-        return latest;
+        emit tarballFetched(latest);
 
     QRegularExpression re(QString("(%1-[\\dTZ]+\\.tar\\.xz)").arg(StageFetcher::extractvariantBase(variant)));
     QRegularExpressionMatchIterator iterator = re.globalMatch(html);
@@ -88,5 +133,8 @@ QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& var
         }
     }
 
-    return latest;
+    emit tarballFetched(latest);
+    emit fetchStatusChanged("Idle");
+    m_currentReply->deleteLater();
+    m_currentReply.clear();
 }

@@ -15,6 +15,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QTimer>
+#include <QPushButton>
 
 StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     : QWidget(parent)
@@ -28,7 +29,36 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onVariantChanged);
 
+    connect(ui->restartFetcherButton, &QPushButton::clicked, this, &StageChoosePage::onRestartFetcherClicked);
+
+    if(m_config){
+        connect(m_config, &Config::fetchStatusChanged,this,&StageChoosePage::setFetcherStatus);
+        connect(m_config, &Config::fetchError,this,[this](const QString& error){setFetcherStatus("Error" + error);showRestartFetcherButton(true);});
+        connect(m_config, &Config::variantsReady, this, &StageChoosePage::whenVariantsReady);
+        connect(m_config, &Config::tarballReady, this, [this](const QString&){updateSelectedTarballLabel();});
+    }
+
+    setFetcherStatus("Idle");
+    showRestartFetcherButton(false);
+
     populateArchs();
+}
+
+void StageChoosePage::setFetcherStatus(const QString& status)
+{
+    ui->fetcherStatusLabel->setText("Status: " + status);
+}
+
+void StageChoosePage::showRestartFetcherButton(bool visible)
+{
+    ui->restartFetcherButton->setVisible(false);
+    // To implement
+}
+
+void StageChoosePage::onRestartFetcherClicked(){
+    // Logic here
+    setFetcherStatus("Restarting...");
+    showRestartFetcherButton(false);
 }
 
 void StageChoosePage::populateArchs()
@@ -40,8 +70,6 @@ void StageChoosePage::populateArchs()
     for(const QString& arch : archs){
         ui->architectureComboBox->addItem(arch,arch);
     }
-
-    updateSelectedTarballLabel();
 }
 
 void StageChoosePage::onArchitectureChanged(int index)
@@ -50,18 +78,20 @@ void StageChoosePage::onArchitectureChanged(int index)
         return;
 
     const QString archKey = ui->architectureComboBox->itemData(index).toString();
-
     ui->variantComboBox->clear();
 
-    QStringList stages = m_config->availableStagesFor(archKey);
-    for(const QString& stage : stages){
-        ui->variantComboBox->addItem( stage, stage);
+    if(archKey == "livecd"){
+        m_config->updateTarball("livecd");
+        ui->variantComboBox->setVisible(false);
+        setFetcherStatus("LiveCd mode - no variants");
+        showRestartFetcherButton(false);
+        return;
+    }
+    else{
+        ui->variantComboBox->setVisible(true);
     }
 
-    if(!stages.isEmpty()){
-        ui->variantComboBox->setCurrentIndex(0);
-        onVariantChanged(0);
-    }
+    m_config->availableStagesFor(archKey);
 }
 
 void StageChoosePage::onVariantChanged(int index)
@@ -71,7 +101,20 @@ void StageChoosePage::onVariantChanged(int index)
 
     const QString variantKey = ui->variantComboBox->itemData(index).toString();
     m_config->selectVariant(variantKey);
-    updateSelectedTarballLabel();
+}
+
+void StageChoosePage::whenVariantsReady(const QStringList &stages)
+{
+    ui->variantComboBox->clear();
+
+    for(const QString& stage : stages){
+        ui->variantComboBox->addItem(stage, stage);
+    }
+
+    if(!stages.isEmpty()){
+        ui->variantComboBox->setCurrentIndex(0);
+        //onVariantChanged(0);
+    }
 }
 
 void StageChoosePage::updateSelectedTarballLabel()

@@ -17,29 +17,44 @@
 
 Config::Config(QObject* parent)
     : QObject(parent)
+    , m_fetcher(new StageFetcher(this))
 {
+    connect(m_fetcher, &StageFetcher::variantsFetched, this, [this](const QStringList &variants) {
+        emit variantsReady(variants);
+    });
 
+    connect(m_fetcher, &StageFetcher::tarballFetched, this, [this](const QString &tarball) {
+        updateTarball(tarball);
+    });
+
+    connect(m_fetcher, &StageFetcher::fetchStatusChanged,this,&Config::fetchStatusChanged);
+    connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
+    /// change Config into function handles the fetcher signals
+}
+void Config::updateTarball(const QString &tarball){
+    m_selectedTarball = tarball;
+    emit tarballReady(tarball);
 }
 
 QStringList Config::availableArchitectures()
 {
-    return { "amd64", "arm", "arm64", "x86" };
+    return {"livecd", "amd64", "arm", "arm64", "x86"};
 }
 
-QStringList Config::availableStagesFor(const QString& arch)
+void Config::availableStagesFor(const QString& arch)
 {
     m_selectedArch = arch;
     m_selectedVariant.clear();
     m_selectedTarball.clear();
 
-    return StageFetcher::fetchVariants(arch);
+    m_fetcher->fetchVariants(arch);
 }
 
 void Config::selectVariant(const QString& variant)
 {
     m_selectedVariant = variant;
 
-    m_selectedTarball = StageFetcher::fetchLatestTarball(m_selectedArch,variant);
+    m_fetcher->fetchLatestTarball(m_selectedArch,variant);
 }
 
 QString Config::selectedStage3() const
@@ -56,9 +71,14 @@ void Config::updateGlobalStorage()
 {
     Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
 
-    gs->insert( "BASE_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
-    gs->insert( "FINAL_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/%3").arg(m_selectedArch,m_selectedVariant,m_selectedTarball));
-    gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
+    if(m_selectedArch == "livecd")
+        gs->insert("GENTOO_LIVECD","yes");
+    else{
+        gs->insert("GENTOO_LIVECD","no");
+        gs->insert( "BASE_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
+        gs->insert( "FINAL_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/%3").arg(m_selectedArch,m_selectedVariant,m_selectedTarball));
+        gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
+    }
 }
 
 
