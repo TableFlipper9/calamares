@@ -83,15 +83,15 @@ void StageChoosePage::onArchitectureChanged(int index)
     if(archKey == "livecd"){
         m_config->updateTarball("livecd");
         ui->variantComboBox->setVisible(false);
-        setFetcherStatus("LiveCd mode - no variants");
+        ui->variantLabel->setVisible(false);
+        setFetcherStatus("LiveCd mode");
         showRestartFetcherButton(false);
-        return;
     }
     else{
         ui->variantComboBox->setVisible(true);
+        ui->variantLabel->setVisible(true);
+        m_config->availableStagesFor(archKey);
     }
-
-    m_config->availableStagesFor(archKey);
 }
 
 void StageChoosePage::onVariantChanged(int index)
@@ -113,7 +113,7 @@ void StageChoosePage::whenVariantsReady(const QStringList &stages)
 
     if(!stages.isEmpty()){
         ui->variantComboBox->setCurrentIndex(0);
-        //onVariantChanged(0);
+        onVariantChanged(0);
     }
 }
 
