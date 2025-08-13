@@ -51,7 +51,8 @@ void StageChoosePage::setFetcherStatus(const QString& status)
 
 void StageChoosePage::showRestartFetcherButton(bool visible)
 {
-    ui->restartFetcherButton->setVisible(visible);
+    ui->restartFetcherButton->setVisible(false);
+    // To implement
 }
 
 void StageChoosePage::onRestartFetcherClicked(){

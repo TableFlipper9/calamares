@@ -52,7 +52,7 @@ void StageFetcher::fetchVariants(const QString& arch)
     cancelOngoingRequest(); 
     emit fetchStatusChanged("Fetching variants for " + arch + "...");
 
-    QString urlStr = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
+    QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);
     QNetworkRequest request(url);
 
@@ -98,7 +98,7 @@ void StageFetcher::fetchLatestTarball(const QString& arch, const QString& varian
 {
     cancelOngoingRequest();
     emit fetchStatusChanged("Fetching Tarball for "+ variant +"...");
-    const QString baseUrl = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
+    const QString baseUrl = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
     QUrl url(baseUrl);
     QNetworkRequest request(url);
 
