@@ -16,6 +16,16 @@
 #include <QString>
 #include <QList>
 
+struct ArchitectureInfo
+{
+    QString name;
+    QString description;
+
+    ArchitectureInfo() = default;
+    ArchitectureInfo(const QString& n, const QString& d):
+    name(n),description(d){}
+};
+
 class Config : public QObject
 {
     Q_OBJECT
@@ -23,6 +33,7 @@ class Config : public QObject
 public:
     explicit Config(QObject* parent = nullptr);
 
+    QList<ArchitectureInfo> availableArchitecturesInfo();
     QStringList availableArchitectures();
     void availableStagesFor(const QString& architecture);
     void selectVariant(const QString& variantKey);

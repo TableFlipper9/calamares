@@ -22,9 +22,11 @@ QString StageFetcher::extractvariantBase(const QString& variant){
 void StageFetcher::cancelOngoingRequest()
 {
     if(m_currentReply){
-        m_currentReply->abort();
+        disconnect(m_currentReply,nullptr,this,nullptr);
+        if(m_currentReply->isRunning())
+            m_currentReply->abort();
         m_currentReply->deleteLater();
-        m_currentReply.clear();
+        m_currentReply = nullptr;
     }
 }
 
@@ -52,26 +54,34 @@ void StageFetcher::fetchVariants(const QString& arch)
     cancelOngoingRequest(); 
     emit fetchStatusChanged("Fetching variants for " + arch + "...");
 
-    QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
+    QString urlStr = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
     QUrl url(urlStr);
     QNetworkRequest request(url);
 
-    m_currentReply = m_nam.get(request);
-    connect(m_currentReply, &QNetworkReply::finished, this,[this](){onVariantsReplyFinished();});
+    QNetworkReply* reply = m_nam.get(request);
+    m_currentReply = reply;
+    connect(reply, &QNetworkReply::finished, this,[this, reply](){onVariantsReplyFinished(reply);});
 }
 
-void StageFetcher::onVariantsReplyFinished()
+void StageFetcher::onVariantsReplyFinished(QNetworkReply* reply)
 {
-    if(!m_currentReply)
+    if(!reply)
         return;
 
-    QStringList variants;
-    if(m_currentReply->error() != QNetworkReply::NoError){
-        emit fetchError(m_currentReply->errorString());
+    if(reply != m_currentReply){
+        reply->deleteLater();
         return;
     }
 
-    QString html = m_currentReply->readAll();
+    QStringList variants;
+    if(reply->error() != QNetworkReply::NoError){
+        emit fetchError(reply->errorString());
+        reply->deleteLater();
+        if(m_currentReply == reply) m_currentReply = nullptr;
+        return;
+    }
+
+    QString html = reply->readAll();
      if(html.isEmpty())
         emit variantsFetched(variants);
 
@@ -90,35 +100,43 @@ void StageFetcher::onVariantsReplyFinished()
 
     emit variantsFetched(variants);
     emit fetchStatusChanged("Idle");
-    m_currentReply->deleteLater();
-    m_currentReply.clear();
+    reply->deleteLater();
+    if(reply == m_currentReply) m_currentReply = nullptr;
 }
 
 void StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
 {
     cancelOngoingRequest();
     emit fetchStatusChanged("Fetching Tarball for "+ variant +"...");
-    const QString baseUrl = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
+    const QString baseUrl = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
     QUrl url(baseUrl);
     QNetworkRequest request(url);
 
-    m_currentReply = m_nam.get(request);
-    connect(m_currentReply, &QNetworkReply::finished, this, [this, variant](){onTarballReplyFinished(variant);});
+    QNetworkReply* reply = m_nam.get(request);
+    m_currentReply = reply;
+    connect(reply, &QNetworkReply::finished, this, [this, reply, variant](){onTarballReplyFinished(reply, variant);});
 }
 
-void StageFetcher::onTarballReplyFinished(const QString& variant)
+void StageFetcher::onTarballReplyFinished(QNetworkReply* reply, const QString& variant)
 {
-    if(!m_currentReply)
+    if(!reply)
         return;
 
-    QString latest;
-    latest = QString("No tar fetched");
-    if(m_currentReply->error() != QNetworkReply::NoError){
-        emit fetchError(m_currentReply->errorString());
+    if(reply != m_currentReply){
+        reply->deleteLater();
         return;
     }
 
-    QString html = m_currentReply->readAll();
+    QString latest;
+    latest = QString("No tar fetched");
+    if(reply->error() != QNetworkReply::NoError){
+        emit fetchError(reply->errorString());
+        reply->deleteLater();
+        if(m_currentReply == reply) m_currentReply = nullptr;
+        return;
+    }
+
+    QString html = reply->readAll();
     if(html.isEmpty())
         emit tarballFetched(latest);
 
@@ -135,6 +153,6 @@ void StageFetcher::onTarballReplyFinished(const QString& variant)
 
     emit tarballFetched(latest);
     emit fetchStatusChanged("Idle");
-    m_currentReply->deleteLater();
-    m_currentReply.clear();
+    reply->deleteLater();
+    if(reply == m_currentReply) m_currentReply = nullptr;
 }

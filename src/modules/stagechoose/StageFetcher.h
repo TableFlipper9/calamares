@@ -20,6 +20,8 @@ public:
     QString extractvariantBase(const QString& varaint);
     void fetchLatestTarball(const QString& arch, const QString& variant);
 
+    void cancelOngoingRequest();
+
 signals:
     void fetchStatusChanged(const QString& status);
     void fetchError(const QString& error);
@@ -27,11 +29,10 @@ signals:
     void tarballFetched(const QString& tarballs);
 
 private slots:
-    void onVariantsReplyFinished();
-    void onTarballReplyFinished(const QString& variant);
+    void onVariantsReplyFinished(QNetworkReply* reply);
+    void onTarballReplyFinished(QNetworkReply* reply, const QString& variant);
 
 private:
-    void cancelOngoingRequest();
     QNetworkAccessManager m_nam;
     QPointer<QNetworkReply> m_currentReply;
 };

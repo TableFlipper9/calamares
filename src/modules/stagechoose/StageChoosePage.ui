@@ -31,7 +31,7 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>80</width>
          <height>20</height>
         </size>
        </property>
@@ -74,7 +74,6 @@
          </property>
         </widget>
        </item>
-       <!-- New Status Label -->
        <item>
         <widget class="QLabel" name="fetcherStatusLabel">
          <property name="text">
@@ -85,7 +84,6 @@
          </property>
         </widget>
        </item>
-       <!-- New Restart Button -->
        <item>
         <widget class="QPushButton" name="restartFetcherButton">
          <property name="text">
