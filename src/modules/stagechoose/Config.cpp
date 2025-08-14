@@ -94,7 +94,7 @@ QString Config::selectedStage3() const
 
 bool Config::isValid() const
 {
-    return !m_selectedTarball.isEmpty();
+    return (!m_selectedTarball.isEmpty() && m_selectedTarball != "No tar fetched") ;
 }
 
 void Config::updateGlobalStorage()
