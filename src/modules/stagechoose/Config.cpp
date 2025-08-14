@@ -45,21 +45,21 @@ QList<ArchitectureInfo> Config::availableArchitecturesInfo()
 {
     QList<ArchitectureInfo> list;
     list << ArchitectureInfo{ QStringLiteral("livecd"), QStringLiteral("Live CD (unsafe)") }
-         << ArchitectureInfo{ QStringLiteral("alpha"),   QStringLiteral("Digital Alpha (DEC)") }
-         << ArchitectureInfo{ QStringLiteral("amd64"),   QStringLiteral("64-bit Intel/AMD (x86-64)") }
+         << ArchitectureInfo{ QStringLiteral("alpha"),   QStringLiteral("Digital Alpha (alpha)") }
+         << ArchitectureInfo{ QStringLiteral("amd64"),   QStringLiteral("64-bit Intel/AMD (amd64)") }
          << ArchitectureInfo{ QStringLiteral("x86"),     QStringLiteral("32-bit Intel/AMD (x86)") }
-         << ArchitectureInfo{ QStringLiteral("arm"),     QStringLiteral("ARM (32-bit)") }
-         << ArchitectureInfo{ QStringLiteral("arm64"),   QStringLiteral("ARM 64-bit (AArch64)") }
-         << ArchitectureInfo{ QStringLiteral("hppa"),    QStringLiteral("HPPA (PA-RISC)") }
-         << ArchitectureInfo{ QStringLiteral("ia64"),    QStringLiteral("Intel Itanium (IA-64)") }
-         << ArchitectureInfo{ QStringLiteral("loong"),   QStringLiteral("Loongson MIPS-based") }
-         << ArchitectureInfo{ QStringLiteral("m68k"),    QStringLiteral("Motorola 68k") }
-         << ArchitectureInfo{ QStringLiteral("mips"),    QStringLiteral("MIPS (32/64-bit)") }
-         << ArchitectureInfo{ QStringLiteral("ppc"),     QStringLiteral("PowerPC") }
-         << ArchitectureInfo{ QStringLiteral("riscv"),   QStringLiteral("RISC-V (32/64-bit)") }
+         << ArchitectureInfo{ QStringLiteral("arm"),     QStringLiteral("ARM 32-bit (arm)") }
+         << ArchitectureInfo{ QStringLiteral("arm64"),   QStringLiteral("ARM 64-bit (arm64)") }
+         << ArchitectureInfo{ QStringLiteral("hppa"),    QStringLiteral("HPPA (hppa)") }
+         << ArchitectureInfo{ QStringLiteral("ia64"),    QStringLiteral("Intel Itanium (ia64)") }
+         << ArchitectureInfo{ QStringLiteral("loong"),   QStringLiteral("Loongson MIPS-based (loong)") }
+         << ArchitectureInfo{ QStringLiteral("m68k"),    QStringLiteral("Motorola 68k (m68k)") }
+         << ArchitectureInfo{ QStringLiteral("mips"),    QStringLiteral("MIPS 32/64-bit (mips)") }
+         << ArchitectureInfo{ QStringLiteral("ppc"),     QStringLiteral("PowerPC (ppc)") }
+         << ArchitectureInfo{ QStringLiteral("riscv"),   QStringLiteral("RISC-V 32/64-bit (riscv)") }
          << ArchitectureInfo{ QStringLiteral("s390"),    QStringLiteral("IBM System z (s390)") }
-         << ArchitectureInfo{ QStringLiteral("sh"),      QStringLiteral("SuperH (legacy)") }
-         << ArchitectureInfo{ QStringLiteral("sparc"),   QStringLiteral("SPARC (64-bit)") };
+         << ArchitectureInfo{ QStringLiteral("sh"),      QStringLiteral("SuperH legacy (sh)") }
+         << ArchitectureInfo{ QStringLiteral("sparc"),   QStringLiteral("SPARC 64-bit (sparc)") };
     return list;
 }
 
