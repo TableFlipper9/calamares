@@ -42,6 +42,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     showRestartFetcherButton(false);
 
     populateArchs();
+     ui->variantComboBox->setCurrentIndex(-1);
 }
 
 void StageChoosePage::setFetcherStatus(const QString& status)
