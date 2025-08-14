@@ -24,7 +24,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
 {
     ui->setupUi(this);
 
-    connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::activated),
             this, &StageChoosePage::onArchitectureChanged);
     connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onVariantChanged);
@@ -39,6 +39,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     }
 
     setFetcherStatus("Idle");
+    updateSelectedTarballLabel();
     showRestartFetcherButton(false);
 
     populateArchs();
@@ -67,9 +68,11 @@ void StageChoosePage::populateArchs()
         return;
 
     const auto archs = m_config->availableArchitecturesInfo();
+    ui->architectureComboBox->clear();
     for(const auto& arch : archs){
         ui->architectureComboBox->addItem(arch.description,arch.name);
     }
+    ui->architectureComboBox->setCurrentIndex(-1);
 }
 
 void StageChoosePage::onArchitectureChanged(int index)
@@ -86,7 +89,7 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setVisible(false);
         ui->variantLabel->setVisible(false);
 
-        setFetcherStatus("LiveCd mode");
+        setFetcherStatus("LiveCD mode");
         m_config->updateTarball("livecd");
         showRestartFetcherButton(false);
         return;
@@ -125,10 +128,7 @@ void StageChoosePage::updateSelectedTarballLabel()
     if (!m_config)
         return;
 
-    if(m_config->selectedStage3().isEmpty())
-         ui->selectedTarballLabel->setText("Selected: None");
-    else
-        ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
+    ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
 }
 
 StageChoosePage::~StageChoosePage()

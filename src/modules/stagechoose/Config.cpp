@@ -31,27 +31,28 @@ Config::Config(QObject* parent)
     connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
     /// change Config into function handles the fetcher signals
 }
-void Config::updateTarball(const QString &tarball){
-    m_selectedTarball = tarball;
-    emit tarballReady(tarball);
-}
-
-QStringList Config::availableArchitectures()
-{
-    return { "livecd", "amd64", "arm", "arm64", "x86" };
-}
 
 QList<ArchitectureInfo> Config::availableArchitecturesInfo()
 {
     QList<ArchitectureInfo> list;
-    list << ArchitectureInfo{ QStringLiteral("livecd"), QStringLiteral("Live CD (unsafe)") }
-         << ArchitectureInfo{ QStringLiteral("amd64"),  QStringLiteral("64-bit Intel/AMD") }
-         << ArchitectureInfo{ QStringLiteral("arm"),    QStringLiteral("ARM 32-bit") }
-         << ArchitectureInfo{ QStringLiteral("arm64"),  QStringLiteral("ARM 64-bit") }
-         << ArchitectureInfo{ QStringLiteral("x86"),    QStringLiteral("32-bit Intel/AMD") };
+    list << ArchitectureInfo{ QStringLiteral("alpha"),   QStringLiteral("Digital Alpha (alpha)") }
+         << ArchitectureInfo{ QStringLiteral("amd64"),   QStringLiteral("64-bit Intel/AMD (amd64)") }
+         << ArchitectureInfo{ QStringLiteral("x86"),     QStringLiteral("32-bit Intel/AMD (x86)") }
+         << ArchitectureInfo{ QStringLiteral("arm"),     QStringLiteral("ARM 32-bit (arm)") }
+         << ArchitectureInfo{ QStringLiteral("arm64"),   QStringLiteral("ARM 64-bit (arm64)") }
+         << ArchitectureInfo{ QStringLiteral("hppa"),    QStringLiteral("HPPA (hppa)") }
+         << ArchitectureInfo{ QStringLiteral("ia64"),    QStringLiteral("Intel Itanium (ia64)") }
+         << ArchitectureInfo{ QStringLiteral("loong"),   QStringLiteral("Loongson MIPS-based (loong)") }
+         << ArchitectureInfo{ QStringLiteral("m68k"),    QStringLiteral("Motorola 68k (m68k)") }
+         << ArchitectureInfo{ QStringLiteral("mips"),    QStringLiteral("MIPS 32/64-bit (mips)") }
+         << ArchitectureInfo{ QStringLiteral("ppc"),     QStringLiteral("PowerPC (ppc)") }
+         << ArchitectureInfo{ QStringLiteral("riscv"),   QStringLiteral("RISC-V 32/64-bit (riscv)") }
+         << ArchitectureInfo{ QStringLiteral("s390"),    QStringLiteral("IBM System z (s390)") }
+         << ArchitectureInfo{ QStringLiteral("sh"),      QStringLiteral("SuperH legacy (sh)") }
+         << ArchitectureInfo{ QStringLiteral("sparc"),   QStringLiteral("SPARC 64-bit (sparc)") }
+         << ArchitectureInfo{ QStringLiteral("livecd"), QStringLiteral("Live CD (unsafe)") };
     return list;
 }
-
 
 void Config::availableStagesFor(const QString& arch)
 {
@@ -61,7 +62,7 @@ void Config::availableStagesFor(const QString& arch)
         m_fetcher->cancelOngoingRequest();
         m_selectedTarball = "livecd";
         emit tarballReady(m_selectedTarball);
-        emit fetchStatusChanged("LiveCd mode");
+        emit fetchStatusChanged("LiveCD mode");
         return;
     }
     else{
@@ -79,12 +80,21 @@ void Config::selectVariant(const QString& variant)
 
 QString Config::selectedStage3() const
 {
-    return m_selectedTarball;
+    if(!m_selectedTarball.isEmpty())
+        return m_selectedTarball;
+
+    return "No tar fetched";
 }
 
 bool Config::isValid() const
 {
-    return !m_selectedTarball.isEmpty();
+    return (!m_selectedTarball.isEmpty()) ;
+}
+
+void Config::updateTarball(const QString &tarball){
+    m_selectedTarball = tarball;
+    emit tarballReady(tarball);
+    emit validityChanged(isValid());
 }
 
 void Config::updateGlobalStorage()
