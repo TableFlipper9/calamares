@@ -38,16 +38,36 @@ void Config::updateTarball(const QString &tarball){
 
 QStringList Config::availableArchitectures()
 {
-    return {"livecd", "amd64", "arm", "arm64", "x86"};
+    return { "livecd", "amd64", "arm", "arm64", "x86" };
 }
+
+QList<ArchitectureInfo> Config::availableArchitecturesInfo()
+{
+    QList<ArchitectureInfo> list;
+    list << ArchitectureInfo{ QStringLiteral("livecd"), QStringLiteral("Live CD (unsafe)") }
+         << ArchitectureInfo{ QStringLiteral("amd64"),  QStringLiteral("64-bit Intel/AMD") }
+         << ArchitectureInfo{ QStringLiteral("arm"),    QStringLiteral("ARM 32-bit") }
+         << ArchitectureInfo{ QStringLiteral("arm64"),  QStringLiteral("ARM 64-bit") }
+         << ArchitectureInfo{ QStringLiteral("x86"),    QStringLiteral("32-bit Intel/AMD") };
+    return list;
+}
+
 
 void Config::availableStagesFor(const QString& arch)
 {
     m_selectedArch = arch;
     m_selectedVariant.clear();
-    m_selectedTarball.clear();
-
-    m_fetcher->fetchVariants(arch);
+    if(arch == "livecd"){
+        m_fetcher->cancelOngoingRequest();
+        m_selectedTarball = "livecd";
+        emit tarballReady(m_selectedTarball);
+        emit fetchStatusChanged("LiveCd mode");
+        return;
+    }
+    else{
+        m_selectedTarball.clear();
+        m_fetcher->fetchVariants(arch);
+    }
 }
 
 void Config::selectVariant(const QString& variant)
