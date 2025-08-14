@@ -61,9 +61,33 @@
         <layout class="QHBoxLayout" name="comboBoxesLayout">
          <item>
           <widget class="QComboBox" name="architectureComboBox"/>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSizeSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
          </item>
          <item>
           <widget class="QComboBox" name="variantComboBox"/>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSizeSize">
+             <size>
+              <width>200</width>
+              <height>25</height>
+             </size>
+            </property>
          </item>
         </layout>
        </item>
