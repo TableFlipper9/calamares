@@ -24,7 +24,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
 {
     ui->setupUi(this);
 
-    connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::activated),
             this, &StageChoosePage::onArchitectureChanged);
     connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onVariantChanged);
@@ -39,6 +39,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     }
 
     setFetcherStatus("Idle");
+    updateSelectedTarballLabel();
     showRestartFetcherButton(false);
 
     populateArchs();
