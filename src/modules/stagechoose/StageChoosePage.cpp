@@ -66,9 +66,9 @@ void StageChoosePage::populateArchs()
     if (!m_config)
         return;
 
-    QStringList archs = m_config->availableArchitectures();
-    for(const QString& arch : archs){
-        ui->architectureComboBox->addItem(arch,arch);
+    const auto archs = m_config->availableArchitecturesInfo();
+    for(const auto& arch : archs){
+        ui->architectureComboBox->addItem(arch.description,arch.name);
     }
 }
 
@@ -80,17 +80,20 @@ void StageChoosePage::onArchitectureChanged(int index)
     const QString archKey = ui->architectureComboBox->itemData(index).toString();
     ui->variantComboBox->clear();
 
+    m_config->availableStagesFor(archKey);
+
     if(archKey == "livecd"){
-        m_config->updateTarball("livecd");
         ui->variantComboBox->setVisible(false);
         ui->variantLabel->setVisible(false);
+
         setFetcherStatus("LiveCd mode");
+        m_config->updateTarball("livecd");
         showRestartFetcherButton(false);
+        return;
     }
     else{
         ui->variantComboBox->setVisible(true);
         ui->variantLabel->setVisible(true);
-        m_config->availableStagesFor(archKey);
     }
 }
 
