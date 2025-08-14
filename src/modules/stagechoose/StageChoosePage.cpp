@@ -86,7 +86,7 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setVisible(false);
         ui->variantLabel->setVisible(false);
 
-        setFetcherStatus("LiveCd mode");
+        setFetcherStatus("LiveCD mode");
         m_config->updateTarball("livecd");
         showRestartFetcherButton(false);
         return;

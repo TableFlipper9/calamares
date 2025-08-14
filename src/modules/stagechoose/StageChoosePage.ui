@@ -51,7 +51,7 @@
          <item>
           <widget class="QLabel" name="variantLabel">
            <property name="text">
-            <string>Select Stage3 Variant:</string>
+            <string>Select Stage3 Option:</string>
            </property>
           </widget>
          </item>
