@@ -42,7 +42,6 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     showRestartFetcherButton(false);
 
     populateArchs();
-     ui->variantComboBox->setCurrentIndex(-1);
 }
 
 void StageChoosePage::setFetcherStatus(const QString& status)
@@ -68,9 +67,11 @@ void StageChoosePage::populateArchs()
         return;
 
     const auto archs = m_config->availableArchitecturesInfo();
+    ui->architectureComboBox->clear();
     for(const auto& arch : archs){
         ui->architectureComboBox->addItem(arch.description,arch.name);
     }
+    ui->architectureComboBox->setCurrentIndex(-1);
 }
 
 void StageChoosePage::onArchitectureChanged(int index)
