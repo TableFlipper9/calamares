@@ -49,6 +49,7 @@ signals:
     void tarballReady(const QString& tarball);
     void fetchStatusChanged(const QString& status);
     void fetchError(const QString& error);
+    void validityChanged(bool validity);
 
 private:
     StageFetcher* m_fetcher;

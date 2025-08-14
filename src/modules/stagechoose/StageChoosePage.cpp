@@ -125,10 +125,7 @@ void StageChoosePage::updateSelectedTarballLabel()
     if (!m_config)
         return;
 
-    if(m_config->selectedStage3().isEmpty())
-         ui->selectedTarballLabel->setText("Selected: None");
-    else
-        ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
+    ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
 }
 
 StageChoosePage::~StageChoosePage()
