@@ -67,7 +67,7 @@
               <height>25</height>
              </size>
             </property>
-            <property name="maximumSizeSize">
+            <property name="maximumSize">
              <size>
               <width>200</width>
               <height>25</height>
@@ -82,7 +82,7 @@
               <height>25</height>
              </size>
             </property>
-            <property name="maximumSizeSize">
+            <property name="maximumSize">
              <size>
               <width>200</width>
               <height>25</height>
