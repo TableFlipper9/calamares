@@ -128,7 +128,6 @@ void StageFetcher::onTarballReplyFinished(QNetworkReply* reply, const QString& v
     }
 
     QString latest;
-    latest = QString("No tar fetched");
     if(reply->error() != QNetworkReply::NoError){
         emit fetchError(reply->errorString());
         reply->deleteLater();

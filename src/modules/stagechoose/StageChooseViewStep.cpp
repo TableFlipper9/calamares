@@ -23,7 +23,7 @@ StageChooseViewStep::StageChooseViewStep(QObject* parent)
     , m_config(new Config(this))
     , m_widget(new StageChoosePage(m_config))
 {
-   // m_widget->setParent(this)
+   connect(m_config,&Config::validityChanged,this,[this](bool valid){emit nextStatusChanged(valid);});
 }
 
 StageChooseViewStep::~StageChooseViewStep() 

@@ -31,10 +31,6 @@ Config::Config(QObject* parent)
     connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
     /// change Config into function handles the fetcher signals
 }
-void Config::updateTarball(const QString &tarball){
-    m_selectedTarball = tarball;
-    emit tarballReady(tarball);
-}
 
 QStringList Config::availableArchitectures()
 {
@@ -89,12 +85,21 @@ void Config::selectVariant(const QString& variant)
 
 QString Config::selectedStage3() const
 {
-    return m_selectedTarball;
+    if(!m_selectedTarball.isEmpty())
+        return m_selectedTarball;
+
+    return "No tar fetched";
 }
 
 bool Config::isValid() const
 {
-    return (!m_selectedTarball.isEmpty() && m_selectedTarball != "No tar fetched") ;
+    return (!m_selectedTarball.isEmpty()) ;
+}
+
+void Config::updateTarball(const QString &tarball){
+    m_selectedTarball = tarball;
+    emit tarballReady(tarball);
+    emit validityChanged(isValid());
 }
 
 void Config::updateGlobalStorage()
