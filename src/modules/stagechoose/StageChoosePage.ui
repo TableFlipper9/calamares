@@ -36,6 +36,17 @@
 
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="mirrorInfoLabel">
+          <property name="text">
+            <string>If you leave mirror link blank, it will choose the default option.</string>
+          </property>
+            <property name="wordWrap">
+            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        
        <item>
         <layout class="QHBoxLayout" name="mirrorLayout">
          <item>
