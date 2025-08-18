@@ -3,6 +3,7 @@
  <class>StageChoosePage</class>
  <widget class="QWidget" name="StageChoosePage">
   <layout class="QVBoxLayout" name="outerVerticalLayout">
+
    <item>
     <spacer name="verticalSpacerTop">
      <property name="orientation">
@@ -19,6 +20,7 @@
      </property>
     </spacer>
    </item>
+
    <item>
     <layout class="QHBoxLayout" name="horizontalCenteringLayout">
      <item>
@@ -29,16 +31,30 @@
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>80</width>
-         <height>20</height>
-        </size>
-       </property>
       </spacer>
      </item>
+
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="mirrorLayout">
+         <item>
+          <widget class="QLabel" name="mirrorLabel">
+           <property name="text">
+            <string>Mirror Link:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="mirrorLineEdit">
+           <property name="placeholderText">
+            <string>https://distfiles.gentoo.org/releases/</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
        <item>
         <layout class="QHBoxLayout" name="topLabelsLayout">
          <item>
@@ -57,42 +73,32 @@
          </item>
         </layout>
        </item>
+
        <item>
         <layout class="QHBoxLayout" name="comboBoxesLayout">
-        <item>
-        <widget class="QComboBox" name="architectureComboBox">
-        <property name="minimumSize">
-            <size>
-            <width>200</width>
-            <height>25</height>
-            </size>
-        </property>
-        <property name="maximumSize">
-            <size>
-            <width>200</width>
-            <height>25</height>
-            </size>
-        </property>
-        </widget>
-        </item>
-        <item>
-        <widget class="QComboBox" name="variantComboBox">
-        <property name="minimumSize">
-            <size>
-            <width>200</width>
-            <height>25</height>
-            </size>
-        </property>
-        <property name="maximumSize">
-            <size>
-            <width>200</width>
-            <height>25</height>
-            </size>
-        </property>
-        </widget>
-        </item>
+         <item>
+          <widget class="QComboBox" name="architectureComboBox">
+           <property name="minimumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+           <property name="maximumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="variantComboBox">
+           <property name="minimumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+           <property name="maximumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
+
        <item>
         <widget class="QLabel" name="selectedTarballLabel">
          <property name="text">
@@ -100,6 +106,7 @@
          </property>
         </widget>
        </item>
+
        <item>
         <widget class="QLabel" name="fetcherStatusLabel">
          <property name="text">
@@ -110,6 +117,7 @@
          </property>
         </widget>
        </item>
+
        <item>
         <widget class="QPushButton" name="restartFetcherButton">
          <property name="text">
@@ -122,6 +130,7 @@
        </item>
       </layout>
      </item>
+
      <item>
       <spacer name="horizontalSpacerRight">
        <property name="orientation">
@@ -130,16 +139,11 @@
        <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
       </spacer>
      </item>
     </layout>
    </item>
+
    <item>
     <spacer name="verticalSpacerBottom">
      <property name="orientation">
@@ -147,12 +151,6 @@
      </property>
      <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
      </property>
     </spacer>
    </item>

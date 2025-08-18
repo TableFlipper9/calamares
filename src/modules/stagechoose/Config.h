@@ -43,6 +43,8 @@ public:
 
     void updateGlobalStorage();
     void updateTarball(const QString &tarball);
+    void setMirrorBase(const QString& mirror);
+    QString mirrorBase();
 
 signals:
     void variantsReady(const QStringList& variants);
@@ -53,6 +55,7 @@ signals:
 
 private:
     StageFetcher* m_fetcher;
+    QString m_mirrorBase {QStringLiteral("http://distfiles.gentoo.org/releases")};
     QString m_selectedArch;
     QString m_selectedVariant;
     QString m_selectedTarball;
