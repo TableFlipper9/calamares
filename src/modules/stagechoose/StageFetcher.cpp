@@ -26,6 +26,10 @@ void StageFetcher::setMirrorBase(const QString& mirror)
 
     if(base.isEmpty())
         base = QStringLiteral("http://distfiles.gentoo.org/releases");
+
+    if(!base.endsWith("/releases"))
+        base += "/releases";
+
     m_mirrorBase = base;
 }
 
