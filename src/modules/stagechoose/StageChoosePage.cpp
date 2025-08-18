@@ -29,6 +29,7 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &StageChoosePage::onVariantChanged);
 
+    connect(ui->mirrorLineEdit, &QLineEdit::editingFinished, this, &StageChoosePage::onMirrorChanged);
     connect(ui->restartFetcherButton, &QPushButton::clicked, this, &StageChoosePage::onRestartFetcherClicked);
 
     if(m_config){
@@ -43,6 +44,13 @@ StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
     showRestartFetcherButton(false);
 
     populateArchs();
+}
+
+void StageChoosePage::onMirrorChanged()
+{
+    if(!m_config) return;
+    QString mirror = ui->mirrorLineEdit->text().trimmed();
+    m_config->setMirrorBase(mirror);
 }
 
 void StageChoosePage::setFetcherStatus(const QString& status)
@@ -89,8 +97,8 @@ void StageChoosePage::onArchitectureChanged(int index)
         ui->variantComboBox->setVisible(false);
         ui->variantLabel->setVisible(false);
 
-        setFetcherStatus("LiveCD mode");
-        m_config->updateTarball("livecd");
+        // setFetcherStatus("LiveCD mode");
+        // m_config->updateTarball("livecd");
         showRestartFetcherButton(false);
         return;
     }

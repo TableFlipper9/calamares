@@ -30,6 +30,7 @@ Config::Config(QObject* parent)
     connect(m_fetcher, &StageFetcher::fetchStatusChanged,this,&Config::fetchStatusChanged);
     connect(m_fetcher, &StageFetcher::fetchError,this,&Config::fetchError);
     /// change Config into function handles the fetcher signals
+    m_fetcher->setMirrorBase(m_mirrorBase);
 }
 
 QList<ArchitectureInfo> Config::availableArchitecturesInfo()
@@ -91,6 +92,18 @@ bool Config::isValid() const
     return (!m_selectedTarball.isEmpty()) ;
 }
 
+void Config::setMirrorBase(const QString& mirror){
+    QString base = mirror.trimmed();
+    while(base.endsWith('/')) base.chop(1);
+
+    if(base.isEmpty()) base = QStringLiteral("http://distfiles.gentoo.org/releases");
+
+    if(base == m_mirrorBase) return;
+
+    m_mirrorBase = base;
+    if(m_fetcher) m_fetcher->setMirrorBase(m_mirrorBase);
+}
+
 void Config::updateTarball(const QString &tarball){
     m_selectedTarball = tarball;
     emit tarballReady(tarball);
@@ -105,8 +118,8 @@ void Config::updateGlobalStorage()
         gs->insert("GENTOO_LIVECD","yes");
     else{
         gs->insert("GENTOO_LIVECD","no");
-        gs->insert( "BASE_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
-        gs->insert( "FINAL_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/%3").arg(m_selectedArch,m_selectedVariant,m_selectedTarball));
+        gs->insert( "BASE_DOWNLOAD_URL",  QString("%1/%2/autobuilds/%3/").arg(m_mirrorBase,m_selectedArch,m_selectedVariant));
+        gs->insert( "FINAL_DOWNLOAD_URL",  QString("%1/%2/autobuilds/%3/%4").arg(m_mirrorBase,m_selectedArch,m_selectedVariant,m_selectedTarball));
         gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
     }
 }

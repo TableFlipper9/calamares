@@ -19,6 +19,16 @@ QString StageFetcher::extractvariantBase(const QString& variant){
     return variant;
 }
 
+void StageFetcher::setMirrorBase(const QString& mirror)
+{
+    QString base = mirror.trimmed();
+    while(base.endsWith('/')) base.chop(1);
+
+    if(base.isEmpty())
+        base = QStringLiteral("http://distfiles.gentoo.org/releases");
+    m_mirrorBase = base;
+}
+
 void StageFetcher::cancelOngoingRequest()
 {
     if(m_currentReply){
@@ -30,31 +40,12 @@ void StageFetcher::cancelOngoingRequest()
     }
 }
 
-// QString StageFetcher::fetchHtml(const QUrl& url)
-// {
-//     QNetworkAccessManager manager;
-//     QNetworkRequest request(url);
-//     QEventLoop loop;
-//     QNetworkReply* reply = manager.get(request);
-//     QObject::connect(reply,&QNetworkReply::finished, &loop, &QEventLoop::quit);
-//     loop.exec(); 
-//     QString html;
-//     if(reply->error() == QNetworkReply::NoError){
-//         html = reply->readAll();
-//     }
-//     else{
-//         qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->errorString();
-//     }
-//     reply->deleteLater();
-//     return html;
-// }
-
 void StageFetcher::fetchVariants(const QString& arch)
 {
     cancelOngoingRequest(); 
     emit fetchStatusChanged("Fetching variants for " + arch + "...");
 
-    QString urlStr = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
+    QString urlStr = QString("%1/%2/autobuilds/").arg(m_mirrorBase, arch);
     QUrl url(urlStr);
     QNetworkRequest request(url);
 
@@ -108,7 +99,7 @@ void StageFetcher::fetchLatestTarball(const QString& arch, const QString& varian
 {
     cancelOngoingRequest();
     emit fetchStatusChanged("Fetching Tarball for "+ variant +"...");
-    const QString baseUrl = QString("http://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
+    const QString baseUrl = QString("%1/%2/autobuilds/%3/").arg(m_mirrorBase, arch, variant);
     QUrl url(baseUrl);
     QNetworkRequest request(url);
 

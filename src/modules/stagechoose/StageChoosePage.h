@@ -35,6 +35,8 @@ public:
     void onRestartFetcherClicked();
     void whenVariantsReady(const QStringList &stages);
 
+    void onMirrorChanged();
+
 private slots:
     void onArchitectureChanged(int index);
     void onVariantChanged(int index);

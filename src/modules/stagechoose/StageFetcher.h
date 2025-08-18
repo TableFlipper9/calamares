@@ -20,6 +20,7 @@ public:
     QString extractvariantBase(const QString& varaint);
     void fetchLatestTarball(const QString& arch, const QString& variant);
 
+    void setMirrorBase(const QString& mirror);
     void cancelOngoingRequest();
 
 signals:
@@ -33,6 +34,7 @@ private slots:
     void onTarballReplyFinished(QNetworkReply* reply, const QString& variant);
 
 private:
+    QString m_mirrorBase {QStringLiteral("http://distfiles.gentoo.org/releases")};
     QNetworkAccessManager m_nam;
     QPointer<QNetworkReply> m_currentReply;
 };
