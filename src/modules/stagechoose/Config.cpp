@@ -64,6 +64,7 @@ void Config::availableStagesFor(const QString& arch)
         m_selectedTarball = "livecd";
         emit tarballReady(m_selectedTarball);
         emit fetchStatusChanged("LiveCD mode");
+        emit validityChanged(isValid());
         return;
     }
     else{
