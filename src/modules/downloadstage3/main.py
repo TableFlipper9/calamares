@@ -157,12 +157,12 @@ def run():
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
-        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-apps/dbus sys-boot/grub'
+        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-boot/grub net-misc/networkmanager net-wireless/iwd'
     ])
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
-        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 timezone-data'
+        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/dbus sys-libs/timezone-data'
     ])
 
     for folder in ["distfiles", "binpkgs"]:
