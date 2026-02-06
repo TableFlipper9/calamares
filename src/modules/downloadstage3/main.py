@@ -121,13 +121,13 @@ def verify_pgp_signature(filepath, data_file=None):
                     return (True, line.strip())
             return (True, "Good signature found")
         else:
-            print(f"FAILURE: PGP signature verification for {filepath}")
+            libcalamares.utils.error(f"PGP signature verification failed for {filepath}")
             return (False, "No valid signature")
     except FileNotFoundError:
-        print("FAILURE: gpg command not found")
+        libcalamares.utils.error("gpg command not found")
         return (False, "gpg not found")
     except Exception as e:
-        print(f"FAILURE: Error verifying PGP signature: {str(e)}")
+        libcalamares.utils.error(f"Error verifying PGP signature: {str(e)}")
         return (False, str(e))
 
 def calculate_hash(filepath, hash_type):
@@ -192,8 +192,10 @@ def parse_digests_file(digests_path):
 def verify_stage3_with_digests(digests_path, stage3_path):
     success, msg = verify_pgp_signature(digests_path)
     if not success:
-        print("FAILURE: DIGESTS signature verification failed")
+        libcalamares.utils.error("DIGESTS signature verification failed")
         return False
+    else:
+        print(f"DIGESTS PGP verification: {msg}")
     
     file_hashes = parse_digests_file(digests_path)
     if not file_hashes:
@@ -283,14 +285,16 @@ def run():
     if os.path.isfile(tarball_asc_path):
         success, msg = verify_pgp_signature(tarball_asc_path, download_path)
         if not success:
-            print("FAILURE: Tarball PGP signature verification failed")
+            libcalamares.utils.error("Tarball PGP signature verification failed")
             sys.exit(1)
+        else:
+            print(f"Tarball PGP verification: {msg}")
     else:
         print("WARNING: No PGP signature file for tarball")
     libcalamares.job.setprogress(46)
 
     if os.path.isfile(digests_path) and not verify_stage3_with_digests(digests_path, download_path):
-        print("FAILURE: DIGESTS verification failed")
+        libcalamares.utils.error("DIGESTS verification failed")
         sys.exit(1)
     libcalamares.job.setprogress(50)
 
