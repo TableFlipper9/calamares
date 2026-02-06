@@ -70,61 +70,16 @@ def _safe_run(cmd):
     except subprocess.SubprocessError:
         sys.exit(1)
 
-def import_gentoo_gpg_keys():
+def verify_pgp_signature_gemato(filepath, data_file=None):
     _check_parent_alive()
-    try:
-        result = subprocess.run(
-            ["gpg", "--keyserver", "hkps://keys.gentoo.org", "--recv-keys", 
-             "13EBBDBEDE7A12775DFDB1BABB572E0E2D182910"],
-            capture_output=True,
-            check=False
-        )
-        
-        if result.returncode == 0:
-            return True
-        
-        libcalamares.utils.warning("Failed to import GPG keys from keyserver, trying WKD")
-        wkd_result = subprocess.run(
-            ["gpg", "--auto-key-locate=clear,nodefault,wkd", "--locate-key", "releng@gentoo.org"],
-            capture_output=True,
-            check=False
-        )
-        
-        if wkd_result.returncode == 0:
-            return True
-        
-        libcalamares.utils.warning("Failed to import GPG keys via WKD, trying qa-reports.gentoo.org")
-        download_result = subprocess.run(
-            ["wget", "-O", "-", "https://qa-reports.gentoo.org/output/service-keys.gpg"],
-            capture_output=True,
-            check=False
-        )
-        
-        if download_result.returncode == 0:
-            import_result = subprocess.run(
-                ["gpg", "--import"],
-                input=download_result.stdout,
-                capture_output=True,
-                check=False
-            )
-            
-            if import_result.returncode == 0:
-                return True
-        
-        libcalamares.utils.warning("All GPG key import methods failed")
-        return False
-            
-    except Exception as e:
-        libcalamares.utils.warning(f"Error importing GPG keys: {str(e)}")
-        return False
-
-def verify_pgp_signature(filepath, data_file=None):
-    _check_parent_alive()
+    gentoo_keys = "/usr/share/openpgp-keys/gentoo-release.asc"
+    expected_key_id = "13EBBDBEDE7A12775DFDB1BABB572E0E2D182910"
+    
     try:
         if data_file:
-            cmd = ["gpg", "--verify", filepath, data_file]
+            cmd = ["gemato", "openpgp-verify-detached", "-K", gentoo_keys, filepath, data_file]
         else:
-            cmd = ["gpg", "--verify", filepath]
+            cmd = ["gemato", "openpgp-verify", "-K", gentoo_keys, filepath]
         
         result = subprocess.run(
             cmd,
@@ -132,18 +87,26 @@ def verify_pgp_signature(filepath, data_file=None):
             text=True,
             check=False
         )
-        output = result.stdout + result.stderr
-        if "Good signature from" in output:
-            for line in output.split('\n'):
-                if "Good signature from" in line:
-                    return (True, line.strip())
-            return (True, "Good signature found")
+        
+        if result.returncode == 0:
+            output = result.stdout + result.stderr
+            if expected_key_id in output or expected_key_id.lower() in output.lower():
+                if result.stdout:
+                    print(result.stdout.strip())
+                if result.stderr:
+                    print(result.stderr.strip())
+                return (True, "Verified with gemato")
+            else:
+                libcalamares.utils.error(f"Signature not from expected key {expected_key_id}")
+                return (False, "Wrong signing key")
         else:
             libcalamares.utils.error(f"PGP signature verification failed for {filepath}")
-            return (False, "No valid signature")
+            if result.stderr:
+                libcalamares.utils.error(result.stderr.strip())
+            return (False, "Verification failed")
     except FileNotFoundError:
-        libcalamares.utils.error("gpg command not found")
-        return (False, "gpg not found")
+        libcalamares.utils.error("gemato command not found")
+        return (False, "gemato not found")
     except Exception as e:
         libcalamares.utils.error(f"Error verifying PGP signature: {str(e)}")
         return (False, str(e))
@@ -208,7 +171,7 @@ def parse_digests_file(digests_path):
         return {}
 
 def verify_stage3_with_digests(digests_path, stage3_path):
-    success, msg = verify_pgp_signature(digests_path)
+    success, msg = verify_pgp_signature_gemato(digests_path)
     if not success:
         libcalamares.utils.error("DIGESTS signature verification failed")
         return False
@@ -243,8 +206,6 @@ def run():
         _safe_run(["mount", "--bind", "/run/rootfsbase", extract_path])
         
         return None
-
-    import_gentoo_gpg_keys()
 
     final_download_url, stage_name_tar = _check_global_storage_keys()
     
@@ -301,7 +262,7 @@ def run():
     libcalamares.job.setprogress(43)
 
     if os.path.isfile(tarball_asc_path):
-        success, msg = verify_pgp_signature(tarball_asc_path, download_path)
+        success, msg = verify_pgp_signature_gemato(tarball_asc_path, download_path)
         if not success:
             libcalamares.utils.error("Tarball PGP signature verification failed")
             sys.exit(1)
