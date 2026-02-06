@@ -74,30 +74,48 @@ def import_gentoo_gpg_keys():
     _check_parent_alive()
     try:
         result = subprocess.run(
-            ["wget", "-O", "-", "https://qa-reports.gentoo.org/output/service-keys.gpg"],
+            ["gpg", "--keyserver", "hkps://keys.gentoo.org", "--recv-keys", 
+             "13EBBDBEDE7A12775DFDB1BABB572E0E2D182910"],
             capture_output=True,
             check=False
         )
         
         if result.returncode == 0:
+            return True
+        
+        libcalamares.utils.warning("Failed to import GPG keys from keyserver, trying WKD")
+        wkd_result = subprocess.run(
+            ["gpg", "--auto-key-locate=clear,nodefault,wkd", "--locate-key", "releng@gentoo.org"],
+            capture_output=True,
+            check=False
+        )
+        
+        if wkd_result.returncode == 0:
+            return True
+        
+        libcalamares.utils.warning("Failed to import GPG keys via WKD, trying qa-reports.gentoo.org")
+        download_result = subprocess.run(
+            ["wget", "-O", "-", "https://qa-reports.gentoo.org/output/service-keys.gpg"],
+            capture_output=True,
+            check=False
+        )
+        
+        if download_result.returncode == 0:
             import_result = subprocess.run(
                 ["gpg", "--import"],
-                input=result.stdout,
+                input=download_result.stdout,
                 capture_output=True,
                 check=False
             )
             
             if import_result.returncode == 0:
                 return True
-            else:
-                print(f"WARNING: Failed to import GPG keys")
-                return False
-        else:
-            print(f"WARNING: Failed to download GPG keys")
-            return False
+        
+        libcalamares.utils.warning("All GPG key import methods failed")
+        return False
             
     except Exception as e:
-        print(f"WARNING: Error importing GPG keys: {str(e)}")
+        libcalamares.utils.warning(f"Error importing GPG keys: {str(e)}")
         return False
 
 def verify_pgp_signature(filepath, data_file=None):
