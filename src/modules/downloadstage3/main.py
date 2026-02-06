@@ -70,6 +70,36 @@ def _safe_run(cmd):
     except subprocess.SubprocessError:
         sys.exit(1)
 
+def import_gentoo_gpg_keys():
+    _check_parent_alive()
+    try:
+        result = subprocess.run(
+            ["wget", "-O", "-", "https://qa-reports.gentoo.org/output/service-keys.gpg"],
+            capture_output=True,
+            check=False
+        )
+        
+        if result.returncode == 0:
+            import_result = subprocess.run(
+                ["gpg", "--import"],
+                input=result.stdout,
+                capture_output=True,
+                check=False
+            )
+            
+            if import_result.returncode == 0:
+                return True
+            else:
+                print(f"WARNING: Failed to import GPG keys")
+                return False
+        else:
+            print(f"WARNING: Failed to download GPG keys")
+            return False
+            
+    except Exception as e:
+        print(f"WARNING: Error importing GPG keys: {str(e)}")
+        return False
+
 def verify_pgp_signature(filepath, data_file=None):
     _check_parent_alive()
     try:
@@ -194,7 +224,8 @@ def run():
         
         return None
 
-    # Check if required global storage keys are set
+    import_gentoo_gpg_keys()
+
     final_download_url, stage_name_tar = _check_global_storage_keys()
     
     full_tarball_url = final_download_url
