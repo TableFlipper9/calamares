@@ -9,6 +9,7 @@ import glob
 import re
 import sys
 import time
+import hashlib
 
 def _progress_hook(count, block_size, total_size):
     _check_parent_alive()
@@ -69,6 +70,117 @@ def _safe_run(cmd):
     except subprocess.SubprocessError:
         sys.exit(1)
 
+def verify_pgp_signature(filepath):
+    _check_parent_alive()
+    try:
+        result = subprocess.run(
+            ["gpg", "--verify", filepath],
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        output = result.stdout + result.stderr
+        if "Good signature from" in output:
+            for line in output.split('\n'):
+                if "Good signature from" in line:
+                    return (True, line.strip())
+            return (True, "Good signature found")
+        else:
+            print(f"FAILURE: PGP signature verification for {filepath}")
+            return (False, "No valid signature")
+    except FileNotFoundError:
+        print("FAILURE: gpg command not found")
+        return (False, "gpg not found")
+    except Exception as e:
+        print(f"FAILURE: Error verifying PGP signature: {str(e)}")
+        return (False, str(e))
+
+def calculate_hash(filepath, hash_type):
+    _check_parent_alive()
+    try:
+        if hash_type == "SHA512":
+            hasher = hashlib.sha512()
+        elif hash_type == "BLAKE2B":
+            hasher = hashlib.blake2b(digest_size=64)
+        else:
+            print(f"FAILURE: Unsupported hash type: {hash_type}")
+            return None
+        with open(filepath, 'rb') as f:
+            while chunk := f.read(8192):
+                _check_parent_alive()
+                hasher.update(chunk)
+        return hasher.hexdigest()
+    except Exception as e:
+        print(f"FAILURE: Error calculating {hash_type} hash: {str(e)}")
+        return None
+
+def verify_hash(filepath, hash_type, expected_hash):
+    calculated_hash = calculate_hash(filepath, hash_type)
+    if calculated_hash is None:
+        return False
+    if calculated_hash.lower() == expected_hash.lower():
+        return True
+    else:
+        print(f"FAILURE: {hash_type} verification for {os.path.basename(filepath)}")
+        print(f"Expected: {expected_hash}")
+        print(f"Got:      {calculated_hash}")
+        return False
+
+def parse_digests_file(digests_path):
+    _check_parent_alive()
+    file_hashes = {}
+    current_hash_type = None
+    try:
+        with open(digests_path, 'r') as f:
+            for line in f:
+                _check_parent_alive()
+                line = line.strip()
+                if line.startswith('-') or line.startswith('Hash:'):
+                    continue
+                hash_header_match = re.match(r'^#\s+([A-Z0-9]+)\s+HASH$', line)
+                if hash_header_match:
+                    current_hash_type = hash_header_match.group(1)
+                    continue
+                if current_hash_type:
+                    hash_line_match = re.match(r'^([0-9a-f]+)\s+(.+)$', line)
+                    if hash_line_match:
+                        hash_value = hash_line_match.group(1)
+                        filename = hash_line_match.group(2)
+                        if filename not in file_hashes:
+                            file_hashes[filename] = {}
+                        file_hashes[filename][current_hash_type] = hash_value
+        return file_hashes
+    except Exception as e:
+        print(f"FAILURE: Error parsing DIGESTS file: {str(e)}")
+        return {}
+
+def verify_stage3_with_digests(digests_path, stage3_path):
+    digests_asc_path = digests_path + ".asc"
+    if os.path.isfile(digests_asc_path):
+        success, msg = verify_pgp_signature(digests_asc_path)
+        if not success:
+            print("FAILURE: DIGESTS signature verification failed")
+            return False
+    else:
+        print(f"WARNING: DIGESTS signature file not found: {digests_asc_path}")
+    
+    file_hashes = parse_digests_file(digests_path)
+    if not file_hashes:
+        print("FAILURE: No files found in DIGESTS")
+        return False
+    
+    stage3_name = os.path.basename(stage3_path)
+    if stage3_name not in file_hashes:
+        print(f"FAILURE: {stage3_name} not found in DIGESTS file")
+        return False
+    
+    hashes = file_hashes[stage3_name]
+    all_valid = True
+    for hash_type, expected_hash in hashes.items():
+        if not verify_hash(stage3_path, hash_type, expected_hash):
+            all_valid = False
+    return all_valid
+
 def run():
     if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
         libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
@@ -84,12 +196,16 @@ def run():
     # Check if required global storage keys are set
     final_download_url, stage_name_tar = _check_global_storage_keys()
     
-    # FINAL_DOWNLOAD_URL contains the complete file URL, so use it directly
     full_tarball_url = final_download_url
     full_sha256_url = final_download_url + ".sha256"
+    base_url = '/'.join(final_download_url.split('/')[:-1])
+    full_digests_url = base_url + "/" + stage_name_tar + ".DIGESTS"
+    full_digests_asc_url = full_digests_url + ".asc"
 
     download_path = f"/mnt/{stage_name_tar}"
     sha256_path = f"/mnt/{stage_name_tar}.sha256"
+    digests_path = f"/mnt/{stage_name_tar}.DIGESTS"
+    digests_asc_path = f"/mnt/{stage_name_tar}.DIGESTS.asc"
     extract_path = "/mnt/gentoo-rootfs"
 
     if os.path.exists(extract_path):
@@ -106,13 +222,37 @@ def run():
         os.remove(download_path)
     if os.path.exists(sha256_path):
         os.remove(sha256_path)
+    if os.path.exists(digests_path):
+        os.remove(digests_path)
+    if os.path.exists(digests_asc_path):
+        os.remove(digests_asc_path)
 
     urllib.request.urlretrieve(full_tarball_url, download_path, _progress_hook)
-    libcalamares.job.setprogress(40)
+    libcalamares.job.setprogress(30)
+    
     urllib.request.urlretrieve(full_sha256_url, sha256_path)
-    libcalamares.job.setprogress(50)
+    libcalamares.job.setprogress(35)
+    
+    try:
+        urllib.request.urlretrieve(full_digests_url, digests_path)
+    except Exception as e:
+        print(f"FAILURE: Could not download DIGESTS file: {str(e)}")
+        sys.exit(1)
+    libcalamares.job.setprogress(40)
+    
+    try:
+        urllib.request.urlretrieve(full_digests_asc_url, digests_asc_path)
+    except Exception as e:
+        print(f"WARNING: Could not download DIGESTS.asc file: {str(e)}")
+    libcalamares.job.setprogress(42)
 
     _safe_run(["bash", "-c", f"cd /mnt && sha256sum -c {stage_name_tar}.sha256"])
+    libcalamares.job.setprogress(45)
+
+    if not verify_stage3_with_digests(digests_path, download_path):
+        print("FAILURE: Stage3 verification failed")
+        sys.exit(1)
+    libcalamares.job.setprogress(50)
 
     with tarfile.open(download_path, "r:xz") as tar:
         members = tar.getmembers()
@@ -123,7 +263,12 @@ def run():
             libcalamares.job.setprogress(50 + (i * 50 / total_members))
 
     os.remove(download_path)
-    os.remove(sha256_path)
+    if os.path.exists(sha256_path):
+        os.remove(sha256_path)
+    if os.path.exists(digests_path):
+        os.remove(digests_path)
+    if os.path.exists(digests_asc_path):
+        os.remove(digests_asc_path)
 
     shutil.copy2("/etc/resolv.conf", os.path.join(extract_path, "etc", "resolv.conf"))
     os.makedirs(os.path.join(extract_path, "etc/portage/binrepos.conf"), exist_ok=True)
