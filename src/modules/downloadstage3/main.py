@@ -70,11 +70,16 @@ def _safe_run(cmd):
     except subprocess.SubprocessError:
         sys.exit(1)
 
-def verify_pgp_signature(filepath):
+def verify_pgp_signature(filepath, data_file=None):
     _check_parent_alive()
     try:
+        if data_file:
+            cmd = ["gpg", "--verify", filepath, data_file]
+        else:
+            cmd = ["gpg", "--verify", filepath]
+        
         result = subprocess.run(
-            ["gpg", "--verify", filepath],
+            cmd,
             capture_output=True,
             text=True,
             check=False
@@ -155,14 +160,10 @@ def parse_digests_file(digests_path):
         return {}
 
 def verify_stage3_with_digests(digests_path, stage3_path):
-    digests_asc_path = digests_path + ".asc"
-    if os.path.isfile(digests_asc_path):
-        success, msg = verify_pgp_signature(digests_asc_path)
-        if not success:
-            print("FAILURE: DIGESTS signature verification failed")
-            return False
-    else:
-        print(f"WARNING: DIGESTS signature file not found: {digests_asc_path}")
+    success, msg = verify_pgp_signature(digests_path)
+    if not success:
+        print("FAILURE: DIGESTS signature verification failed")
+        return False
     
     file_hashes = parse_digests_file(digests_path)
     if not file_hashes:
@@ -198,14 +199,14 @@ def run():
     
     full_tarball_url = final_download_url
     full_sha256_url = final_download_url + ".sha256"
+    full_tarball_asc_url = final_download_url + ".asc"
     base_url = '/'.join(final_download_url.split('/')[:-1])
     full_digests_url = base_url + "/" + stage_name_tar + ".DIGESTS"
-    full_digests_asc_url = full_digests_url + ".asc"
 
     download_path = f"/mnt/{stage_name_tar}"
     sha256_path = f"/mnt/{stage_name_tar}.sha256"
+    tarball_asc_path = f"/mnt/{stage_name_tar}.asc"
     digests_path = f"/mnt/{stage_name_tar}.DIGESTS"
-    digests_asc_path = f"/mnt/{stage_name_tar}.DIGESTS.asc"
     extract_path = "/mnt/gentoo-rootfs"
 
     if os.path.exists(extract_path):
@@ -222,10 +223,10 @@ def run():
         os.remove(download_path)
     if os.path.exists(sha256_path):
         os.remove(sha256_path)
+    if os.path.exists(tarball_asc_path):
+        os.remove(tarball_asc_path)
     if os.path.exists(digests_path):
         os.remove(digests_path)
-    if os.path.exists(digests_asc_path):
-        os.remove(digests_asc_path)
 
     urllib.request.urlretrieve(full_tarball_url, download_path, _progress_hook)
     libcalamares.job.setprogress(30)
@@ -234,23 +235,31 @@ def run():
     libcalamares.job.setprogress(35)
     
     try:
-        urllib.request.urlretrieve(full_digests_url, digests_path)
+        urllib.request.urlretrieve(full_tarball_asc_url, tarball_asc_path)
     except Exception as e:
-        print(f"FAILURE: Could not download DIGESTS file: {str(e)}")
-        sys.exit(1)
-    libcalamares.job.setprogress(40)
+        print(f"WARNING: Could not download tarball .asc file: {str(e)}")
+    libcalamares.job.setprogress(38)
     
     try:
-        urllib.request.urlretrieve(full_digests_asc_url, digests_asc_path)
+        urllib.request.urlretrieve(full_digests_url, digests_path)
     except Exception as e:
-        print(f"WARNING: Could not download DIGESTS.asc file: {str(e)}")
-    libcalamares.job.setprogress(42)
+        print(f"WARNING: Could not download DIGESTS file: {str(e)}")
+    libcalamares.job.setprogress(40)
 
     _safe_run(["bash", "-c", f"cd /mnt && sha256sum -c {stage_name_tar}.sha256"])
-    libcalamares.job.setprogress(45)
+    libcalamares.job.setprogress(43)
 
-    if not verify_stage3_with_digests(digests_path, download_path):
-        print("FAILURE: Stage3 verification failed")
+    if os.path.isfile(tarball_asc_path):
+        success, msg = verify_pgp_signature(tarball_asc_path, download_path)
+        if not success:
+            print("FAILURE: Tarball PGP signature verification failed")
+            sys.exit(1)
+    else:
+        print("WARNING: No PGP signature file for tarball")
+    libcalamares.job.setprogress(46)
+
+    if os.path.isfile(digests_path) and not verify_stage3_with_digests(digests_path, download_path):
+        print("FAILURE: DIGESTS verification failed")
         sys.exit(1)
     libcalamares.job.setprogress(50)
 
@@ -265,10 +274,10 @@ def run():
     os.remove(download_path)
     if os.path.exists(sha256_path):
         os.remove(sha256_path)
+    if os.path.exists(tarball_asc_path):
+        os.remove(tarball_asc_path)
     if os.path.exists(digests_path):
         os.remove(digests_path)
-    if os.path.exists(digests_asc_path):
-        os.remove(digests_asc_path)
 
     shutil.copy2("/etc/resolv.conf", os.path.join(extract_path, "etc", "resolv.conf"))
     os.makedirs(os.path.join(extract_path, "etc/portage/binrepos.conf"), exist_ok=True)
