@@ -34,14 +34,38 @@ def extract_kernel_simple_version(initramfs_path):
         return match.group(1)
     raise ValueError(f"Could not extract simple version from initramfs filename: {basename}")
 
+def is_systemd_stage3():
+    stage_name = libcalamares.globalstorage.value("STAGE_NAME_TAR")
+    if stage_name and "systemd" in stage_name.lower():
+        return True
+    return False
+
+def is_root_encrypted():
+    partitions = libcalamares.globalstorage.value("partitions")
+    if not partitions:
+        return False
+    for partition in partitions:
+        if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+            return True
+    return False
+
 def run():
     try:
-        dracut_options = [
-            "-H", "-f",
-            "-o", "systemd", "-o", "systemd-initrd", "-o", "systemd-networkd", 
-            "-o", "dracut-systemd", "-o", "plymouth",
-            "--early-microcode"
-        ]
+        dracut_options = ["-H", "-f", "--early-microcode"]
+        
+        if is_systemd_stage3():
+            dracut_options.extend([
+                "-o", "systemd", "-o", "systemd-initrd", 
+                "-o", "systemd-networkd", "-o", "dracut-systemd", 
+                "-o", "plymouth"
+            ])
+        
+        if is_root_encrypted():
+            dracut_options.extend([
+                "--add", "crypt",
+                "--add", "dm",
+                "--add", "rootfs-block"
+            ])
         
         latest_initramfs = find_latest_gentoo_initramfs()
         simple_version = extract_kernel_simple_version(latest_initramfs)
