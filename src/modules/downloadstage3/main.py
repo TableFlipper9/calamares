@@ -325,7 +325,7 @@ def run():
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
-        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-boot/grub sys-apps/cryptsetup net-misc/networkmanager net-wireless/iwd'
+        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-boot/grub sys-fs/cryptsetup net-misc/networkmanager net-wireless/iwd'
     ])
 
     _safe_run([
