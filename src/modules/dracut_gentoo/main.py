@@ -143,14 +143,12 @@ def configure_openrc_dmcrypt():
 
 def run():
     try:
-        dracut_options = ["-H", "-f", "--early-microcode"]
-        
-        if is_systemd_stage3():
-            dracut_options.extend([
-                "-o", "systemd", "-o", "systemd-initrd", 
-                "-o", "systemd-networkd", "-o", "dracut-systemd", 
-                "-o", "plymouth"
-            ])
+        dracut_options = [
+            "-H", "-f",
+            "-o", "systemd", "-o", "systemd-initrd", "-o", "systemd-networkd",
+            "-o", "dracut-systemd", "-o", "plymouth",
+            "--early-microcode"
+        ]
         
         if is_root_encrypted():
             dracut_options.extend([
@@ -165,10 +163,11 @@ def run():
         
         if is_root_encrypted():
             ensure_cryptsetup_for_openrc()
-        
-        # Write persistent dracut configuration BEFORE generating initramfs
-        # This ensures future kernel upgrades use the correct options
-        configure_dracut_persistent()
+            
+            # Write persistent dracut configuration BEFORE generating initramfs
+            # This ensures future kernel upgrades use the correct options
+            # Only write for encrypted systems to maintain original behavior for non-encrypted
+            configure_dracut_persistent()
         
         result = target_env_process_output(['dracut'] + dracut_options)
         libcalamares.utils.debug(f"Successfully created initramfs for kernel {simple_version}-gentoo-dist")

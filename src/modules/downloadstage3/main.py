@@ -323,9 +323,14 @@ def run():
         'emerge-webrsync -q'
     ])
 
+    is_systemd = "systemd" in stage_name_tar.lower()
+    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
+    if not is_systemd:
+        packages += " sys-fs/cryptsetup"
+
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
-        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-boot/grub sys-fs/cryptsetup net-misc/networkmanager net-wireless/iwd'
+        f'EMERGE_DEFAULT_OPTS="${{EMERGE_DEFAULT_OPTS}} --getbinpkg" emerge -q {packages}'
     ])
 
     _safe_run([
