@@ -317,8 +317,18 @@ def run():
     ])
 
     is_systemd = "systemd" in stage_name_tar.lower()
+    
+    partitions = libcalamares.globalstorage.value("partitions")
+    is_encrypted = False
+    if partitions:
+        for partition in partitions:
+            if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+                is_encrypted = True
+                break
+    
     packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
-    if not is_systemd:
+    
+    if is_encrypted:
         packages += " sys-fs/cryptsetup"
 
     _safe_run([
@@ -380,8 +390,6 @@ def write_dracut_config(root_mount_point, stage_name_tar):
         conf_file.write("# Exclude systemd modules (always)\n")
         conf_file.write('omit_dracutmodules+=" systemd systemd-initrd systemd-networkd dracut-systemd plymouth "\n\n')
         
-        if is_encrypted:
-            conf_file.write("# Add encryption support\n")
-            conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
     
-    print(f"Pre-configured dracut at {dracut_conf_path} (encrypted={is_encrypted}, systemd={is_systemd})")
+    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd})")
+
