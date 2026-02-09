@@ -1,0 +1,17 @@
+---
+type: map
+mapping:
+  type:
+    type: str
+    required: true
+  interface:
+    type: str
+    required: true
+  module:
+    type: str
+    required: true
+  viewmodule:
+    type: map
+    mapping:
+      weight:
+        type: int
