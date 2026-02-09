@@ -326,10 +326,7 @@ def run():
                 is_encrypted = True
                 break
     
-    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
-    
-    if is_encrypted:
-        packages += " sys-fs/cryptsetup"
+    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd sys-fs/cryptsetup"
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
@@ -387,9 +384,16 @@ def write_dracut_config(root_mount_point, stage_name_tar):
         conf_file.write('hostonly="yes"\n')
         conf_file.write('hostonly_cmdline="yes"\n\n')
         
-        conf_file.write("# Exclude systemd modules (always)\n")
-        conf_file.write('omit_dracutmodules+=" systemd systemd-initrd systemd-networkd dracut-systemd plymouth "\n\n')
-        
+        if not is_systemd:
+            conf_file.write("# Exclude systemd modules\n")
+            conf_file.write('omit_dracutmodules+=" systemd systemd-initrd systemd-networkd dracut-systemd plymouth "\n\n')
+            
+            if is_encrypted:
+                conf_file.write("# Add encryption support (OpenRC)\n")
+                conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
+        else:
+            conf_file.write("# Omit unnecessary modules (systemd system)\n")
+            conf_file.write('omit_dracutmodules+=" plymouth "\n')
     
-    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd})")
+    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
 
