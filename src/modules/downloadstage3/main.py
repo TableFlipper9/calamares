@@ -335,7 +335,7 @@ def run():
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
-        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/dbus sys-libs/timezone-data'
+        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 app-text/asciidoc sys-apps/dbus sys-libs/timezone-data'
     ])
 
     for folder in ["distfiles", "binpkgs"]:
