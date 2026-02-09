@@ -49,6 +49,67 @@ def is_root_encrypted():
             return True
     return False
 
+def ensure_cryptsetup_for_openrc():
+    """Ensure cryptsetup is installed for OpenRC encrypted systems.
+    
+    Systemd dracut includes its own cryptsetup implementation,
+    but OpenRC dracut needs the sys-apps/cryptsetup package.
+    """
+    if is_systemd_stage3():
+        return
+    
+    root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+    if not root_mount_point:
+        return
+    
+    try:
+        check_result = target_env_process_output(['which', 'cryptsetup'])
+        libcalamares.utils.debug("cryptsetup already installed")
+    except:
+        libcalamares.utils.debug("Installing cryptsetup for OpenRC encryption")
+        try:
+            target_env_process_output(['emerge', '--quiet', 'sys-apps/cryptsetup'])
+        except subprocess.CalledProcessError as e:
+            libcalamares.utils.warning(f"Failed to install cryptsetup: {e}")
+
+def configure_openrc_dmcrypt():
+    """Configure OpenRC dmcrypt service for encrypted partitions (non-root)."""
+    if is_systemd_stage3():
+        return
+    
+    partitions = libcalamares.globalstorage.value("partitions")
+    if not partitions:
+        return
+    
+    root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+    if not root_mount_point:
+        return
+    
+    dmcrypt_conf_path = os.path.join(root_mount_point, "etc/conf.d/dmcrypt")
+    unencrypted_separate_boot = any(
+        p.get("mountPoint") == "/boot" and "luksMapperName" not in p 
+        for p in partitions
+    )
+    
+    for partition in partitions:
+        has_luks = "luksMapperName" in partition
+        skip_partitions = partition.get("mountPoint") == "/" or partition.get("fs") == "linuxswap"
+        
+        if has_luks and not skip_partitions:
+            crypto_target = partition["luksMapperName"]
+            crypto_source = f"/dev/disk/by-uuid/{partition['luksUuid']}"
+            
+            libcalamares.utils.debug(
+                f"Writing OpenRC LUKS configuration for partition {partition.get('mountPoint')}"
+            )
+            
+            with open(dmcrypt_conf_path, 'a+') as dmcrypt_file:
+                dmcrypt_file.write(f"\ntarget={crypto_target}")
+                dmcrypt_file.write(f"\nsource={crypto_source}")
+                if not unencrypted_separate_boot:
+                    dmcrypt_file.write("\nkey=/crypto_keyfile.bin")
+                dmcrypt_file.write("\n")
+
 def run():
     try:
         dracut_options = ["-H", "-f", "--early-microcode"]
@@ -73,6 +134,10 @@ def run():
         
         result = target_env_process_output(['dracut'] + dracut_options)
         libcalamares.utils.debug(f"Successfully created initramfs for kernel {simple_version}-gentoo-dist")
+        
+        if is_root_encrypted():
+            ensure_cryptsetup_for_openrc()
+            configure_openrc_dmcrypt()
         
     except FileNotFoundError as e:
         libcalamares.utils.warning(f"No Gentoo initramfs found: {e}")
