@@ -198,12 +198,13 @@ def verify_stage3_with_digests(digests_path, stage3_path):
 def run():
     if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
         libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
-        print("GENTOO_LIVECD is set to 'yes', mounting /run/rootfsbase over /mnt/gentoo-rootfs")
-        extract_path = "/mnt/gentoo-rootfs"
+        print("GENTOO_LIVECD is set to 'yes', copying /run/rootfsbase to rootMountPoint")
         
-        os.makedirs(extract_path, exist_ok=True)
+        root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+        if not root_mount_point:
+            raise Exception("rootMountPoint not set in global storage")
         
-        _safe_run(["mount", "--bind", "/run/rootfsbase", extract_path])
+        _safe_run(["rsync", "-aXA", "--hard-links", "--info=progress2", "/run/rootfsbase/", root_mount_point + "/"])
         
         return None
 
