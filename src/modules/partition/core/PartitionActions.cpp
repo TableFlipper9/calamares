@@ -30,15 +30,6 @@
 
 using namespace Calamares::Units;
 
-// # for start sector num
-// def a_to_l(l_size, sector_num):
-// s_rem = (sector_num-1)%4
-// return (sector_num - s_rem + 3)
-//
-// # for end sector
-// def a_to_u(l_size, sector_num):
-// s_rem = (sector_num+1)%4
-// return (sector_num - s_rem)
 
 // Align start sector number to 4K boundaries
 static quint64 startSectorTo4KAlign(const qint64 logicalSize, const quint64 start_sector) {
@@ -231,7 +222,8 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     qint64 lastSectorForRoot = lastUsableSector;
     if ( shouldCreateSwap )
     {
-        // why +1 is here?
+        // Since we counting sectors from 0 and last sector for root part is included
+        // we add 1 here
         lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
         // Ensure 4k align
         lastSectorForRoot = endSectorTo4KAlign(sectorSize, lastSectorForRoot);
