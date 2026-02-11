@@ -403,6 +403,5 @@ def ensure_grub_d_directory(root_mount_point):
     This directory is used when prefer_grub_d is enabled in grubcfg.conf,
     allowing Calamares to write configuration that survives package updates.
     """
-    grub_d_dir = os.path.join(root_mount_point, "etc/default/grub.d")
-    os.makedirs(grub_d_dir, exist_ok=True)
-    print(f"Ensured /etc/default/grub.d directory exists at {grub_d_dir}")
+    _safe_run(["chroot", root_mount_point, "mkdir", "-p", "/etc/default/grub.d"])
+    print("Ensured /etc/default/grub.d directory exists in chroot")
