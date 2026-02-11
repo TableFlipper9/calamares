@@ -304,12 +304,16 @@ def run():
     else:
         print(f"Warning: {gentoobinhost_source} does not exist, skipping copy")
 
-    _safe_run(["chroot", extract_path, "getuto"])
-
     package_use_dir = os.path.join(extract_path, "etc/portage/package.use")
     os.makedirs(package_use_dir, exist_ok=True)
     with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
         f.write(">=sys-kernel/installkernel-50 dracut\n")
+
+    is_systemd = "systemd" in stage_name_tar.lower()
+    write_dracut_config(extract_path, stage_name_tar)
+    ensure_grub_d_directory(extract_path)
+
+    _safe_run(["chroot", extract_path, "getuto"])
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
@@ -351,9 +355,6 @@ def run():
     if os.path.exists(gentoo_repo):
         shutil.rmtree(gentoo_repo)
         print("Removed /var/db/repos/gentoo to free RAM")
-
-    write_dracut_config(extract_path, stage_name_tar)
-    ensure_grub_d_directory(extract_path)
 
     return None
 

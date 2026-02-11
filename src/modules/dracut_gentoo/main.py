@@ -173,7 +173,6 @@ def run():
             # Only write for encrypted systems to maintain original behavior for non-encrypted
             configure_dracut_persistent()
         
-        # result = target_env_process_output(['dracut'] + dracut_options)
         libcalamares.utils.debug(f"Successfully created initramfs for kernel {simple_version}-gentoo-dist")
         
         if is_root_encrypted():
