@@ -35,6 +35,15 @@ def extract_kernel_simple_version(initramfs_path):
     raise ValueError(f"Could not extract simple version from initramfs filename: {basename}")
 
 def run():
+    if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
+        libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
+        root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+        if root_mount_point:
+            try:
+                target_env_process_output(['userdel', '-r', 'gentoo'])
+            except:
+                pass
+    
     try:
         dracut_options = [
             "-H", "-f",
