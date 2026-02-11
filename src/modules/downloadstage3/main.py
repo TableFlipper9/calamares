@@ -324,18 +324,18 @@ def run():
     write_dracut_config(extract_path, stage_name_tar)
     ensure_grub_d_directory(extract_path)
 
-    if is_encrypted and is_systemd:
-        _safe_run([
-            "chroot", extract_path, "/bin/bash", "-c",
-            'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/systemd'
-        ])
-
     _safe_run(["chroot", extract_path, "getuto"])
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
         'emerge-webrsync -q'
     ])
+
+    if is_encrypted and is_systemd:
+        _safe_run([
+            "chroot", extract_path, "/bin/bash", "-c",
+            'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/systemd'
+        ])
 
     packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
 
