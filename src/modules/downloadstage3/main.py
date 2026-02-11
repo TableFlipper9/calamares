@@ -353,6 +353,7 @@ def run():
         print("Removed /var/db/repos/gentoo to free RAM")
 
     write_dracut_config(extract_path, stage_name_tar)
+    ensure_grub_d_directory(extract_path)
 
     return None
 
@@ -397,3 +398,11 @@ def write_dracut_config(root_mount_point, stage_name_tar):
     
     print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
 
+def ensure_grub_d_directory(root_mount_point):
+    """Ensure /etc/default/grub.d directory exists for grubcfg module.
+    This directory is used when prefer_grub_d is enabled in grubcfg.conf,
+    allowing Calamares to write configuration that survives package updates.
+    """
+    grub_d_dir = os.path.join(root_mount_point, "etc/default/grub.d")
+    os.makedirs(grub_d_dir, exist_ok=True)
+    print(f"Ensured /etc/default/grub.d directory exists at {grub_d_dir}")
