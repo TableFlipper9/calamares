@@ -198,13 +198,37 @@ def verify_stage3_with_digests(digests_path, stage3_path):
 def run():
     if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
         libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
-        print("GENTOO_LIVECD is set to 'yes', copying /run/rootfsbase to rootMountPoint")
         
         root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
         if not root_mount_point:
             raise Exception("rootMountPoint not set in global storage")
         
         _safe_run(["rsync", "-aXA", "--hard-links", "--info=progress2", "/run/rootfsbase/", root_mount_point + "/"])
+        libcalamares.job.setprogress(50)
+        
+        package_use_dir = os.path.join(root_mount_point, "etc/portage/package.use")
+        os.makedirs(package_use_dir, exist_ok=True)
+        
+        partitions = libcalamares.globalstorage.value("partitions")
+        is_encrypted = False
+        if partitions:
+            for partition in partitions:
+                if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+                    is_encrypted = True
+                    break
+        
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
+            f.write(">=sys-kernel/installkernel-50 dracut\n")
+        
+        write_dracut_config(root_mount_point, "openrc")
+        ensure_grub_d_directory(root_mount_point)
+        
+        libcalamares.job.setprogress(60)
+        
+        kernel_config_cmd = "emerge --config $(ls /var/db/pkg/sys-kernel/gentoo-kernel* -d | head -n1 | xargs basename)"
+        _safe_run(["chroot", root_mount_point, "/bin/bash", "-c", kernel_config_cmd])
+        
+        libcalamares.job.setprogress(90)
         
         return None
 
@@ -413,8 +437,6 @@ def write_dracut_config(root_mount_point, stage_name_tar):
             else:
                 conf_file.write("\n# Omit encryption modules (no encryption)\n")
                 conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
-    
-    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
 
 def ensure_grub_d_directory(root_mount_point):
     """Ensure /etc/default/grub.d directory exists for grubcfg module.
@@ -422,4 +444,3 @@ def ensure_grub_d_directory(root_mount_point):
     allowing Calamares to write configuration that survives package updates.
     """
     _safe_run(["chroot", root_mount_point, "mkdir", "-p", "/etc/default/grub.d"])
-    print("Ensured /etc/default/grub.d directory exists in chroot")
