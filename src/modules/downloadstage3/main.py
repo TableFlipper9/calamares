@@ -306,21 +306,6 @@ def run():
 
     package_use_dir = os.path.join(extract_path, "etc/portage/package.use")
     os.makedirs(package_use_dir, exist_ok=True)
-    with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
-        f.write(">=sys-kernel/installkernel-50 dracut\n")
-
-    is_systemd = "systemd" in stage_name_tar.lower()
-    write_dracut_config(extract_path, stage_name_tar)
-    ensure_grub_d_directory(extract_path)
-
-    _safe_run(["chroot", extract_path, "getuto"])
-
-    _safe_run([
-        "chroot", extract_path, "/bin/bash", "-c",
-        'emerge-webrsync -q'
-    ])
-
-    is_systemd = "systemd" in stage_name_tar.lower()
     
     partitions = libcalamares.globalstorage.value("partitions")
     is_encrypted = False
@@ -330,7 +315,29 @@ def run():
                 is_encrypted = True
                 break
     
-    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd sys-fs/cryptsetup"
+    with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
+        f.write(">=sys-kernel/installkernel-50 dracut\n")
+        if is_encrypted:
+            f.write("sys-apps/systemd cryptsetup\n")
+
+    is_systemd = "systemd" in stage_name_tar.lower()
+    write_dracut_config(extract_path, stage_name_tar)
+    ensure_grub_d_directory(extract_path)
+
+    if is_encrypted and is_systemd:
+        _safe_run([
+            "chroot", extract_path, "/bin/bash", "-c",
+            'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/systemd'
+        ])
+
+    _safe_run(["chroot", extract_path, "getuto"])
+
+    _safe_run([
+        "chroot", extract_path, "/bin/bash", "-c",
+        'emerge-webrsync -q'
+    ])
+
+    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
