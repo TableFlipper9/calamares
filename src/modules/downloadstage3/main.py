@@ -305,8 +305,6 @@ def run():
     else:
         print(f"Warning: {gentoobinhost_source} does not exist, skipping copy")
 
-    _safe_run(["chroot", extract_path, "getuto"])
-
     package_use_dir = os.path.join(extract_path, "etc/portage/package.use")
     os.makedirs(package_use_dir, exist_ok=True)
     with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
