@@ -400,6 +400,9 @@ def write_dracut_config(root_mount_point, stage_name_tar):
             if is_encrypted:
                 conf_file.write("# Add encryption support (OpenRC)\n")
                 conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
+            else:
+                conf_file.write("# Omit encryption modules (no encryption)\n")
+                conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
         else:
             conf_file.write("# Omit unnecessary modules (systemd system)\n")
             conf_file.write('omit_dracutmodules+=" plymouth "\n')
@@ -407,6 +410,9 @@ def write_dracut_config(root_mount_point, stage_name_tar):
             if is_encrypted:
                 conf_file.write("\n# Add encryption support (systemd)\n")
                 conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
+            else:
+                conf_file.write("\n# Omit encryption modules (no encryption)\n")
+                conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
     
     print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
 
