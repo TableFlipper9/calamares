@@ -198,6 +198,7 @@ def verify_stage3_with_digests(digests_path, stage3_path):
 def run():
     if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
         libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
+        print("GENTOO_LIVECD is set to 'yes', copying /run/rootfsbase to rootMountPoint")
         
         root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
         if not root_mount_point:
@@ -223,10 +224,11 @@ def run():
         write_dracut_config(root_mount_point, "openrc")
         ensure_grub_d_directory(root_mount_point)
         
-        libcalamares.job.setprogress(60)
+        libcalamares.job.setprogress(70)
         
-        kernel_config_cmd = "emerge --config $(ls /var/db/pkg/sys-kernel/gentoo-kernel* -d | head -n1 | xargs basename)"
-        _safe_run(["chroot", root_mount_point, "/bin/bash", "-c", kernel_config_cmd])
+        gentoo_repo = os.path.join(root_mount_point, "var/db/repos/gentoo")
+        if not os.path.exists(gentoo_repo):
+            _safe_run(["chroot", root_mount_point, "/bin/bash", "-c", "emerge-webrsync -q"])
         
         libcalamares.job.setprogress(90)
         
@@ -438,9 +440,12 @@ def write_dracut_config(root_mount_point, stage_name_tar):
                 conf_file.write("\n# Omit encryption modules (no encryption)\n")
                 conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
 
+    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
+
 def ensure_grub_d_directory(root_mount_point):
     """Ensure /etc/default/grub.d directory exists for grubcfg module.
     This directory is used when prefer_grub_d is enabled in grubcfg.conf,
     allowing Calamares to write configuration that survives package updates.
     """
     _safe_run(["chroot", root_mount_point, "mkdir", "-p", "/etc/default/grub.d"])
+    print("Ensured /etc/default/grub.d directory exists in chroot")
