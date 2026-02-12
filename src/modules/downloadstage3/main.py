@@ -385,11 +385,6 @@ def run():
                 elif os.path.isdir(entry):
                     shutil.rmtree(entry)
 
-    gentoo_repo = os.path.join(extract_path, "var/db/repos/gentoo")
-    if os.path.exists(gentoo_repo):
-        shutil.rmtree(gentoo_repo)
-        print("Removed /var/db/repos/gentoo to free RAM")
-
     return None
 
 def write_dracut_config(root_mount_point, stage_name_tar):
