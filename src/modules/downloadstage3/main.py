@@ -365,10 +365,15 @@ def run():
         f.write(">=sys-kernel/installkernel-50 dracut\n")
 
     is_systemd = "systemd" in stage_name_tar.lower()
+    is_selinux = "selinux" in stage_name_tar.lower()
 
     if is_encrypted and is_systemd:
         with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
             f.write("sys-apps/systemd cryptsetup\n")
+    
+    if is_selinux:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("net-wireless/wpa_supplicant dbus\n")
     write_dracut_config(extract_path, stage_name_tar)
     ensure_grub_d_directory(extract_path)
 
