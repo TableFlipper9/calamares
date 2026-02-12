@@ -10,6 +10,7 @@ import re
 import sys
 import time
 import hashlib
+import multiprocessing
 
 def _progress_hook(count, block_size, total_size):
     _check_parent_alive()
@@ -195,6 +196,17 @@ def verify_stage3_with_digests(digests_path, stage3_path):
             all_valid = False
     return all_valid
 
+def write_makeopts(make_conf_path):
+    """Write MAKEOPTS to make.conf for parallel compilation.
+    Sets -j based on CPU count and -s for silent make to speed up compilation.
+    """
+    numcpu = multiprocessing.cpu_count()
+
+    with open(make_conf_path, 'a') as f:
+        f.write("\n# MAKEOPTS is set automatically by Calamares installer.\n")
+        f.write(f'MAKEOPTS="-j{numcpu} -s"\n')
+
+
 def run():
     if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
         libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
@@ -294,6 +306,10 @@ def run():
         os.remove(digests_path)
 
     shutil.copy2("/etc/resolv.conf", os.path.join(extract_path, "etc", "resolv.conf"))
+
+    make_conf_path = os.path.join(extract_path, "etc/portage/make.conf")
+    write_makeopts(make_conf_path)
+
     os.makedirs(os.path.join(extract_path, "etc/portage/binrepos.conf"), exist_ok=True)
     
     gentoobinhost_source = "/etc/portage/binrepos.conf/gentoobinhost.conf"
