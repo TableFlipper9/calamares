@@ -228,6 +228,7 @@ def run():
         
         gentoo_repo = os.path.join(root_mount_point, "var/db/repos/gentoo")
         if not os.path.exists(gentoo_repo):
+            _safe_run(["rsync", "-L", "/etc/resolv.conf", os.path.join(root_mount_point, "etc/resolv.conf")])
             _safe_run(["chroot", root_mount_point, "/bin/bash", "-c", "emerge-webrsync -q"])
         
         libcalamares.job.setprogress(90)
