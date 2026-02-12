@@ -344,10 +344,12 @@ def run():
     
     with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
         f.write(">=sys-kernel/installkernel-50 dracut\n")
-        if is_encrypted:
-            f.write("sys-apps/systemd cryptsetup\n")
 
     is_systemd = "systemd" in stage_name_tar.lower()
+
+    if is_encrypted and is_systemd:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("sys-apps/systemd cryptsetup\n")
     write_dracut_config(extract_path, stage_name_tar)
     ensure_grub_d_directory(extract_path)
 
@@ -365,6 +367,9 @@ def run():
         ])
 
     packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
+
+    if is_encrypted and not is_systemd:
+        packages += " sys-fs/cryptsetup"
 
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
