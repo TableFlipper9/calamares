@@ -2,6 +2,7 @@ import subprocess
 import glob
 import os
 import re
+import shutil
 import libcalamares
 from libcalamares.utils import target_env_process_output
 

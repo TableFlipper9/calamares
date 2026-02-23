@@ -243,6 +243,11 @@ def run():
     else:
         os.makedirs(extract_path, exist_ok=True)
 
+    download_path = os.path.join(root_mount_point, stage_name_tar)
+    sha256_path = os.path.join(root_mount_point, f"{stage_name_tar}.sha256")
+    tarball_asc_path = os.path.join(root_mount_point, f"{stage_name_tar}.asc")
+    digests_path = os.path.join(root_mount_point, f"{stage_name_tar}.DIGESTS")
+
     if os.path.exists(download_path):
         os.remove(download_path)
     if os.path.exists(sha256_path):
@@ -270,7 +275,26 @@ def run():
         print(f"WARNING: Could not download DIGESTS file: {str(e)}")
     libcalamares.job.setprogress(40)
 
-    _safe_run(["bash", "-c", f"cd /mnt && sha256sum -c {stage_name_tar}.sha256"])
+    # _safe_run(["bash", "-c", f"cd {root_mount_point} && sha256sum -c {stage_name_tar}.sha256"])
+    # using just hashlib to compare the existent SHA256 & filename with the expected one
+    # fail if it's not according to our expectations
+    with open(sha256_path, "r") as f:
+        parts = f.read().split()
+        expected_sha256 = parts[0]
+        recorded_filename = parts[1] if len(parts) > 1 else None
+    if recorded_filename and recorded_filename != stage_name_tar:
+        libcalamares.utils.error(
+            f"SHA256 file refers to '{recorded_filename}', expected '{stage_name_tar}'"
+        )
+        sys.exit(1)
+    hasher = hashlib.sha256()
+    with open(download_path, "rb") as f:
+        while chunk := f.read(8192):
+            _check_parent_alive()
+            hasher.update(chunk)
+    if hasher.hexdigest().lower() != expected_sha256.lower():
+        libcalamares.utils.error("SHA256 verification of tarball failed")
+        sys.exit(1)
     libcalamares.job.setprogress(43)
 
     if os.path.isfile(tarball_asc_path):
@@ -281,7 +305,8 @@ def run():
         else:
             print(f"Tarball PGP verification: {msg}")
     else:
-        print("WARNING: No PGP signature file for tarball")
+        libcalamares.utils.error("No PGP signature file for tarball")
+        sys.exit(1)
     libcalamares.job.setprogress(46)
 
     if os.path.isfile(digests_path) and not verify_stage3_with_digests(digests_path, download_path):
@@ -324,6 +349,7 @@ def run():
     package_use_dir = os.path.join(extract_path, "etc/portage/package.use")
     os.makedirs(package_use_dir, exist_ok=True)
     with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
+        f.write("# use dracut as the initramfs generator for installkernel, required for Gentoo dracut-based setup\n")
         f.write(">=sys-kernel/installkernel-50 dracut\n")
 
 
@@ -342,12 +368,15 @@ def run():
         'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q sys-boot/grub net-misc/networkmanager net-wireless/iwd'
     ])
 
+    # calamares requires sys-apps/dbus and sys-libs/timezone-data to determine
+    # host timezone and locale details during the installation process
+    # they're not necessary after the installation process
     _safe_run([
         "chroot", extract_path, "/bin/bash", "-c",
         'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/dbus sys-libs/timezone-data'
     ])
 
-    for folder in ["distfiles", "binpkgs"]:
+    for folder in ["distfiles", "binpkgs", "binhost"]:
         path = os.path.join(extract_path, f"var/cache/{folder}")
         if os.path.exists(path):
             for entry in glob.glob(path + "/*"):
