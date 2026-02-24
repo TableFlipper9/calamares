@@ -275,13 +275,21 @@ def run():
         print(f"WARNING: Could not download DIGESTS file: {str(e)}")
     libcalamares.job.setprogress(40)
 
-    # _safe_run(["bash", "-c", f"cd {root_mount_point} && sha256sum -c {stage_name_tar}.sha256"])
-    # using just hashlib to compare the existent SHA256 & filename with the expected one
-    # fail if it's not according to our expectations
+    # the .sha256 file is PGP-signed, so we must find the actual hash line
+    # by looking for a line matching: <hex>  <filename>
+    expected_sha256 = None
+    recorded_filename = None
     with open(sha256_path, "r") as f:
-        parts = f.read().split()
-        expected_sha256 = parts[0]
-        recorded_filename = parts[1] if len(parts) > 1 else None
+        for line in f:
+            line = line.strip()
+            match = re.match(r'^([0-9a-f]{64})\s+(\S+)$', line)
+            if match:
+                expected_sha256 = match.group(1)
+                recorded_filename = match.group(2)
+                break
+    if not expected_sha256:
+        libcalamares.utils.error("Could not find SHA256 hash line in .sha256 file")
+        sys.exit(1)
     if recorded_filename and recorded_filename != stage_name_tar:
         libcalamares.utils.error(
             f"SHA256 file refers to '{recorded_filename}', expected '{stage_name_tar}'"
