@@ -124,7 +124,7 @@ BOOST_PYTHON_MODULE( libcalamares )
         "target_env_call",
         static_cast< int ( * )( const std::string&, const std::string&, int ) >( &CalamaresPython::target_env_call ),
         target_env_call_str_overloads( bp::args( "command", "stdin", "timeout" ),
-                                       "Runs the specified command in the chroot of the target system.\n"
+                                       "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
                                        "Returns the program's exit code, or:\n"
                                        "-1 = QProcess crash\n"
                                        "-2 = QProcess cannot start\n"
@@ -133,7 +133,7 @@ BOOST_PYTHON_MODULE( libcalamares )
     bp::def( "target_env_call",
              static_cast< int ( * )( const bp::list&, const std::string&, int ) >( &CalamaresPython::target_env_call ),
              target_env_call_list_overloads( bp::args( "command_list", "stdin", "timeout" ),
-                                             "Runs the specified command_list in the chroot of the target system.\n"
+                                             "[[deprecated]] Runs the specified command_list in the chroot of the target system.\n"
                                              "Returns the program's exit code, or:\n"
                                              "-1 = QProcess crash\n"
                                              "-2 = QProcess cannot start\n"
@@ -144,14 +144,14 @@ BOOST_PYTHON_MODULE( libcalamares )
              static_cast< int ( * )( const std::string&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_call ),
              check_target_env_call_str_overloads( bp::args( "command", "stdin", "timeout" ),
-                                                  "Runs the specified command in the chroot of the target system.\n"
+                                                  "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
                                                   "Returns 0, which is program's exit code if the program exited "
                                                   "successfully, or raises a subprocess.CalledProcessError." ) );
     bp::def(
         "check_target_env_call",
         static_cast< int ( * )( const bp::list&, const std::string&, int ) >( &CalamaresPython::check_target_env_call ),
         check_target_env_call_list_overloads( bp::args( "args", "stdin", "timeout" ),
-                                              "Runs the specified command in the chroot of the target system.\n"
+                                              "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
                                               "Returns 0, which is program's exit code if the program exited "
                                               "successfully, or raises a subprocess.CalledProcessError." ) );
 
@@ -159,24 +159,28 @@ BOOST_PYTHON_MODULE( libcalamares )
              static_cast< std::string ( * )( const std::string&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_output ),
              check_target_env_output_str_overloads( bp::args( "command", "stdin", "timeout" ),
-                                                    "Runs the specified command in the chroot of the target system.\n"
+                                                    "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
                                                     "Returns the program's standard output, and raises a "
                                                     "subprocess.CalledProcessError if something went wrong." ) );
     bp::def( "check_target_env_output",
              static_cast< std::string ( * )( const bp::list&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_output ),
              check_target_env_output_list_overloads( bp::args( "args", "stdin", "timeout" ),
-                                                     "Runs the specified command in the chroot of the target system.\n"
+                                                     "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
                                                      "Returns the program's standard output, and raises a "
                                                      "subprocess.CalledProcessError if something went wrong." ) );
     bp::def( "target_env_process_output",
              &CalamaresPython::target_env_process_output,
              target_env_process_output_overloads( bp::args( "command", "callback", "stdin", "timeout" ),
-                                                  "Runs the specified @p command in the target system." ) );
+                                                  "Runs the specified @p command in the target system. "
+                                                  "Calls @p callback for each line out output of the command. "
+                                                  "Returns 0 or raises a subprocess.CalledProcessError if something went wrong." ) );
     bp::def( "host_env_process_output",
              &CalamaresPython::host_env_process_output,
              host_env_process_output_overloads( bp::args( "command", "callback", "stdin", "timeout" ),
-                                                "Runs the specified command in the host system." ) );
+                                                "Runs the specified command in the host system. "
+                                                  "Calls @p callback for each line out output of the command. "
+                                                  "Returns 0 or raises a subprocess.CalledProcessError if something went wrong." ) );
 
     // .. String functions
     bp::def( "obscure",
