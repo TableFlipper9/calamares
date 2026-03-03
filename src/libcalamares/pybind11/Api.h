@@ -29,9 +29,13 @@ class PythonJob;
 
 namespace Python __attribute__( ( visibility( "hidden" ) ) )
 {
+    /// @deprecated Prefer target_env_process_output(args,None,input,timeout) with try/except
     int target_env_call( const List& args, const std::string& input, int timeout );
+    /// @deprecated Prefer target_env_process_output(command.split(),None,input,timeout) with try/except
     int target_env_call( const std::string& command, const std::string& input, int timeout );
+    /// @deprecated Prefer target_env_proces_output(args,None,input,timeout)
     int check_target_env_call( const List& args, const std::string& input, int timeout );
+    /// @deprecated Prefer target_env_process_output(args,string_variable,input,timeout)
     std::string check_target_env_output( const List& args, const std::string& input, int timeout );
 
     int target_env_process_output( const List& args, const Object& callback, const std::string& input, int timeout );
