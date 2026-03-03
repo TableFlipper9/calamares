@@ -482,6 +482,11 @@ def handle_output(s):
 target_env_process_output(["ls"], handle_output)
 ```
 
+The API functions for running commands set the environment
+LC_ALL and LANG to "C" for the called command.
+
+
+### Running Commands in Python (Deprecated Functions)
 
 There are additional functions for running commands in the target,
 which can select what they return and whether exceptions are raised
@@ -493,8 +498,6 @@ all be considered deprecated by the callback-enabled functions, above.
 - `check_target_env_call(command, stdin, timeout)` raises on a non-zero exit code.
 - `check_target_env_output(command, stdin, timeout)` returns a single string with the output of *command*, raises on a non-zero exit code.
 
-All of the API functions for running commands set the environment
-LC_ALL and LANG to "C" for the called command.
 
 ## Process modules
 
