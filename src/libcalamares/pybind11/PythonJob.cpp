@@ -14,6 +14,7 @@
 #include "pybind11/Api.h"
 #include "pybind11/Pybind11Helpers.h"
 #include "python/Api.h"
+#include "python/Api_p.h"
 #include "utils/Logger.h"
 
 #include <QDir>
@@ -93,39 +94,40 @@ populate_utils( py::module_& m )
     m.def( "load_yaml", &Calamares::Python::load_yaml, "Loads YAML from a file." );
 
     m.def( "target_env_call",
-           py::overload_cast<const Calamares::Python::List& , const std::string& , int >(&Calamares::Python::target_env_call),
-           "Runs command_list in target, returns exit code.",
+           py::overload_cast< const Calamares::Python::List&, const std::string&, int >(
+               &Calamares::Python::target_env_call ),
+           "[[deprecated]] Runs command_list in target, returns exit code.",
            py::arg( "command_list" ),
            py::arg( "input" ) = std::string(),
            py::arg( "timeout" ) = 0 );
     m.def( "target_env_call",
-           py::overload_cast<const std::string& , const std::string& , int >(&Calamares::Python::target_env_call),
-           "Runs command in target, returns exit code.",
+           py::overload_cast< const std::string&, const std::string&, int >( &Calamares::Python::target_env_call ),
+           "[[deprecated]] Runs command in target, returns exit code.",
            py::arg( "command_list" ),
            py::arg( "input" ) = std::string(),
            py::arg( "timeout" ) = 0 );
     m.def( "check_target_env_call",
            &Calamares::Python::check_target_env_call,
-           "Runs command in target, raises on error exit.",
+           "[[deprecated]] Runs command in target, raises on error exit.",
            py::arg( "command_list" ),
            py::arg( "input" ) = std::string(),
            py::arg( "timeout" ) = 0 );
     m.def( "check_target_env_output",
            &Calamares::Python::check_target_env_output,
-           "Runs command in target, returns standard output or raises on error.",
+           "[[deprecated]] Runs command in target, returns standard output or raises on error.",
            py::arg( "command_list" ),
            py::arg( "input" ) = std::string(),
            py::arg( "timeout" ) = 0 );
     m.def( "target_env_process_output",
            &Calamares::Python::target_env_process_output,
-           "Runs command in target, updating callback and returns standard output or raises on error.",
+           Calamares::Python::docstring_target_env_process_output.data(),
            py::arg( "command_list" ),
            py::arg( "callback" ) = pybind11::none(),
            py::arg( "input" ) = std::string(),
            py::arg( "timeout" ) = 0 );
     m.def( "host_env_process_output",
            &Calamares::Python::host_env_process_output,
-           "Runs command in target, updating callback and returns standard output or raises on error.",
+           Calamares::Python::docstring_host_env_process_output.data(),
            py::arg( "command_list" ),
            py::arg( "callback" ) = pybind11::none(),
            py::arg( "input" ) = std::string(),

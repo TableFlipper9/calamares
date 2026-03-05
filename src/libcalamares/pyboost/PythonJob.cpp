@@ -17,6 +17,7 @@
 #include "GlobalStorage.h"
 #include "JobQueue.h"
 #include "python/Api.h"
+#include "python/Api_p.h"
 #include "utils/Logger.h"
 
 #include <QDir>
@@ -132,55 +133,56 @@ BOOST_PYTHON_MODULE( libcalamares )
                                        "-4 = QProcess timeout" ) );
     bp::def( "target_env_call",
              static_cast< int ( * )( const bp::list&, const std::string&, int ) >( &CalamaresPython::target_env_call ),
-             target_env_call_list_overloads( bp::args( "command_list", "stdin", "timeout" ),
-                                             "[[deprecated]] Runs the specified command_list in the chroot of the target system.\n"
-                                             "Returns the program's exit code, or:\n"
-                                             "-1 = QProcess crash\n"
-                                             "-2 = QProcess cannot start\n"
-                                             "-3 = bad arguments\n"
-                                             "-4 = QProcess timeout" ) );
+             target_env_call_list_overloads(
+                 bp::args( "command_list", "stdin", "timeout" ),
+                 "[[deprecated]] Runs the specified command_list in the chroot of the target system.\n"
+                 "Returns the program's exit code, or:\n"
+                 "-1 = QProcess crash\n"
+                 "-2 = QProcess cannot start\n"
+                 "-3 = bad arguments\n"
+                 "-4 = QProcess timeout" ) );
 
     bp::def( "check_target_env_call",
              static_cast< int ( * )( const std::string&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_call ),
-             check_target_env_call_str_overloads( bp::args( "command", "stdin", "timeout" ),
-                                                  "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
-                                                  "Returns 0, which is program's exit code if the program exited "
-                                                  "successfully, or raises a subprocess.CalledProcessError." ) );
+             check_target_env_call_str_overloads(
+                 bp::args( "command", "stdin", "timeout" ),
+                 "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
+                 "Returns 0, which is program's exit code if the program exited "
+                 "successfully, or raises a subprocess.CalledProcessError." ) );
     bp::def(
         "check_target_env_call",
         static_cast< int ( * )( const bp::list&, const std::string&, int ) >( &CalamaresPython::check_target_env_call ),
-        check_target_env_call_list_overloads( bp::args( "args", "stdin", "timeout" ),
-                                              "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
-                                              "Returns 0, which is program's exit code if the program exited "
-                                              "successfully, or raises a subprocess.CalledProcessError." ) );
+        check_target_env_call_list_overloads(
+            bp::args( "args", "stdin", "timeout" ),
+            "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
+            "Returns 0, which is program's exit code if the program exited "
+            "successfully, or raises a subprocess.CalledProcessError." ) );
 
     bp::def( "check_target_env_output",
              static_cast< std::string ( * )( const std::string&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_output ),
-             check_target_env_output_str_overloads( bp::args( "command", "stdin", "timeout" ),
-                                                    "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
-                                                    "Returns the program's standard output, and raises a "
-                                                    "subprocess.CalledProcessError if something went wrong." ) );
+             check_target_env_output_str_overloads(
+                 bp::args( "command", "stdin", "timeout" ),
+                 "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
+                 "Returns the program's standard output, and raises a "
+                 "subprocess.CalledProcessError if something went wrong." ) );
     bp::def( "check_target_env_output",
              static_cast< std::string ( * )( const bp::list&, const std::string&, int ) >(
                  &CalamaresPython::check_target_env_output ),
-             check_target_env_output_list_overloads( bp::args( "args", "stdin", "timeout" ),
-                                                     "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
-                                                     "Returns the program's standard output, and raises a "
-                                                     "subprocess.CalledProcessError if something went wrong." ) );
+             check_target_env_output_list_overloads(
+                 bp::args( "args", "stdin", "timeout" ),
+                 "[[deprecated]] Runs the specified command in the chroot of the target system.\n"
+                 "Returns the program's standard output, and raises a "
+                 "subprocess.CalledProcessError if something went wrong." ) );
     bp::def( "target_env_process_output",
              &CalamaresPython::target_env_process_output,
              target_env_process_output_overloads( bp::args( "command", "callback", "stdin", "timeout" ),
-                                                  "Runs the specified @p command in the target system. "
-                                                  "Calls @p callback for each line out output of the command. "
-                                                  "Returns 0 or raises a subprocess.CalledProcessError if something went wrong." ) );
+                                                  Calamares::Python::docstring_target_env_process_output.data() ) );
     bp::def( "host_env_process_output",
              &CalamaresPython::host_env_process_output,
              host_env_process_output_overloads( bp::args( "command", "callback", "stdin", "timeout" ),
-                                                "Runs the specified command in the host system. "
-                                                  "Calls @p callback for each line out output of the command. "
-                                                  "Returns 0 or raises a subprocess.CalledProcessError if something went wrong." ) );
+                                                Calamares::Python::docstring_host_env_process_output.data() ) );
 
     // .. String functions
     bp::def( "obscure",
@@ -309,20 +311,22 @@ PythonJob::exec()
 
             if ( entryPoint_doc_attr.check() )
             {
-                possibleDescription= QString::fromStdString( entryPoint_doc_attr() ).trimmed();
+                possibleDescription = QString::fromStdString( entryPoint_doc_attr() ).trimmed();
                 auto i_newline = possibleDescription.indexOf( '\n' );
                 if ( i_newline > 0 )
                 {
                     possibleDescription.truncate( i_newline );
                 }
-                cDebug() << Logger::SubEntry << "Job description from __doc__" << prettyName() << '=' << possibleDescription;
+                cDebug() << Logger::SubEntry << "Job description from __doc__" << prettyName() << '='
+                         << possibleDescription;
             }
         }
         else
         {
-            cDebug() << Logger::SubEntry << "Job description from pretty_name" << prettyName() << '=' << possibleDescription;
+            cDebug() << Logger::SubEntry << "Job description from pretty_name" << prettyName() << '='
+                     << possibleDescription;
         }
-        setDescription( possibleDescription);
+        setDescription( possibleDescription );
         emit progress( 0 );
 
         bp::object runResult = entryPoint();
@@ -369,7 +373,7 @@ PythonJob::emitProgress( qreal progressValue )
         r = result.check() ? QString::fromStdString( result() ).trimmed() : QString();
         if ( !r.isEmpty() )
         {
-            setDescription(r);
+            setDescription( r );
         }
     }
     emit progress( progressValue );
@@ -383,15 +387,17 @@ PythonJob::setInjectedPreScript( const char* preScript )
              << ( preScript ? strlen( preScript ) : 0 );
 }
 
-QString PythonJob::getDescription() const
+QString
+PythonJob::getDescription() const
 {
-    QMutexLocker l(&m_descriptionMutex);
+    QMutexLocker l( &m_descriptionMutex );
     return m_description;
 }
 
-void PythonJob::setDescription(const QString & s)
+void
+PythonJob::setDescription( const QString& s )
 {
-    QMutexLocker l(&m_descriptionMutex);
+    QMutexLocker l( &m_descriptionMutex );
     m_description = s;
 }
 

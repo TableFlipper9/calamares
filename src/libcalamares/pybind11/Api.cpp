@@ -222,6 +222,7 @@ target_env_process_output( const List& args, const Object& callback, const std::
     return process_output(
         Calamares::System::RunLocation::RunInTarget, stringListFromPyList( args ), callback, input, timeout );
 }
+
 int
 host_env_process_output( const List& args, const Object& callback, const std::string& input, int timeout )
 {

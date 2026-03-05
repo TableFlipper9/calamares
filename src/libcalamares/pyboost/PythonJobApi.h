@@ -25,6 +25,9 @@ class PythonJob;
 namespace CalamaresPython
 {
 
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_CLANG( "-Wdocumentation-deprecated-sync" )
+
 /// @deprecated Prefer target_env_process_output(args,None,input,timeout) with try/except
 int target_env_call( const boost::python::list& args, const std::string& input = std::string(), int timeout = 0 );
 /// @deprecated Prefer target_env_process_output(command.split(),None,input,timeout) with try/except
@@ -33,6 +36,8 @@ int target_env_call( const std::string& command, const std::string& input = std:
 int check_target_env_call( const boost::python::list& args, const std::string& input = std::string(), int timeout = 0 );
 /// @deprecated Prefer target_env_process_output(args,string_variable,input,timeout)
 int check_target_env_call( const std::string& command, const std::string& input = std::string(), int timeout = 0 );
+
+QT_WARNING_POP
 
 std::string
 check_target_env_output( const std::string& command, const std::string& input = std::string(), int timeout = 0 );
