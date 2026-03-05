@@ -24,6 +24,7 @@ QT_WARNING_DISABLE_CLANG( "-Wshadow-field" )
 QT_WARNING_DISABLE_CLANG( "-Wdocumentation" )
 QT_WARNING_DISABLE_CLANG( "-Wmissing-noreturn" )
 QT_WARNING_DISABLE_CLANG( "-Wreserved-identifier" )
+QT_WARNING_DISABLE_CLANG( "-Wdisabled-macro-expansion" )
 
 #undef slots
 #include <pybind11/pybind11.h>
