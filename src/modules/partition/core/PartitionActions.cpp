@@ -119,7 +119,8 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     // last usable sector possibly allowing for secondary GPT using 66 sectors (256 entries)
     // We must ensure here that size will remain multiple of 4K for proper alignment
     const qint64 lastUsableSector_unalign = dev->totalLogical() - ( partType == PartitionTable::gpt ? 67 : 1 );
-    const qint64 lastUsableSector = alignEndSectorTo4K( dev->logicalSize(), lastUsableSector_unalign );
+    const qint64 lastUsableSector
+        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), lastUsableSector_unalign );
 
 
     // Looking up the defaultFsType (which should name a filesystem type)
@@ -203,7 +204,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
         // we add 1 here
         lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
         // Ensure 4k align
-        lastSectorForRoot = alignEndSectorTo4K( sectorSize, lastSectorForRoot );
+        lastSectorForRoot = Calamares::Partition::alignEndSectorTo4K( sectorSize, lastSectorForRoot );
     }
 
     core->layoutApply( dev, firstFreeSector, lastSectorForRoot, o.luksFsType, o.luksPassphrase );
@@ -283,8 +284,8 @@ doReplacePartition( PartitionCoreModule* core, Device* dev, Partition* partition
     firstSector = partition->firstSector();
     lastSector = partition->lastSector();
     // Align partition to 4K (it should be already)
-    lastSector = alignEndSectorTo4K( dev->logicalSize(), lastSector );
-    firstSector = alignStartSectorTo4K( dev->logicalSize(), firstSector );
+    lastSector = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), lastSector );
+    firstSector = Calamares::Partition::alignStartSectorTo4K( dev->logicalSize(), firstSector );
 
 
     if ( !partition->roles().has( PartitionRole::Unallocated ) )

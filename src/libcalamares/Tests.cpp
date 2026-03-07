@@ -8,6 +8,7 @@
  *
  *
  */
+#include "partition/PartitionSize.h"
 
 #include "GlobalStorage.h"
 #include "JobQueue.h"
@@ -40,6 +41,9 @@ private Q_SLOTS:
     void testSettings();
 
     void testJobQueue();
+
+        void testAlignment();
+
 };
 
 void
@@ -660,7 +664,6 @@ TestLibCalamares::testJobQueue()
         }
     }
 }
-
 
 QTEST_GUILESS_MAIN( TestLibCalamares )
 

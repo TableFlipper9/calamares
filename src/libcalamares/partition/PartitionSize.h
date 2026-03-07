@@ -114,6 +114,54 @@ public:
     }
 };
 
+/** @brief Adjusts @p start_sector to a 4K boundary
+ *
+ * Given a @p logicalSize of each sector, returns a sector-number to use (instead of)
+ * @p start_sector such that that sector is 4K-aligned. If @p logicalSize is not
+ * 512 (traditional block size) the device is assumed to be special in some way
+ * and no adjustment is done.
+ *
+ * The start sector is at the start (e.g. the 0th 512-byte sector) of a 4K area.
+ */
+inline quint64
+alignStartSectorTo4K( const qint64 logicalSize, const quint64 startSector )
+{
+    if ( logicalSize != 512 )
+    {
+        // RAID or non standard setup or already aligned
+        return startSector;
+    }
+
+    // We round sectors number to value that align to 4K.
+    // For 512 sector size, sector number must be divisible by 8.
+    quint64 const rem = ( startSector - 1 ) % 8;
+    return ( startSector - rem + 7 );
+}
+
+/** @bief Adjusts @p end_sector to a 4K boundary
+ *
+ * Given a @p logicalSize of each sector, returns a sector-number to use (instead of)
+ * @p end_sector such that that sector is 4K-aligned. If @p logicalSize is not
+ * 512 (traditional block size) the device is assumed to be special in some way
+ * and no adjustment is done.
+ *
+ * The end sector is at the end (e.g. the 7th 512-byte sector) of a 4K area.
+ */
+inline quint64
+alignEndSectorTo4K( const qint64 logicalSize, const quint64 endSector )
+{
+    if ( logicalSize != 512 )
+    {
+        // RAID or non standard setup or already aligned
+        return endSector;
+    }
+
+    // We round sectors number to a value referring to the last 512-byte
+    // sector in a 4K page. For 512 sector size, sector number must be 7 (mod 8).
+    quint64 const rem = ( endSector + 1 ) % 8;
+    return ( endSector - rem );
+}
+
 }  // namespace Partition
 }  // namespace Calamares
 
