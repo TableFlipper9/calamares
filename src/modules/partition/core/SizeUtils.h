@@ -33,17 +33,18 @@ formatByteSize( qint64 sizeValue )
  * and no adjustment is done.
  */
 inline quint64
-startSectorTo4KAlign( const qint64 logicalSize, const quint64 start_sector )
+startSectorTo4KAlign( const qint64 logicalSize, const quint64 startSector )
 {
-    // if logicalSize == 512 we round sectors number to value that align to 4K
-    if ( logicalSize == 512 )
+    if ( logicalSize != 512 )
     {
-        // for 512 sector size, sectors number must be divisible by 8
-        quint64 const rem = ( start_sector - 1 ) % 8;
-        return ( start_sector - rem + 7 );
+        // RAID or non standard setup or already aligned
+        return startSector;
     }
-    // Otherwise it is RAID or non standard setup or already align.
-    return start_sector;
+
+    // if logicalSize == 512 we round sectors number to value that align to 4K
+    // for 512 sector size, sectors number must be divisible by 8
+    quint64 const rem = ( startSector - 1 ) % 8;
+    return ( startSector - rem + 7 );
 }
 
 /** @bief Adjusts @p end_sector to a 4K boundary
@@ -54,17 +55,18 @@ startSectorTo4KAlign( const qint64 logicalSize, const quint64 start_sector )
  * and no adjustment is done.
  */
 inline quint64
-endSectorTo4KAlign( const qint64 logicalSize, const quint64 end_sector )
+endSectorTo4KAlign( const qint64 logicalSize, const quint64 endSector )
 {
-    // if logicalSize == 512 we round sectors number to value that align to 4K
-    if ( logicalSize == 512 )
+    if ( logicalSize != 512 )
     {
-        // for 512 sector size, sectors number must be divisible by 8
-        quint64 const rem = ( end_sector + 1 ) % 8;
-        return ( end_sector - rem );
+        // RAID or non standard setup or already aligned
+        return endSector;
     }
-    // Otherwise it is RAID or non standard setup or already align.
-    return end_sector;
+
+    // if logicalSize == 512 we round sectors number to value that align to 4K
+    // for 512 sector size, sectors number must be divisible by 8
+    quint64 const rem = ( endSector + 1 ) % 8;
+    return ( endSector - rem );
 }
 
 #endif  // PARTITION_CORE_SIZEUTILS_H
