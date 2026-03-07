@@ -33,7 +33,7 @@ formatByteSize( qint64 sizeValue )
  * and no adjustment is done.
  */
 inline quint64
-startSectorTo4KAlign( const qint64 logicalSize, const quint64 startSector )
+alignStartSectorTo4K( const qint64 logicalSize, const quint64 startSector )
 {
     if ( logicalSize != 512 )
     {
@@ -55,7 +55,7 @@ startSectorTo4KAlign( const qint64 logicalSize, const quint64 startSector )
  * and no adjustment is done.
  */
 inline quint64
-endSectorTo4KAlign( const qint64 logicalSize, const quint64 endSector )
+alignEndSectorTo4K( const qint64 logicalSize, const quint64 endSector )
 {
     if ( logicalSize != 512 )
     {

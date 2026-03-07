@@ -119,7 +119,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     // last usable sector possibly allowing for secondary GPT using 66 sectors (256 entries)
     // We must ensure here that size will remain multiple of 4K for proper alignment
     const qint64 lastUsableSector_unalign = dev->totalLogical() - ( partType == PartitionTable::gpt ? 67 : 1 );
-    const qint64 lastUsableSector = endSectorTo4KAlign( dev->logicalSize(), lastUsableSector_unalign );
+    const qint64 lastUsableSector = alignEndSectorTo4K( dev->logicalSize(), lastUsableSector_unalign );
 
 
     // Looking up the defaultFsType (which should name a filesystem type)
@@ -203,7 +203,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
         // we add 1 here
         lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
         // Ensure 4k align
-        lastSectorForRoot = endSectorTo4KAlign( sectorSize, lastSectorForRoot );
+        lastSectorForRoot = alignEndSectorTo4K( sectorSize, lastSectorForRoot );
     }
 
     core->layoutApply( dev, firstFreeSector, lastSectorForRoot, o.luksFsType, o.luksPassphrase );
@@ -283,8 +283,8 @@ doReplacePartition( PartitionCoreModule* core, Device* dev, Partition* partition
     firstSector = partition->firstSector();
     lastSector = partition->lastSector();
     // Align partition to 4K (it should be already)
-    lastSector = endSectorTo4KAlign( dev->logicalSize(), lastSector );
-    firstSector = startSectorTo4KAlign( dev->logicalSize(), firstSector );
+    lastSector = alignEndSectorTo4K( dev->logicalSize(), lastSector );
+    firstSector = alignStartSectorTo4K( dev->logicalSize(), firstSector );
 
 
     if ( !partition->roles().has( PartitionRole::Unallocated ) )
