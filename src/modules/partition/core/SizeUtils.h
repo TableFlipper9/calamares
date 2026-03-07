@@ -25,4 +25,46 @@ formatByteSize( qint64 sizeValue )
     return Capacity::formatByteSize( static_cast< double >( sizeValue ) );
 }
 
+/** @brief Adjusts @p start_sector to a 4K boundary
+ *
+ * Given a @p logicalSize of each sector, returns a sector-number to use (instead of)
+ * @p start_sector such that that sector is 4K-aligned. If @p logicalSize is not
+ * 512 (traditional block size) the device is assumed to be special in some way
+ * and no adjustment is done.
+ */
+inline quint64
+startSectorTo4KAlign( const qint64 logicalSize, const quint64 start_sector )
+{
+    // if logicalSize == 512 we round sectors number to value that align to 4K
+    if ( logicalSize == 512 )
+    {
+        // for 512 sector size, sectors number must be divisible by 8
+        quint64 const rem = ( start_sector - 1 ) % 8;
+        return ( start_sector - rem + 7 );
+    }
+    // Otherwise it is RAID or non standard setup or already align.
+    return start_sector;
+}
+
+/** @bief Adjusts @p end_sector to a 4K boundary
+ *
+ * Given a @p logicalSize of each sector, returns a sector-number to use (instead of)
+ * @p end_sector such that that sector is 4K-aligned. If @p logicalSize is not
+ * 512 (traditional block size) the device is assumed to be special in some way
+ * and no adjustment is done.
+ */
+inline quint64
+endSectorTo4KAlign( const qint64 logicalSize, const quint64 end_sector )
+{
+    // if logicalSize == 512 we round sectors number to value that align to 4K
+    if ( logicalSize == 512 )
+    {
+        // for 512 sector size, sectors number must be divisible by 8
+        quint64 const rem = ( end_sector + 1 ) % 8;
+        return ( end_sector - rem );
+    }
+    // Otherwise it is RAID or non standard setup or already align.
+    return end_sector;
+}
+
 #endif  // PARTITION_CORE_SIZEUTILS_H
