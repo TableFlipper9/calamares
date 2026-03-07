@@ -510,6 +510,10 @@ if(WITH_PYTHON AND NOT WITH_PYBIND11)
                 PURPOSE "Boost.Python is used for Python job modules (because WITH_PYBIND11 is OFF)."
                 TYPE REQUIRED
             )
+            set_package_properties(boost_python PROPERTIES
+                PURPOSE "Boost.Python is used for Python job modules (because WITH_PYBIND11 is OFF)."
+                TYPE REQUIRED
+            )
         else()
             message(STATUS "Found boost_python with target Boost::python")
             set(Boost_FOUND ON)
@@ -528,6 +532,14 @@ set(Calamares_WITH_PYBIND11 ${WITH_PYBIND11})
 set(Calamares_WITH_BOOST_PYTHON ${WITH_BOOST_PYTHON})
 set(Calamares_WITH_QML ${WITH_QML})
 set(Calamares_WITH_QT6 ${WITH_QT6})
+
+# Bail out if we are missing something important
+feature_summary(
+    WHAT REQUIRED_PACKAGES_NOT_FOUND
+    FATAL_ON_MISSING_REQUIRED_PACKAGES
+    DESCRIPTION "The following REQUIRED packages were not found:"
+    QUIET_ON_EMPTY
+)
 
 ### Transifex Translation status
 #
