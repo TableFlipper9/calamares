@@ -98,12 +98,12 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     }
 
     // Partition sizes are expressed in MiB, should be multiples of
-    // the logical sector size (usually 512B).
-    // But should be multiplies of 4KB to ensure proper alignment to physical sector size.
-    // EFI starts with 2MiB
-    // empty and a EFI boot partition, while BIOS starts at
-    // the 1MiB boundary (usually sector 2048).
-    // ARM empty sectors are 16 MiB in size.
+    // the logical sector size (usually 512B), but proper alignment requires
+    // them to also be multiples of 4KiB (a common physical sector size).
+    //
+    // EFI starts with 2MiB empty and an EFI boot partition, while BIOS starts at
+    // the 1MiB boundary (usually sector 2048). On an ARM system this is different
+    // again and the disk starts with 16MiB empty.
     const int empty_space_sizeB = PartUtils::isArmSystem() ? 16_MiB : ( isEfi ? 2_MiB : 1_MiB );
 
     // Since sectors count from 0, if the space is 2048 sectors in size,
@@ -118,9 +118,9 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     }
     // last usable sector possibly allowing for secondary GPT using 66 sectors (256 entries)
     // We must ensure here that size will remain multiple of 4K for proper alignment
-    const qint64 lastUsableSector_unalign = dev->totalLogical() - ( partType == PartitionTable::gpt ? 67 : 1 );
+    const qint64 tableOverhead = partType == PartitionTable::gpt ? 67 : 1;
     const qint64 lastUsableSector
-        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), lastUsableSector_unalign );
+        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), dev->totalLogical()->tableOverhead );
 
 
     // Looking up the defaultFsType (which should name a filesystem type)
@@ -200,11 +200,9 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     qint64 lastSectorForRoot = lastUsableSector;
     if ( shouldCreateSwap )
     {
-        // Since we counting sectors from 0 and last sector for root part is included
-        // we add 1 here
-        lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
-        // Ensure 4k align
-        lastSectorForRoot = Calamares::Partition::alignEndSectorTo4K( sectorSize, lastSectorForRoot );
+        // +1 to ensure we don't round down and get something smaller than requested
+        const auto sectorsForSwap = suggestedSwapSizeB / sectorSize + 1;
+        lastSectorForRoot = Calamares::Partition::alignEndSectorTo4K( sectorSize, lastSectorForRoot - sectorsForSwap );
     }
 
     core->layoutApply( dev, firstFreeSector, lastSectorForRoot, o.luksFsType, o.luksPassphrase );
