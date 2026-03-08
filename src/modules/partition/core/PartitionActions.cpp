@@ -281,10 +281,6 @@ doReplacePartition( PartitionCoreModule* core, Device* dev, Partition* partition
     // Save the first and last sector values as the partition will be deleted
     firstSector = partition->firstSector();
     lastSector = partition->lastSector();
-    // Align partition to 4K (it should be already)
-    lastSector = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), lastSector );
-    firstSector = Calamares::Partition::alignStartSectorTo4K( dev->logicalSize(), firstSector );
-
 
     if ( !partition->roles().has( PartitionRole::Unallocated ) )
     {
