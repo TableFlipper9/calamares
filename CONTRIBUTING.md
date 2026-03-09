@@ -145,7 +145,7 @@ docker run -ti \
 ```
 
 This starts a container with the chosen image with a temporary build
-directory in `/build` and the Calamaressources mounted as `/src`.
+directory in `/build` and the Calamares source code mounted as `/src`.
 
 Run the script to install dependencies: you could use `deploycala.py`
 or one of the shell scripts in `ci/` to install the right
