@@ -120,7 +120,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     // We must ensure here that size will remain multiple of 4K for proper alignment
     const qint64 tableOverhead = partType == PartitionTable::gpt ? 67 : 1;
     const qint64 lastUsableSector
-        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), dev->totalLogical()->tableOverhead );
+        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), dev->totalLogical() - tableOverhead );
 
 
     // Looking up the defaultFsType (which should name a filesystem type)
