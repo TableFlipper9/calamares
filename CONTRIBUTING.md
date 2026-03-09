@@ -147,9 +147,9 @@ docker run -ti \
 This starts a container with the chosen image with a temporary build
 directory in `/build` and the Calamares source code mounted as `/src`.
 
-Run the script to install dependencies: you could use `deploycala.py`
-or one of the shell scripts in `ci/` to install the right
-dependencies for the image (in this example, for openSUSE and Qt6).
+Run the script to install dependencies: pick the appropriate shell
+script in `ci/` to install the right dependencies in the image
+(in this example, for openSUSE and Qt6).
 - `cd /src`
 - `./ci/deps-opensuse-qt6.sh`
 
