@@ -41,9 +41,6 @@ private Q_SLOTS:
     void testSettings();
 
     void testJobQueue();
-
-        void testAlignment();
-
 };
 
 void
