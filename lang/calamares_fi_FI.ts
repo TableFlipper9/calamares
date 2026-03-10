@@ -49,7 +49,7 @@
     <message>
       <location filename="../src/modules/partition/gui/BootInfoWidget.cpp" line="60"/>
       <source>The &lt;strong&gt;boot environment&lt;/strong&gt; of this system.&lt;br&gt;&lt;br&gt;Older x86 systems only support &lt;strong&gt;BIOS&lt;/strong&gt;.&lt;br&gt;Modern systems usually use &lt;strong&gt;EFI&lt;/strong&gt;, but may also show up as BIOS if started in compatibility mode.</source>
-      <translation>Järjestelmän &lt;strong&gt;käynnistys&lt;/strong&gt; tässä tietokoneessa.&lt;br&gt;&lt;br&gt;Vanhempi x86 tukee &lt;strong&gt;BIOS&lt;/strong&gt; käynnistystapaa.&lt;br&gt;Uudet tietokoneet tukee &lt;strong&gt;EFI&lt;/strong&gt; käynnistystä, mutta voi toimia BIOS-moodissa, jos käynnistetään yhteensopivuustilassa.</translation>
+      <translation>Järjestelmän &lt;strong&gt;käynnistys&lt;/strong&gt; tässä tietokoneessa.&lt;br&gt;&lt;br&gt;Vanhempi x86 tukee &lt;strong&gt;BIOS&lt;/strong&gt; käynnistystapaa.&lt;br&gt;Uudet tietokoneet tukee &lt;strong&gt;EFI&lt;/strong&gt; käynnistystä, mutta BIOS-moodia voi käyttää, jos käynnistää yhteensopivuustilassa.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/BootInfoWidget.cpp" line="70"/>
@@ -59,7 +59,7 @@
     <message>
       <location filename="../src/modules/partition/gui/BootInfoWidget.cpp" line="82"/>
       <source>This system was started with a &lt;strong&gt;BIOS&lt;/strong&gt; boot environment.&lt;br&gt;&lt;br&gt;To configure startup from a BIOS environment, this installer must install a boot loader, like &lt;strong&gt;GRUB&lt;/strong&gt;, either at the beginning of a partition or on the &lt;strong&gt;Master Boot Record&lt;/strong&gt; near the beginning of the partition table (preferred). This is automatic, unless you choose manual partitioning, in which case you must set it up on your own.</source>
-      <translation>Tietokone käynnistettiin &lt;strong&gt;BIOS&lt;/strong&gt; käynnistyksellä. &lt;br&gt;&lt;br&gt;Jos haluat määrittää BIOS:n on asennettava käynnistyslatain, kuten &lt;strong&gt;GRUB&lt;/strong&gt;, joko osion alkuun tai &lt;strong&gt;Master Boot Record&lt;/strong&gt;, joka sijaitsee osiotaulun alussa (suositus). Kaikki on oletuksena, mutta jos valitset manuaalisen osioinnin, sinun on valittava nämä asetukset.</translation>
+      <translation>Tietokone käynnistettiin &lt;strong&gt;BIOS&lt;/strong&gt; käynnistyksellä. &lt;br&gt;&lt;br&gt;Jos haluat määrittää BIOS:n on asennettava käynnistyslatain, kuten &lt;strong&gt;GRUB&lt;/strong&gt;, joko osion alkuun tai &lt;strong&gt;Master Boot Record&lt;/strong&gt;, joka sijaitsee osiotaulun alussa (suositus). Oletuksena nämä on valittuna, mutta jos valitset manuaalisen osioinnin, sinun on valittava nämä asetukset erikseen.</translation>
     </message>
   </context>
   <context>
@@ -695,19 +695,19 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
-      <translation>Nyt:</translation>
+      <translation>Nykyinen kiinolevy:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="139"/>
       <source>After:</source>
       <comment>@label</comment>
-      <translation>Jälkeen:</translation>
+      <translation>Asennuksen jälkeen:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="897"/>
       <source>Reuse %1 as home partition for %2</source>
       <comment>@label</comment>
-      <translation>Käytä uudelleen %1 kotiosiona %2</translation>
+      <translation>Käytä uudelleen %1 kotiosiona %2:lle</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
@@ -736,13 +736,13 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
-      <translation>EFI-osiota %1 käytetään %2 käynnistämiseen.</translation>
+      <translation>EFI-järjestelmän %1 osiota käytetään %2 käynnistämiseen.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
-      <translation>EFI-osio:</translation>
+      <translation>EFI-järjestelmän osio:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
@@ -809,31 +809,31 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
-      <translation>Ei swappia</translation>
+      <translation>Swap (pois käytöstä)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
-      <translation>Käytä swap uudellen</translation>
+      <translation>Swap (käytä uudelleen)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
-      <translation>Swap (ei lepotilaa)</translation>
+      <translation>Swap (ei horrostilaa)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
-      <translation>Swap (lepotilan kanssa)</translation>
+      <translation>Swap (horrostilalla)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
-      <translation>Swap tiedostona</translation>
+      <translation>Swap (tiedostona)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
@@ -857,12 +857,12 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="274"/>
       <source>Successfully disabled swap %1.</source>
-      <translation>Poistettu käytöstä swap %1.</translation>
+      <translation>Swap %1 poistettiin käytöstä.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="300"/>
       <source>Successfully cleared swap %1.</source>
-      <translation>Tyhjennetty swap %1.</translation>
+      <translation>Swap %1 tyhjennettiin.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="314"/>
@@ -1059,7 +1059,7 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
       <location filename="../src/modules/summary/Config.cpp" line="35"/>
       <source>Summary</source>
       <comment>@label</comment>
-      <translation>Yhteenveto</translation>
+      <translation>Kooste</translation>
     </message>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="39"/>
@@ -1491,7 +1491,7 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
     <message>
       <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="78"/>
       <source>&lt;br&gt;&lt;br&gt;This partition table type is only advisable on older systems which start from a &lt;strong&gt;BIOS&lt;/strong&gt; boot environment. GPT is recommended in most other cases.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Warning:&lt;/strong&gt; the MBR partition table is an obsolete MS-DOS era standard.&lt;br&gt;Only 4 &lt;em&gt;primary&lt;/em&gt; partitions may be created, and of those 4, one can be an &lt;em&gt;extended&lt;/em&gt; partition, which may in turn contain many &lt;em&gt;logical&lt;/em&gt; partitions.</source>
-      <translation>&lt;br&gt;&lt;br&gt;Tämä osiotaulun tyyppi on suositeltu vain vanhemmille tietokoneille, jotka käyttää  &lt;strong&gt;BIOS&lt;/strong&gt; käynnistystä. Muissa tapauksissa suositellaan GPT:n käyttöä.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Varoitus:&lt;/strong&gt;MBR-taulu on vanhentunut MS-DOS-standardi.&lt;br&gt;Vain 4 &lt;em&gt;ensisijaisia&lt;/em&gt; osioita voidaan luoda ja yksi niistä voi olla &lt;em&gt;laajennettu&lt;/em&gt; osio, joka voi puolestaan sisältää monia &lt;em&gt;loogisia&lt;/em&gt; osioita.</translation>
+      <translation>&lt;br&gt;&lt;br&gt;Tämä osiotaulu on suositeltu vain vanhemmille tietokoneille, jotka käyttää  &lt;strong&gt;BIOS&lt;/strong&gt; käynnistystä. Muissa tapauksissa suositus on GPT.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Varoitus:&lt;/strong&gt;MBR-taulu on vanhentunut MS-DOS standardi.&lt;br&gt;Vain 4 &lt;em&gt;ensisijaisia&lt;/em&gt; osioita voidaan luoda ja yksi niistä voi olla &lt;em&gt;laajennettu&lt;/em&gt;, joka puolestaan sisältää monia &lt;em&gt;loogisia&lt;/em&gt; osioita.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="89"/>
@@ -1516,7 +1516,7 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
     <message>
       <location filename="../src/modules/partition/gui/DeviceInfoWidget.cpp" line="147"/>
       <source>The type of &lt;strong&gt;partition table&lt;/strong&gt; on the selected storage device.&lt;br&gt;&lt;br&gt;The only way to change the partition table type is to erase and recreate the partition table from scratch, which destroys all data on the storage device.&lt;br&gt;This installer will keep the current partition table unless you explicitly choose otherwise.&lt;br&gt;If unsure, on modern systems GPT is preferred.</source>
-      <translation>Valitun kiintolevyn &lt;strong&gt;osiotaulu&lt;/strong&gt; on tyyppiä. &lt;br&gt;&lt;br&gt;Ainoa tapa muuttaa osiotaulun tyyppiä on poistaa ja luoda osiot alusta uudelleen, mikä poistaa kaikki kiintolevyn sisältämät tiedostot. &lt;br&gt;Asentaja säilyttää nykyisen osiotaulun, ellet nimenomaisesti valitse muuta. &lt;br&gt;Jos olet epävarma, nykyaikaisissa tietokoneissa GPT on parempi.</translation>
+      <translation>Valitun kiintolevyn &lt;strong&gt;osiotaulu&lt;/strong&gt; on tyyppiä. &lt;br&gt;&lt;br&gt;Ainoa tapa muuttaa osioinnin tapaa on poistaa ja luoda osiot alusta uudelleen, mikä poistaa myös kaikki kiintolevyn tiedostot. &lt;br&gt;Asennusohjelma säilyttää nykyisen osiotaulun, ellet nimenomaan valitse muuta. &lt;br&gt;Jos olet epävarma niin nykyaikaisissa tietokoneissa GPT on hyvä valinta.</translation>
     </message>
   </context>
   <context>
@@ -1928,7 +1928,7 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="200"/>
       <source>is running the installer as an administrator (root)</source>
-      <translation>ajaa asennusohjelmaa järjestelmänvalvojana (root)</translation>
+      <translation>suorittaa asennusohjelman (root) oikeuksilla</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="204"/>
@@ -2140,7 +2140,7 @@ Asennusohjelma lopetetaan ja kaikki muutokset menetetään.</translation>
     <message>
       <location filename="../src/modules/luksopenswaphookcfg/LOSHJob.cpp" line="35"/>
       <source>Configuring encrypted swap.</source>
-      <translation>Salatun swapin määrittäminen.</translation>
+      <translation>Määritetään salattu swap.</translation>
     </message>
     <message>
       <location filename="../src/modules/luksopenswaphookcfg/LOSHJob.cpp" line="87"/>
@@ -3432,12 +3432,12 @@ Voit myös hienosäätää asetuksia. Etsi kartalta vetämällä tai painamalla 
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
-      <translation>BIOS:ssa mahdollisuus käyttää GPT:tä</translation>
+      <translation>Vaihtoehto käyttää GPT-BIOS:lla</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
-      <translation>GPT-osiotaulu on paras vaihtoehto kaikille järjestelmille. Kuitenkin asennusohjelma tukee myös BIOS-järjestelmää.&lt;br/&gt;&lt;br/&gt;Jos haluat määrittää GPT-osiotaulun BIOS:lle (jos et ole jo tehnyt) niin palaa takaisin ja aseta osiotauluksi GPT. Luo seuraavaksi 8 Mb alustamaton osio &lt;strong&gt;%2&lt;/strong&gt; lipulla käyttöön.&lt;br/&gt;&lt;br/&gt;Alustamaton 8 Mb tarvitaan %1  käynnistämiseen BIOS-järjestelmässä, jossa on GPT.</translation>
+      <translation>GPT-osio on hyvä vaihtoehto asennukselle. Asennusohjelma tukee myös BIOS-menetelmää.&lt;br/&gt;&lt;br/&gt;Jos haluat määrittää GPT-osion BIOS:lle (jos et ole vielä tehnyt). Palaa takaisin ja aseta osiovalinnaksi GPT. Luo sitten 8 Mb alustamaton osio käyttöön&lt;strong&gt;%2&lt;/strong&gt; lipulla.&lt;br/&gt;&lt;br/&gt;8 Mb alustamaton osio tarvitaan %1  käynnistämiseksi BIOS-alaisuudessa, jossa on GPT.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
@@ -5182,7 +5182,7 @@ Vierityspalkki on säädettävissä, leveys on nyt arvossa 10.</translation>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="297"/>
       <source>Reuse user password as root password</source>
-      <translation>Käytä käyttäjän salasanaa myös root-salasanana</translation>
+      <translation>Käytä salasanaa myös root-salasanana</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="305"/>
@@ -5265,7 +5265,7 @@ Vierityspalkki on säädettävissä, leveys on nyt arvossa 10.</translation>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="137"/>
       <source>root is not allowed as username.</source>
-      <translation>root ei ole sallittu käyttäjänimeksi.</translation>
+      <translation>root ei ole sallittu käyttäjänimi.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="146"/>
@@ -5315,7 +5315,7 @@ Vierityspalkki on säädettävissä, leveys on nyt arvossa 10.</translation>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="296"/>
       <source>Reuse user password as root password</source>
-      <translation>Käytä käyttäjän salasanaa myös root-salasanana</translation>
+      <translation>Käytä salasanaa myös root-salasanana</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="304"/>

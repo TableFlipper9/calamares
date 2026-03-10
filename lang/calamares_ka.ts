@@ -26,13 +26,13 @@
       <location filename="../src/modules/users/ActiveDirectoryJob.cpp" line="39"/>
       <source>Enroll system in Active Directory</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>სისტემის შეყვანა Active Directory-ში</translation>
     </message>
     <message>
       <location filename="../src/modules/users/ActiveDirectoryJob.cpp" line="45"/>
       <source>Enrolling system in Active Directory…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს სისტემის შეყვანა Active Directory-ში…</translation>
     </message>
   </context>
   <context>
@@ -41,7 +41,7 @@
       <location filename="../src/modules/partition/jobs/AutoMountManagementJob.cpp" line="22"/>
       <source>Managing auto-mount settings…</source>
       <comment>@status</comment>
-      <translation>ავტომიმაგრების პარამეტრების მართვა...</translation>
+      <translation>ავტომიმაგრების პარამეტრების მართვა…</translation>
     </message>
   </context>
   <context>
@@ -138,12 +138,12 @@
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="102"/>
       <source>Crashes Calamares, so that Dr. Konqi can look at it.</source>
-      <translation type="unfinished"/>
+      <translation>Calamares-ის ხელოვნური ავარია, რომ ექიმმა Konqi-მა შეხედოს.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="115"/>
       <source>Reloads the stylesheet from the branding directory.</source>
-      <translation type="unfinished"/>
+      <translation>სტილების ცხრილის თავიდან ჩატვირთვა ბრენდის საქაღალდიდან.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="118"/>
@@ -163,7 +163,7 @@
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="141"/>
       <source>Uploads the session log to the configured pastebin.</source>
-      <translation type="unfinished"/>
+      <translation>ატვირთავს სესიის ჟურნალს მითითებულ pastebin-ზე.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="144"/>
@@ -208,7 +208,7 @@
     <message>
       <location filename="../src/libcalamares/JobExample.cpp" line="30"/>
       <source>Programmed job failure was explicitly requested.</source>
-      <translation type="unfinished"/>
+      <translation>დაპროგრამებული დავალების ჩავარდნა აშკარად იყო მოთხოვნილი.</translation>
     </message>
   </context>
   <context>
@@ -257,7 +257,7 @@
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="235"/>
       <source>Working directory %1 for python job %2 is not readable.</source>
-      <translation type="unfinished"/>
+      <translation>სამუშაო საქაღალდე %1 Python-ის დავალებისთვის %2 წაკითხვადი არ იყო.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="243"/>
@@ -272,7 +272,7 @@
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="244"/>
       <source>Main script file %1 for python job %2 is not readable.</source>
-      <translation type="unfinished"/>
+      <translation>მთავარი სკრიპტის ფაილი %1 Python-ის დავალებისთვის %2 წაკითხვადი არაა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="305"/>
@@ -282,7 +282,7 @@
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="306"/>
       <source>Internal script for python job %1 raised an exception.</source>
-      <translation type="unfinished"/>
+      <translation>შიდა სკრიპტმა Python-ის დავალებისთვის %1 გამონაკლისი აღმოაჩინა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="320"/>
@@ -324,7 +324,7 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="267"/>
       <source>Working directory %1 for python job %2 is not readable.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>სამუშაო საქაღალდე %1 Python-ის დავალებისთვის %2 წაკითხვადი არ იყო.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="275"/>
@@ -336,7 +336,7 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="276"/>
       <source>Main script file %1 for python job %2 is not readable.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>მთავარი სკრიპტის ფაილი %1 Python-ის დავალებისთვის %2 წაკითხვადი არაა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="348"/>
@@ -378,9 +378,9 @@
       <location filename="../src/libcalamares/modulesystem/RequirementsChecker.cpp" line="124"/>
       <source>Waiting for %n module(s)…</source>
       <comment>@status</comment>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>ველოდები %n მოდულს…</numerusform>
+        <numerusform>ველოდები %n მოდულს…</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -467,7 +467,7 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="189"/>
       <source>%1 can not be installed. Calamares was unable to load all of the configured modules. This is a problem with the way Calamares is being used by the distribution.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენება შეუძლებელია. Calamares-მა ყველა მორგებული მოდული ვერ ჩატვირთა. ეს პრობლემაა იმ გზისთვის, როგორც ეს დისტრიბუტივი Calamares-ს იყენებს.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="196"/>
@@ -491,13 +491,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="339"/>
       <source>The %1 setup program is about to make changes to your disk in order to set up %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
       <comment>%1 is short product name, %2 is short product name with version</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის მორგების პროგრამაა პირებს, თქვენს დისკზე ცვლილებები შეიტანოს იმისთვის, რომ %2 დააყენოს.&lt;br/&gt;&lt;strong&gt;ეს ცვლილებები შეუქცევადია.&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="343"/>
       <source>The %1 installer is about to make changes to your disk in order to install %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
       <comment>%1 is short product name, %2 is short product name with version</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენების პროგრამაა პირებს, თქვენს დისკზე ცვლილებები შეიტანოს იმისთვის, რომ %2 დააყენოს.&lt;br/&gt;&lt;strong&gt;ეს ცვლილებები შეუქცევადია.&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="348"/>
@@ -650,19 +650,19 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="34"/>
       <source>Set filesystem label on %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის ჭდის დაყენება %1-ზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="41"/>
       <source>Set filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის ჭდის &lt;strong&gt;%1&lt;/strong&gt; დაყენება დანაყოფზე &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="50"/>
       <source>Setting filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის ჭდის &lt;strong&gt;%1&lt;/strong&gt; დაყენება დანაყოფზე &lt;strong&gt;%2&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="72"/>
@@ -707,7 +707,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="897"/>
       <source>Reuse %1 as home partition for %2</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის თავიდან გამოყენება საწყის დანაყოფად %2-ისთვის</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
@@ -718,25 +718,25 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
-      <translation type="unfinished"/>
+      <translation>%1 შემცირდება %2მიბ-მდე და ახალი %3მიბ დანაყოფი შეიქმნება %4-ისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;აირჩიეთ დანაყოფი ზედ დასაყენებლად&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
-      <translation type="unfinished"/>
+      <translation>EFI-ის სისტემური დანაყოფი სისტემაში აღმოჩენილი არაა. დაბრუნდით უკან და გამოიყენეთ ხელით დაყოფა, რომ შექმნათ %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
-      <translation type="unfinished"/>
+      <translation>EFI-ის სისტემური დანაყოფი %1-ზე გამოყენებული იქნება %2-ის გასაშვებად.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
@@ -771,7 +771,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;დანაყოფის ჩანაცვლება&lt;/strong&gt;&lt;br/&gt;ჩაანაცვლებს დანაყოფს %1-ით.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
@@ -797,13 +797,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ამ საცავის მოწყობილობას ერთ-ერთი დანაყოფი &lt;strong&gt;მიმაგრებული აქვს&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ამ მოწყობილობის ნაწილი &lt;strong&gt;არააქტიური RAID-ის&lt;/strong&gt; ნაწილია.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
@@ -878,13 +878,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="366"/>
       <source>Clear mounts for partitioning operations on %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>მიმაგრებების გასუფთავება დაყოფის ოპერაციებისთვის %1-ზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="372"/>
       <source>Clearing mounts for partitioning operations on %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს მიმაგრებების გასუფთავება დაყოფის ოპერაციებისთვის %1-ზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="391"/>
@@ -899,7 +899,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="40"/>
       <source>Clearing all temporary mounts…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს ყველა დროებითი მიმაგრების გასუფთავება…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="70"/>
@@ -917,7 +917,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/libcalamares/utils/CommandList.cpp" line="236"/>
       <source>The commands use variables that are not defined. Missing variables are: %1.</source>
-      <translation type="unfinished"/>
+      <translation>ბრძანებები იყენებენ ცვლადებს, რომლებიც აღწერილი არაა. ნაკლული ცვლადებია: %1.</translation>
     </message>
   </context>
   <context>
@@ -974,56 +974,56 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
       <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
-      <translation type="unfinished"/>
+      <translation>კლავიატურის მოდელი დაყენებულია მნიშვნელობაზე %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
-      <translation type="unfinished"/>
+      <translation>კლავიატურის განლაგება დაყენებულია მნიშვნელობაზე %1/%2.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/Config.cpp" line="381"/>
       <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation type="unfinished"/>
+      <translation>დროის სარტყლის დაყენება %1-ზე.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>სისტემის ენა დაყენებული იქნება მნიშვნელობაზე %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>რიცხვების და თარიღის ლოკალი დაყენებული იქნება მნიშვნელობაზე %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="53"/>
       <source>Network Installation. (Disabled: Incorrect configuration)</source>
-      <translation type="unfinished"/>
+      <translation>ქსელით დაყენება. (გამორთულია: კონფიგურაცია არასწორია)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="55"/>
       <source>Network Installation. (Disabled: Received invalid groups data)</source>
-      <translation type="unfinished"/>
+      <translation>ქსელით დაყენება. (გამორთულია: მიღებულია არასწორი ჯგუფის მონაცემები)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="57"/>
       <source>Network Installation. (Disabled: Internal error)</source>
-      <translation type="unfinished"/>
+      <translation>ქსელით დაყენება. (გამორთულია: შიდა შეცდომა)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="59"/>
       <source>Network Installation. (Disabled: Unable to fetch package lists, check your network connection)</source>
-      <translation type="unfinished"/>
+      <translation>ქსელით დაყენება. (გამორთულია: პაკეტების სიის გამოთხოვა შეუძლებელია. შეამოწმეთ ქსელთან მიერთება)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="61"/>
       <source>Network Installation. (Disabled: No package list)</source>
-      <translation type="unfinished"/>
+      <translation>ქსელით დაყენება. (გამორთულია: პაკეტების სიის გარეშე)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="76"/>
@@ -1038,7 +1038,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="112"/>
       <source>Please pick a product from the list. The selected product will be installed.</source>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ პროდუქტი სიიდან. მოხდება მონიშნული პროდუქტის დაყენება.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="241"/>
@@ -1064,12 +1064,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="39"/>
       <source>This is an overview of what will happen once you start the setup procedure.</source>
-      <translation type="unfinished"/>
+      <translation>ეს გადახედვაა, რა მოხდება, როცა მორგების პროცედურას გაუშვებთ.</translation>
     </message>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="44"/>
       <source>This is an overview of what will happen once you start the install procedure.</source>
-      <translation type="unfinished"/>
+      <translation>ეს გადახედვაა, რა მოხდება, როცა დაყენების პროცედურას გაუშვებთ.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/Config.cpp" line="237"/>
@@ -1079,12 +1079,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
-      <translation type="unfinished"/>
+      <translation>თქვენი მომხმარებლის სახელი პატარა ასოთი, ან ქვედა ტირეთი უნდა იწყებოდეს.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>დაშვებულია, მხოლოდ, პატარა ასოები, ციფრები, ქვედა ტირე და ტირე.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/Config.cpp" line="253"/>
@@ -1144,27 +1144,27 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="80"/>
       <source>This program will ask you some questions and set up %2 on your computer.</source>
-      <translation type="unfinished"/>
+      <translation>ეს პროგრამა რამდენიმე კითხვას დაგისვამთ და კომპიუტერზე %2-ის მორგებაში დაგეხმარებათ.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="264"/>
       <source>&lt;h1&gt;Welcome to the Calamares setup program for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;მოგესალმებათ მორგების პროგრამა Calamares %1-ისთვის&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="265"/>
       <source>&lt;h1&gt;Welcome to %1 setup&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;მოგესალმებით %1-ის მორგების პროგრამაში&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="269"/>
       <source>&lt;h1&gt;Welcome to the Calamares installer for %1&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;მოგესალმებათ დაყენების პროგრამა Calamares %1-ისთვის&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="270"/>
       <source>&lt;h1&gt;Welcome to the %1 installer&lt;/h1&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;მოგესალმებათ %1-ის დაყენების პროგრამა&lt;/h1&gt;</translation>
     </message>
   </context>
   <context>
@@ -1173,7 +1173,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს კონტექსტური პროცესების დავალების შესრულება…</translation>
     </message>
   </context>
   <context>
@@ -1266,13 +1266,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="91"/>
       <source>Mountpoint already in use. Please select another one.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>მიმაგრების წერტილი უკვე გამოიყენება. სხვა აირჩიეთ.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="96"/>
       <source>Mountpoint must start with a &lt;tt&gt;/&lt;/tt&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>მიმაგრების წერტილი &lt;tt&gt;/&lt;/tt&gt;-ით უნდა იწყებოდეს.</translation>
     </message>
   </context>
   <context>
@@ -1281,50 +1281,50 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="181"/>
       <source>Create new %1MiB partition on %3 (%2) with entries %4</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი %1მიბ დანაყოფის შექმნა %3-ზე (%2) ჩანაწერებით %4</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="189"/>
       <source>Create new %1MiB partition on %3 (%2)</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი %1მიბ დანაყოფის შექმნა %3-ზე (%2)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="196"/>
       <source>Create new %2MiB partition on %4 (%3) with file system %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი %2მიბ დანაყოფის შექმნა %4-ზე (%3) ფაილური სისტემით %1</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="212"/>
       <source>Create new &lt;strong&gt;%1MiB&lt;/strong&gt; partition on &lt;strong&gt;%3&lt;/strong&gt; (%2) with entries &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი &lt;strong&gt;%1მიბ&lt;/strong&gt; დანაყოფის შექმნა &lt;strong&gt;%3&lt;/strong&gt;-ზე (%2) ჩანაწერებით &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="222"/>
       <source>Create new &lt;strong&gt;%1MiB&lt;/strong&gt; partition on &lt;strong&gt;%3&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი &lt;strong&gt;%1მიბ&lt;/strong&gt; დანაყოფის შექმნა &lt;strong&gt;%3&lt;/strong&gt;-ზე (%2)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="229"/>
       <source>Create new &lt;strong&gt;%2MiB&lt;/strong&gt; partition on &lt;strong&gt;%4&lt;/strong&gt; (%3) with file system &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ახალი &lt;strong&gt;%2მიბ&lt;/strong&gt; დანაყოფის შექმნა &lt;strong&gt;%4&lt;/strong&gt;-ზე (%3) ფაილური სისტემით &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="254"/>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="257"/>
       <source>Creating new %1 partition on %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ახალი %1 დანაყოფი დისკზე %2…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="274"/>
       <source>The installer failed to create partition on disk '%1'.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამამ ვერ შექმნა დანაყოფი დისკზე '%1'.</translation>
     </message>
   </context>
   <context>
@@ -1337,22 +1337,22 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionTableDialog.ui" line="43"/>
       <source>Creating a new partition table will delete all existing data on the disk.</source>
-      <translation type="unfinished"/>
+      <translation>ახალი დანაყოფების ცხრილის შექმნა დისკზე არსებულ მონაცემებს სრულად წაშლის.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionTableDialog.ui" line="69"/>
       <source>What kind of partition table do you want to create?</source>
-      <translation type="unfinished"/>
+      <translation>რა ტიპის დანაყოფების ცხრილის გნებავთ, შეიქმნას?</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionTableDialog.ui" line="76"/>
       <source>Master Boot Record (MBR)</source>
-      <translation type="unfinished"/>
+      <translation>მთავარი ჩატვირთვის ჩანაწერი (MBR)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionTableDialog.ui" line="86"/>
       <source>GUID Partition Table (GPT)</source>
-      <translation type="unfinished"/>
+      <translation>GUID დანაყოფების ცხრილი (GPT)</translation>
     </message>
   </context>
   <context>
@@ -1362,18 +1362,18 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="58"/>
       <source>Creating new %1 partition table on %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ახალი %1 დანაყოფების ცხრილი %2-ზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="49"/>
       <source>Creating new &lt;strong&gt;%1&lt;/strong&gt; partition table on &lt;strong&gt;%2&lt;/strong&gt; (%3)…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ახალი &lt;strong&gt;%1&lt;/strong&gt; ტიპის დანაყოფების ცხრილი მოწყობილობაზე &lt;strong&gt;%2&lt;/strong&gt; (%3)…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="86"/>
       <source>The installer failed to create a partition table on %1.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამამ %1-ზე დანაყოფების ცხრილის შექმნა ვერ შეძლო.</translation>
     </message>
   </context>
   <context>
@@ -1393,13 +1393,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
-      <translation>იქმნება მომხმარებელი %1...</translation>
+      <translation>იქმნება მომხმარებელი %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
-      <translation>საწყისი საქაღალდის შემონახვა...</translation>
+      <translation>საწყისი საქაღალდის შენარჩუნება…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
@@ -1411,7 +1411,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
-      <translation>ფაილის წვდომების დაყენება...</translation>
+      <translation>ფაილის წვდომების დაყენება…</translation>
     </message>
   </context>
   <context>
@@ -1430,18 +1430,18 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="44"/>
       <source>Creating new volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ახალი ტომების ჯგუფი სახელით %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="38"/>
       <source>Creating new volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ახალი ტომების ჯგუფი სახელით &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="51"/>
       <source>The installer failed to create a volume group named '%1'.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამამ ვერ შექმნა ტომების ჯგუფი სახელით '%1'.</translation>
     </message>
   </context>
   <context>
@@ -1451,18 +1451,18 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="38"/>
       <source>Deactivating volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს დეაქტივაცია ტომების ჯგუფისთვის სახელით %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="32"/>
       <source>Deactivating volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს ტომების ჯგუფის დეაქტივაცია სახელით &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="46"/>
       <source>The installer failed to deactivate a volume group named %1.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამამ ვერ მოახდინა ტომების ჯგუფის, სახელით '%1', დეაქტივაცია.</translation>
     </message>
   </context>
   <context>
@@ -1472,13 +1472,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="85"/>
       <source>Deleting partition %1…</source>
       <comment>@status</comment>
-      <translation>იშლება დანაყოფი %1...</translation>
+      <translation>იშლება დანაყოფი %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="79"/>
       <source>Deleting partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation>იშლება დანაყოფი &lt;strong&gt;%1&lt;/strong&gt;...</translation>
+      <translation>იშლება დანაყოფი &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="99"/>
@@ -1540,13 +1540,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="117"/>
       <source>Writing LUKS configuration for Dracut to %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>LUKS-ის კონფიგურაციის ჩაწერა Dracut-ისთვის ფაილში %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="121"/>
       <source>Skipping writing LUKS configuration for Dracut: "/" partition is not encrypted</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>LUKS-ის კონფიგურაციის ჩაწერის გამოტოვება Dracut-ისთვის: დანაყოფი "/" დაშიფრული არაა</translation>
     </message>
     <message>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="138"/>
@@ -1561,7 +1561,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/dummycpp/DummyCppJob.cpp" line="35"/>
       <source>Performing dummy C++ job…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>სრულდება სულელური C++-ის დავალება…</translation>
     </message>
   </context>
   <context>
@@ -1589,7 +1589,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="93"/>
       <source>Warning: Formatting the partition will erase all existing data.</source>
-      <translation type="unfinished"/>
+      <translation>გაფრთხილება: დანაყოფის დაფორმატება არსებულ მონაცემებს სრულად გაანადგურებს.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="103"/>
@@ -1629,7 +1629,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.cpp" line="280"/>
       <source>Passphrase for existing partition</source>
-      <translation type="unfinished"/>
+      <translation>საკვანძო ფრაზა არსებული დანაყოფისთვის</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.cpp" line="281"/>
@@ -1647,7 +1647,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EncryptWidget.ui" line="43"/>
       <source>Your system does not seem to support encryption well enough to encrypt the entire system. You may enable encryption, but performance may suffer.</source>
-      <translation type="unfinished"/>
+      <translation>თქვენს სისტემას არ გააჩნია დაშიფვრის მხარდაჭერა საკმარისად, რომ სისტემა მთლიანად დაიშიფროს. შეგიძლიათ, ჩართოთ დაშიფვრა, მაგრამ წარმადობა დავარდება.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EncryptWidget.ui" line="59"/>
@@ -1664,13 +1664,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="181"/>
       <source>Please enter the same passphrase in both boxes.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>შეიყვანეთ იგივე საკვანძო ფრაზა ორივე ველში.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="171"/>
       <source>Password must be a minimum of %1 characters.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>პაროლი მინიმუმ %1 სიმბოლოს უნდა შეიცავდეს.</translation>
     </message>
   </context>
   <context>
@@ -1683,7 +1683,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/libcalamaresui/widgets/ErrorDialog.ui" line="56"/>
       <source>Would you like to paste the install log to the web?</source>
-      <translation type="unfinished"/>
+      <translation>გნებავთ ჩასვათ დაყენების ჟურნალი ვებისთვის?</translation>
     </message>
   </context>
   <context>
@@ -1691,28 +1691,28 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
       <source>Missing tools</source>
-      <translation>აკლია პროგრამები</translation>
+      <translation>ნაკლული ხელსაწყოები</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
       <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
-      <translation type="unfinished"/>
+      <translation>სისტემაში ხელსაწყო &lt;i&gt;%1&lt;/i&gt; დაყენებული არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
       <source>Invalid fsarchiver configuration</source>
-      <translation type="unfinished"/>
+      <translation>fsarchiver-ის არასწორი კონფიგურაცია</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
       <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
-      <translation type="unfinished"/>
+      <translation>წყარო არქივი &lt;i&gt;%1&lt;/i&gt; არ არსებობს.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
       <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;i&gt;%1&lt;/i&gt;-ისთვის სამიზნე აღმოჩენილი არაა.</translation>
     </message>
   </context>
   <context>
@@ -1727,61 +1727,61 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="208"/>
       <source>Install %1 on &lt;strong&gt;new&lt;/strong&gt; %2 system partition with features &lt;em&gt;%3&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენება &lt;strong&gt;ახალ&lt;/strong&gt; %2 სისტემის დანაყოფზე ფუნქციებით &lt;em&gt;%3&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="217"/>
       <source>Install %1 on &lt;strong&gt;new&lt;/strong&gt; %2 system partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენება &lt;strong&gt;ახალ&lt;/strong&gt; %2 სისტემურ დანაყოფზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="226"/>
       <source>Set up &lt;strong&gt;new&lt;/strong&gt; %2 partition with mount point &lt;strong&gt;%1&lt;/strong&gt; and features &lt;em&gt;%3&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;ახალი&lt;/strong&gt; %2 დანაყოფის მორგება მიმაგრების წერტილით &lt;strong&gt;%1&lt;/strong&gt; და ფუნქციებით &lt;em&gt;%3&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="235"/>
       <source>Set up &lt;strong&gt;new&lt;/strong&gt; %2 partition with mount point &lt;strong&gt;%1&lt;/strong&gt;%3</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;ახალი&lt;/strong&gt; %2 დანაყოფის მორგება მიმაგრების წერტილით &lt;strong&gt;%1&lt;/strong&gt;%3</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="250"/>
       <source>Install %2 on %3 system partition &lt;strong&gt;%1&lt;/strong&gt; with features &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%2-ის დაყენება %3 სისტემურ დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt; ფუნქციებით &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="260"/>
       <source>Install %2 on %3 system partition &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%2-ის დაყენება %3 სისტემურ დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="270"/>
       <source>Set up %3 partition &lt;strong&gt;%1&lt;/strong&gt; with mount point &lt;strong&gt;%2&lt;/strong&gt; and features &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%3-ის მორგება დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt; მიმაგრების წერტილით &lt;strong&gt;%2&lt;/strong&gt; და თვისებებით &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="280"/>
       <source>Set up %3 partition &lt;strong&gt;%1&lt;/strong&gt; with mount point &lt;strong&gt;%2&lt;/strong&gt;%4…</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%3-ის მორგება დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt; მიმაგრების წერტილით &lt;strong&gt;%2&lt;/strong&gt;%4…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="296"/>
       <source>Install boot loader on &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ჩამტვირთავის დაყენება მოწყობილობაზე &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="305"/>
       <source>Setting up mount points…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმაგრების წერტილების მორგება…</translation>
     </message>
   </context>
   <context>
@@ -1795,37 +1795,37 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="75"/>
       <source>&lt;h1&gt;All done.&lt;/h1&gt;&lt;br/&gt;%1 has been set up on your computer.&lt;br/&gt;You may now start using your new system.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;ყველაფერი მზადაა.&lt;/h1&gt;&lt;br/&gt;%1 მორგებულია თქვენს კომპიუტერზე.&lt;br/&gt;შეგიძლიათ, დაიწყოთ ახალი სისტემის გამოყენება.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="80"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the setup program.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;როცა ეს ჩართულია, სისტემა ავტომატურად გადაიტვირთება, როცა დააჭერთ ღილაკს&lt;span style="font-style:italic;"&gt;მზადაა&lt;/span&gt;, ან დახურავთ მორგების პროგრამას.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="89"/>
       <source>&lt;h1&gt;All done.&lt;/h1&gt;&lt;br/&gt;%1 has been installed on your computer.&lt;br/&gt;You may now restart into your new system, or continue using the %2 Live environment.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;ყველაფერი მზადაა.&lt;/h1&gt;&lt;br/&gt;%1 დაყენებულია თქვენს კომპიუტერზე.&lt;br/&gt;შეგიძლიათ, გადაიტვირთოთ ახალ სისტემაში, ან გააგრძელოთ %2-ის ცოცხლად გამოყენება.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="95"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the installer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;როცა ეს ჩართულია, სისტემა ავტომატურად გადაიტვირთება, როცა დააჭერთ ღილაკს&lt;span style="font-style:italic;"&gt;მზადაა&lt;/span&gt;, ან დახურავთ დაყენების პროგრამას.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="109"/>
       <source>&lt;h1&gt;Setup Failed&lt;/h1&gt;&lt;br/&gt;%1 has not been set up on your computer.&lt;br/&gt;The error message was: %2.</source>
       <comment>@info, %1 is product name with version</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;მორგება ჩავარდა&lt;/h1&gt;&lt;br/&gt;%1 არ მორგებულა თქვენს კომპიუტერზე.&lt;br/&gt;შეცდომის შეტყობინება იყო: %2.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="118"/>
       <source>&lt;h1&gt;Installation Failed&lt;/h1&gt;&lt;br/&gt;%1 has not been installed on your computer.&lt;br/&gt;The error message was: %2.</source>
       <comment>@info, %1 is product name with version</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h1&gt;დაყენება ჩავარდა&lt;/h1&gt;&lt;br/&gt;%1-ის დაყენება თქვენს კომპიუტერზე არ მომხდარა.&lt;br/&gt;შეცდომის შეტყობინება იყო: %2.</translation>
     </message>
   </context>
   <context>
@@ -1852,13 +1852,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="39"/>
       <source>Format partition %1 (file system: %2, size: %3 MiB) on %4</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>დანაყოფის %1 დაფორმატება (ფაილური სისტემა: %2, ზომა: %3 MiB) %4-ზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="49"/>
       <source>Format &lt;strong&gt;%3MiB&lt;/strong&gt; partition &lt;strong&gt;%1&lt;/strong&gt; with file system &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;%3მიბ&lt;/strong&gt; დანაყოფის დაფორმატება &lt;strong&gt;%1&lt;/strong&gt; ფაილური სისტემით &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="62"/>
@@ -1870,7 +1870,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="64"/>
       <source>Formatting partition %1 with file system %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს დანაყოფის %1 დაფორმატება ფაილური სისტემით %2…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="73"/>
@@ -1883,7 +1883,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="160"/>
       <source>Please ensure the system has at least %1 GiB available drive space.</source>
-      <translation type="unfinished"/>
+      <translation>დარწმუნდით, რომ სისტემას, სულ ცოტა, %1 გიბ ხელმისაწვდომი ადგილი აქვს დისკზე.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="162"/>
@@ -1893,7 +1893,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="165"/>
       <source>There is not enough drive space. At least %1 GiB is required.</source>
-      <translation type="unfinished"/>
+      <translation>სისტემაში დისკზე საკმარისი ადგილი არაა. საჭიროა, სულ ცოტა, %1 გიბ.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="173"/>
@@ -1928,32 +1928,32 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="200"/>
       <source>is running the installer as an administrator (root)</source>
-      <translation type="unfinished"/>
+      <translation>გაშვებული აქვს დაყენების პროგრამა ადმინისტრატორით (root)</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="204"/>
       <source>The setup program is not running with administrator rights.</source>
-      <translation type="unfinished"/>
+      <translation>მორგების პროგრამა არაა გაშვებული ადმინისტრატორის უფლებებით.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="205"/>
       <source>The installer is not running with administrator rights.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამა არაა გაშვებული ადმინისტრატორის უფლებებით.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="213"/>
       <source>has a screen large enough to show the whole installer</source>
-      <translation type="unfinished"/>
+      <translation>აქვს საკმარისად დიდი ეკრანი მთლიანი დაყენების პროგრამის საჩვენებლად</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="217"/>
       <source>The screen is too small to display the setup program.</source>
-      <translation type="unfinished"/>
+      <translation>ეკრანი ძალიან პატარაა მორგების პროგრამის საჩვენებლად.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="218"/>
       <source>The screen is too small to display the installer.</source>
-      <translation type="unfinished"/>
+      <translation>ეკრანი ძალიან პატარაა დაყენების პროგრამის საჩვენებლად.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="227"/>
@@ -2004,7 +2004,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="265"/>
       <source>The snark has not been checked three times.</source>
       <comment>The (some mythological beast) has not been checked three times.</comment>
-      <translation type="unfinished"/>
+      <translation>ჭინკა სამჯერ არ შემოწმებულა.</translation>
     </message>
   </context>
   <context>
@@ -2013,7 +2013,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/hostinfo/HostInfoJob.cpp" line="39"/>
       <source>Collecting information about your machine…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს ინფორმაციის მოგროვება თქვენი მანქანის შესახებ…</translation>
     </message>
   </context>
   <context>
@@ -2029,17 +2029,17 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/oemid/IDJob.cpp" line="40"/>
       <source>Could not create directories &lt;code&gt;%1&lt;/code&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ შევქმენი საქაღალდე &lt;code&gt;%1&lt;/code&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/oemid/IDJob.cpp" line="53"/>
       <source>Could not open file &lt;code&gt;%1&lt;/code&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ გავხსენი ფაილი &lt;code&gt;%1&lt;/code&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/oemid/IDJob.cpp" line="60"/>
       <source>Could not write to file &lt;code&gt;%1&lt;/code&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ ჩავწერე ფაილში &lt;code&gt;%1&lt;/code&gt;.</translation>
     </message>
   </context>
   <context>
@@ -2048,7 +2048,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/initcpio/InitcpioJob.cpp" line="31"/>
       <source>Creating initramfs with mkinitcpio…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>initramfs-ის შექმნა mkinitcpio-ით…</translation>
     </message>
   </context>
   <context>
@@ -2120,7 +2120,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/locale/LCLocaleDialog.cpp" line="30"/>
       <source>The system locale setting affects the language and character set for some command line user interface elements.&lt;br/&gt;The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>სისტემის ლოკალის პარამეტრს გავლენა აქვს ენაზე და სიმბოლოების ნაკრებზე ზოგიერთი ბრძანების სტრიქონის მომხმარებლის ინტერფეისის ელემენტებზე.&lt;br/&gt;მიმდინარე მნიშვნელობაა &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/LCLocaleDialog.cpp" line="55"/>
@@ -2175,31 +2175,31 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicensePage.cpp" line="144"/>
       <source>Please review the End User License Agreements (EULAs).</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>გადახედეთ საბოლოო მომხმარებლის ლიცენზიის შეთანხმებებს (EULA-ებს).</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="149"/>
       <source>This setup procedure will install proprietary software that is subject to licensing terms.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ეს მორგების პროცედურა დააყენებს ფასიან პროგრამებს, რომლებსაც თავიანთი ლიცენზიის პირობები გააჩნიათ.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="154"/>
       <source>If you do not agree with the terms, the setup procedure cannot continue.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>თუ არ ეთანხმებით პირობებს, მორგების პროცედურა ვერ გაგრძელდება.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="159"/>
       <source>This setup procedure can install proprietary software that is subject to licensing terms in order to provide additional features and enhance the user experience.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ამ მორგების პროცედურას შეუძლია, ფასიანი პროგრამები დააყენოს, რომლებსაც თავიანთი ლიცენზიის პირობები აქვთ, რომ მოგაწოდონ დამატებითი ფუნქციები და გააუმჯობესონ მომხმარებლის გამოცდილება.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="165"/>
       <source>If you do not agree with the terms, proprietary software will not be installed, and open source alternatives will be used instead.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>თუ ამ პირობებს არ ეთანხმებით, ფასიანი პროგრამების დაყენება არ მოხდება და გამოყენებული იქნება მათი ღია კოდის მქონე ალტერნატივები.</translation>
     </message>
   </context>
   <context>
@@ -2357,7 +2357,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/luksbootkeyfile/LuksBootKeyFileJob.cpp" line="305"/>
       <source>Could not create LUKS key file for root partition %1.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ შევქმენი LUKS გასაღების ფაილი ძირითადი დანაყოფისთვის %1.</translation>
     </message>
   </context>
   <context>
@@ -2375,7 +2375,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/machineid/MachineIdJob.cpp" line="72"/>
       <source>No root mount point is set for MachineId.</source>
-      <translation type="unfinished"/>
+      <translation>MachineId-ისთვის ძირითადი საქაღალდის მიმაგრების წერტილი დაყენებული არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/machineid/Workers.cpp" line="63"/>
@@ -2388,12 +2388,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/machineid/Workers.cpp" line="64"/>
       <source>Path &lt;pre&gt;%1&lt;/pre&gt; must be an absolute path.</source>
-      <translation type="unfinished"/>
+      <translation>ბილიკი&lt;pre&gt;%1&lt;/pre&gt; აბსოლუტური ბილიკი უნდა იყოს.</translation>
     </message>
     <message>
       <location filename="../src/modules/machineid/Workers.cpp" line="93"/>
       <source>Could not create new random file &lt;pre&gt;%1&lt;/pre&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ შევქმენი ახალი შემთხვევითი ფაილი &lt;pre&gt;%1&lt;/pre&gt;.</translation>
     </message>
   </context>
   <context>
@@ -2410,7 +2410,9 @@ The installer will quit and all changes will be lost.</source>
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ სასურველი მდებარეობა რუკაზე, რომ დაყენების პროგრამამ ლოკალი და
+              დროის სარტყლის პარამეტრები აგირჩიოთ. ეს შეგიძლიათ, დააზუსტოთ ქვემოთ. მოძებნეთ რუკაზე
+              მისი გადათრევით და +/- ღილაკების, ან თაგუნას ბორბლის გამოყენებით მასშტაბის შესაცვლელად.</translation>
     </message>
   </context>
   <context>
@@ -2427,7 +2429,9 @@ The installer will quit and all changes will be lost.</source>
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ სასურველი მდებარეობა რუკაზე, რომ დაყენების პროგრამამ ლოკალი და
+              დროის სარტყლის პარამეტრები აგირჩიოთ. ეს შეგიძლიათ, დააზუსტოთ ქვემოთ. მოძებნეთ რუკაზე
+              მისი გადათრევით და +/- ღილაკების, ან თაგუნას ბორბლის გამოყენებით მასშტაბის შესაცვლელად.</translation>
     </message>
   </context>
   <context>
@@ -2585,7 +2589,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="47"/>
       <source>Select your preferred region, or use the default settings</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>დააყენეთ სასურველი რეგიონი, ან გამოიყენეთ ნაგულისხმევი პარამეტრები</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="103"/>
@@ -2599,7 +2603,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="120"/>
       <source>Select your preferred zone within your region</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ თქვენი სასურველი ზონა თქვენს რეგიონში</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="193"/>
@@ -2611,7 +2615,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="240"/>
       <source>You can fine-tune language and locale settings below</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>ენის და ლოკალის უფრო დაწვრილებითი მორგება ქვემოთ შეგიძლიათ</translation>
     </message>
   </context>
   <context>
@@ -2620,7 +2624,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="47"/>
       <source>Select your preferred region, or use the default settings</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>დააყენეთ სასურველი რეგიონი, ან გამოიყენეთ ნაგულისხმევი პარამეტრები</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="103"/>
@@ -2634,7 +2638,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="120"/>
       <source>Select your preferred zone within your region</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ თქვენი სასურველი ზონა თქვენს რეგიონში</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="193"/>
@@ -2646,7 +2650,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="240"/>
       <source>You can fine-tune language and locale settings below</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>ენის და ლოკალის უფრო დაწვრილებითი მორგება ქვემოთ შეგიძლიათ</translation>
     </message>
   </context>
   <context>
@@ -2669,7 +2673,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="197"/>
       <source>Memory allocation error when setting '%1'</source>
-      <translation type="unfinished"/>
+      <translation>მეხსიერების გამოყოფის შეცდომა '%1'-ის დაყენებისას</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="200"/>
@@ -2714,9 +2718,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="219"/>
       <source>The password contains fewer than %n digits</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n-ზე ნაკლებ ციფრს შეიცავს</numerusform>
+        <numerusform>პაროლი %n-ზე ნაკლებ ციფრს შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2727,9 +2731,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="226"/>
       <source>The password contains fewer than %n uppercase letters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n-ზე ნაკლებ დიდ ასოს შეიცავს</numerusform>
+        <numerusform>პაროლი %n-ზე ნაკლებ დიდ ასოს შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2740,9 +2744,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="233"/>
       <source>The password contains fewer than %n lowercase letters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n-ზე ნაკლებ პატარა ასოს შეიცავს</numerusform>
+        <numerusform>პაროლი %n-ზე ნაკლებ პატარა ასოს შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2753,9 +2757,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="240"/>
       <source>The password contains fewer than %n non-alphanumeric characters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n-ზე ნაკლებ არა-ალფარიცხვით სიმბოლოს შეიცავს</numerusform>
+        <numerusform>პაროლი %n-ზე ნაკლებ არა-ალფარიცხვით სიმბოლოს შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2766,9 +2770,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="247"/>
       <source>The password is shorter than %n characters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n სიმბოლოზე მოკლეა</numerusform>
+        <numerusform>პაროლი %n სიმბოლოზე მოკლეა</numerusform>
       </translation>
     </message>
     <message>
@@ -2779,14 +2783,14 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="252"/>
       <source>The password is a rotated version of the previous one</source>
-      <translation type="unfinished"/>
+      <translation>პაროლი შემობრუნებული ძველი პაროლია</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="256"/>
       <source>The password contains fewer than %n character classes</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი %n სიმბოლოს კლასზე ნაკლებს შეიცავს</numerusform>
+        <numerusform>პაროლი %n სიმბოლოს კლასზე ნაკლებს შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2797,9 +2801,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="263"/>
       <source>The password contains more than %n same characters consecutively</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი ერთი და იგივე სიმბოლოს %n-ზე მეტჯერ შეიცავს</numerusform>
+        <numerusform>პაროლი ერთი და იგივე სიმბოლოს %n-ზე მეტჯერ შეიცავს</numerusform>
       </translation>
     </message>
     <message>
@@ -2810,9 +2814,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="270"/>
       <source>The password contains more than %n characters of the same class consecutively</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>პაროლი ერთი და იგივე კლასის %n-ზე მეტ სიმბოლოს შეიცავს ზედიზედ</numerusform>
+        <numerusform>პაროლი ერთი და იგივე კლასის %n-ზე მეტ სიმბოლოს შეიცავს ზედიზედ</numerusform>
       </translation>
     </message>
     <message>
@@ -2851,7 +2855,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="299"/>
       <source>The password fails the dictionary check - %1</source>
-      <translation type="unfinished"/>
+      <translation>პაროლი ვერ აკმაყოფილებს ლექსიკონის მიხედვით შემოწმების პირობებს - %1</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="302"/>
@@ -2944,7 +2948,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/packagechooser/PackageChooserPage.cpp" line="26"/>
       <source>Please pick a product from the list. The selected product will be installed.</source>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ პროდუქტი სიიდან. მოხდება მონიშნული პროდუქტის დაყენება.</translation>
     </message>
   </context>
   <context>
@@ -2994,7 +2998,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="124"/>
       <source>What name do you want to use to log in?</source>
-      <translation type="unfinished"/>
+      <translation>რა სახელი გნებავთ, გამოიყენოთ შესასვლელად?</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="148"/>
@@ -3019,7 +3023,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="325"/>
       <source>Choose a password to keep your account safe.</source>
-      <translation type="unfinished"/>
+      <translation>შეიყვანეთ პაროლი თქვენი ანგარიშის დასაცავად.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="349"/>
@@ -3052,17 +3056,17 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="465"/>
       <source>Log in automatically without asking for the password.</source>
-      <translation type="unfinished"/>
+      <translation>ავტომატური შესვლა პაროლის კითხვის გარეშე.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="472"/>
       <source>Use the same password for the administrator account.</source>
-      <translation type="unfinished"/>
+      <translation>იგივე პაროლის გამოყენება ადმინისტრატორის ანგარიშისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="495"/>
       <source>Choose a password for the administrator account.</source>
-      <translation type="unfinished"/>
+      <translation>შეიყვანეთ პაროლი ადმინისტრატორის ანგარიშისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="519"/>
@@ -3083,7 +3087,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="652"/>
       <source>Domain Administrator:</source>
-      <translation>დომენის ადმინისტრატორი</translation>
+      <translation>დომენის ადმინისტრატორი:</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="662"/>
@@ -3125,7 +3129,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="195"/>
       <source>Swap</source>
       <comment>@label</comment>
-      <translation>სვაპი</translation>
+      <translation>სვოპი</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="199"/>
@@ -3248,12 +3252,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/PartitionPage.ui" line="184"/>
       <source>I&amp;nstall boot loader on:</source>
-      <translation type="unfinished"/>
+      <translation>ჩამტვირთავის დაყე&amp;ნება დისკზე:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="227"/>
       <source>Are you sure you want to create a new partition table on %1?</source>
-      <translation type="unfinished"/>
+      <translation>მართლა გნებავთ ახალი დანაყოფების ცხრილის შექმნა %1-ზე?</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionPage.cpp" line="262"/>
@@ -3272,7 +3276,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="56"/>
       <source>Gathering system information…</source>
       <comment>@status</comment>
-      <translation>სისტემის ინფორმაციის მოგროვება...</translation>
+      <translation>სისტემის ინფორმაციის შეგროვება…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="107"/>
@@ -3284,19 +3288,19 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენება სხვა ოპერაციულ სისტემასთან &lt;strong&gt;ერთად&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>დისკის &lt;strong&gt;წაშლა&lt;/strong&gt; და %1-ის დაყენება</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>დანაყოფის &lt;strong&gt;ჩანაცვლება&lt;/strong&gt; %1-ით</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
@@ -3308,25 +3312,25 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის დაყენება სხვა ოპერაციულ სისტემასთან &lt;strong&gt;ერთად&lt;/strong&gt; დისკზე &lt;strong&gt;%2&lt;/strong&gt; (%3)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>დისკის &lt;strong&gt;%2&lt;/strong&gt; (%3) &lt;strong&gt;წაშლა&lt;/strong&gt; %1-ის დაყენება</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>დანაყოფის &lt;strong&gt;ჩანაცვლება&lt;/strong&gt; დისკზე &lt;strong&gt;%2&lt;/strong&gt; (%3) დანაყოფით %1</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;ხელით&lt;/strong&gt; დაყოფა დისკისთვის &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
@@ -3337,12 +3341,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
       <source>Create a swap file.</source>
-      <translation type="unfinished"/>
+      <translation>სვოპის ფაილის შექმნა.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
-      <translation type="unfinished"/>
+      <translation>სახიფათო დანაყოფის ქმედებები ჩართულია.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
@@ -3384,23 +3388,23 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
-      <translation type="unfinished"/>
+      <translation>ფაილურ სისტემას უნდა ჰქონდეს ტიპი FAT32.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
-      <translation type="unfinished"/>
+      <translation>ფაილურ სისტემას უნდა ჰქონდეს დაყენებული ალამი &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის ზომა, სულ ცოტა, %1 მიბ უნდა იყოს.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემისთვის მინიმალური რეკომენდებული ზომაა %1 მიბ.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
@@ -3415,22 +3419,22 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
-      <translation type="unfinished"/>
+      <translation>EFI-ის სისტემური დანაყოფი მორგებული არაა</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
-      <translation type="unfinished"/>
+      <translation>EFI-ის სისტემური დანაყოფი არასწორადაა მორგებული</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
-      <translation type="unfinished"/>
+      <translation>EFI-ის სისტემური დანაყოფის რეკომენდაცია</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
-      <translation type="unfinished"/>
+      <translation>არჩევანი, გამოიყენოთ GPT BIOS-ზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
@@ -3440,7 +3444,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
-      <translation type="unfinished"/>
+      <translation>ჩამტვირთავი დანაყოფი დაშიფრული არაა</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
@@ -3450,12 +3454,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
-      <translation type="unfinished"/>
+      <translation>აქვს, სულ ცოტა, ერთი დისკი ხელმისაწვდომი.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
-      <translation type="unfinished"/>
+      <translation>დასაყოფად დანაყოფები არ არსებობს.</translation>
     </message>
   </context>
   <context>
@@ -3464,13 +3468,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/plasmalnf/PlasmaLnfJob.cpp" line="33"/>
       <source>Applying Plasma Look-and-Feel…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Plasma-ის გარეგნობის პარამეტრების გადატარება…</translation>
     </message>
     <message>
       <location filename="../src/modules/plasmalnf/PlasmaLnfJob.cpp" line="57"/>
       <location filename="../src/modules/plasmalnf/PlasmaLnfJob.cpp" line="58"/>
       <source>Could not select KDE Plasma Look-and-Feel package</source>
-      <translation type="unfinished"/>
+      <translation>KDE Plasma-ის გარეგნობის პაკეტის არჩევა შეუძლებელია</translation>
     </message>
   </context>
   <context>
@@ -3515,17 +3519,17 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="56"/>
       <source>Saving files for later…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილების შენახვა მოგვიანებით გამოსაყენებლად…</translation>
     </message>
     <message>
       <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="64"/>
       <source>No files configured to save for later.</source>
-      <translation type="unfinished"/>
+      <translation>მოგვიანებით გამოსაყენებლად ფაილები მორგებული არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="88"/>
       <source>Not all of the configured files could be preserved.</source>
-      <translation type="unfinished"/>
+      <translation>ყველა მორგებული ფაილის შენარჩუნება შესაძლებელი არაა.</translation>
     </message>
   </context>
   <context>
@@ -3534,7 +3538,8 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/libcalamares/utils/System.cpp" line="301"/>
       <source>
 There was no output from the command.</source>
-      <translation type="unfinished"/>
+      <translation>
+ბრძანებას არაფერი გამოუტანია.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="302"/>
@@ -3558,42 +3563,42 @@ Output:
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="315"/>
       <source>External command failed to start.</source>
-      <translation type="unfinished"/>
+      <translation>გარე ბრძანების გაშვება ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="316"/>
       <source>Command &lt;i&gt;%1&lt;/i&gt; failed to start.</source>
-      <translation type="unfinished"/>
+      <translation>ბრძანების &lt;i&gt;%1&lt;/i&gt; გაშვება ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="322"/>
       <source>Internal error when starting command.</source>
-      <translation type="unfinished"/>
+      <translation>შიდა შეცდომა ბრძანების გაშვებისას.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="323"/>
       <source>Bad parameters for process job call.</source>
-      <translation type="unfinished"/>
+      <translation>არასწორი პარამეტრები პროცესის დავალების გამოძახებისთვის.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="329"/>
       <source>External command failed to finish.</source>
-      <translation type="unfinished"/>
+      <translation>გარე ბრძანების დასრულება ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="330"/>
       <source>Command &lt;i&gt;%1&lt;/i&gt; failed to finish in %2 seconds.</source>
-      <translation type="unfinished"/>
+      <translation>ბრძანება &lt;i&gt;%1&lt;/i&gt; %2 წამში არ დასრულდა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="338"/>
       <source>External command finished with errors.</source>
-      <translation type="unfinished"/>
+      <translation>გარე ბრძანება შეცდომებით დასრულდა.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/utils/System.cpp" line="339"/>
       <source>Command &lt;i&gt;%1&lt;/i&gt; finished with exit code %2.</source>
-      <translation type="unfinished"/>
+      <translation>ბრძანება &lt;i&gt;%1&lt;/i&gt; დასრულდა შეცდომის კოდით %2.</translation>
     </message>
   </context>
   <context>
@@ -3641,7 +3646,7 @@ Output:
     <message>
       <location filename="../src/modules/machineid/MachineIdJob.cpp" line="102"/>
       <source>Could not create new random file &lt;pre&gt;%1&lt;/pre&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>ვერ შევქმენი ახალი შემთხვევითი ფაილი &lt;pre&gt;%1&lt;/pre&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/PackageModel.cpp" line="74"/>
@@ -3662,7 +3667,7 @@ Output:
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="39"/>
       <source>Unpartitioned space or unknown partition table</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>დაუყოფელი სივრცე, ან უცნობი დანაყოფების ცხრილი</translation>
     </message>
   </context>
   <context>
@@ -3680,7 +3685,7 @@ Output:
       <location filename="../src/modules/removeuser/RemoveUserJob.cpp" line="32"/>
       <source>Removing live user from the target system…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ცოცხალი მომხმარებლის წაშლა სამიზნე სისტემიდან…</translation>
     </message>
   </context>
   <context>
@@ -3690,18 +3695,18 @@ Output:
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="38"/>
       <source>Removing Volume Group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იშლება ტომების ჯგუფი სახელით %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="32"/>
       <source>Removing Volume Group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იშლება ტომების ჯგუფი სახელით &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="46"/>
       <source>The installer failed to remove a volume group named '%1'.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამის შეცდომა, წაეშალა ტომების ჯგუფი სახელით '%1'.</translation>
     </message>
   </context>
   <context>
@@ -3725,7 +3730,7 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="43"/>
       <source>Performing file system resize…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს ფაილური სისტემის ზომის შეცვლა…</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="162"/>
@@ -3737,7 +3742,7 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="163"/>
       <source>The file-system resize job has an invalid configuration and will not run.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის ზომის შეცვლის დავალების კონფიგურაცია არასწორია და ის არ გაეშვება.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="170"/>
@@ -3749,7 +3754,7 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="171"/>
       <source>Calamares cannot start KPMCore for the file system resize job.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Calamares-მა ვერ გაუშვა KPMCore ფაილური სისტემის ზომის შეცვლის დავალებისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="180"/>
@@ -3761,13 +3766,13 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="182"/>
       <source>The filesystem %1 could not be found in this system, and cannot be resized.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის %1 აღმოჩენა სისტემაში შეუძლებელია და ამიტომ მისი ზომა ვერ შეიცვლება.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="184"/>
       <source>The device %1 could not be found in this system, and cannot be resized.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>მოწყობილობა %1 სისტემაში აღმოჩენილი არაა და ამიტომ მისი ზომა ვერ შეიცვლება.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="193"/>
@@ -3783,26 +3788,26 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="206"/>
       <source>The filesystem %1 cannot be resized.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის %1 ზომის შეცვლა შეუძლებელია.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="195"/>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="207"/>
       <source>The device %1 cannot be resized.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>მოწყობილობის %1 ზომის შეცვლა შეუძლებელია.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="216"/>
       <source>The file system %1 must be resized, but cannot.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემის %1 ზომის შეცვლა აუცილებელი, მაგრამ შეუძლებელია.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="217"/>
       <source>The device %1 must be resized, but cannot</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>მოწყობილობის %1 ზომის შეცვლა აუცილებელი, მაგრამ შეუძლებელია</translation>
     </message>
   </context>
   <context>
@@ -3817,18 +3822,18 @@ Output:
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="45"/>
       <source>Resize &lt;strong&gt;%2MiB&lt;/strong&gt; partition &lt;strong&gt;%1&lt;/strong&gt; to &lt;strong&gt;%3MiB&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;%2მიბ&lt;/strong&gt; დანაყოფის ზომის შეცვლა &lt;strong&gt;%1&lt;/strong&gt; &lt;strong&gt;%3მიბ&lt;/strong&gt;-მდე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="54"/>
       <source>Resizing %2MiB partition %1 to %3MiB…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს %2მიბ დანაყოფის ზომის შეცვლა %1 %3მიბ-მდე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="70"/>
       <source>The installer failed to resize partition %1 on disk '%2'.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამის შეცდომა, შეეცვალა ზომა დანაყოფისთვის %1 დისკზე '%2'.</translation>
     </message>
   </context>
   <context>
@@ -3846,24 +3851,24 @@ Output:
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="28"/>
       <source>Resize volume group named %1 from %2 to %3</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ტომების ჯგუფის სახელით %1 ზომის შეცვლა %2-დან %3-მდე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="37"/>
       <source>Resize volume group named &lt;strong&gt;%1&lt;/strong&gt; from &lt;strong&gt;%2&lt;/strong&gt; to &lt;strong&gt;%3&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ტომების ჯგუფის სახელით &lt;strong&gt;%1&lt;/strong&gt; ზომის შეცვლა &lt;strong&gt;%2&lt;/strong&gt;-დან &lt;strong&gt;%3&lt;/strong&gt;-მდე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="47"/>
       <source>Resizing volume group named %1 from %2 to %3…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მიმდინარეობს ზომის შეცვლა ტომების ჯგუფისთვის სახელით %1 %2-დან %3-მდე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="58"/>
       <source>The installer failed to resize a volume group named '%1'.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამის შეცდომა, შეეცვალა ზომა ტომების ჯგუფისთვის სახელით '%1'.</translation>
     </message>
   </context>
   <context>
@@ -3871,7 +3876,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/checker/ResultsListWidget.cpp" line="47"/>
       <source>Checking requirements again in a few seconds ...</source>
-      <translation type="unfinished"/>
+      <translation>მოთხოვნები კიდევ ერთხელ შემოწმდება რამდენიმე წამში ...</translation>
     </message>
   </context>
   <context>
@@ -3880,13 +3885,13 @@ Output:
       <location filename="../src/modules/partition/gui/ScanningDialog.cpp" line="69"/>
       <source>Scanning storage devices…</source>
       <comment>@status</comment>
-      <translation>საცავის მოწყობილობების სკანირება...</translation>
+      <translation>საცავის მოწყობილობების სკანირება…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ScanningDialog.cpp" line="69"/>
       <source>Partitioning…</source>
       <comment>@status</comment>
-      <translation>მიმდინარეობს დაყოფა...</translation>
+      <translation>მიმდინარეობს დაყოფა…</translation>
     </message>
   </context>
   <context>
@@ -3905,7 +3910,7 @@ Output:
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="48"/>
       <source>Setting hostname %1…</source>
       <comment>@status</comment>
-      <translation>%1 ჰოსტის სახელის დაყენება...</translation>
+      <translation>%1 ჰოსტის სახელის დაყენება…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="121"/>
@@ -3917,7 +3922,7 @@ Output:
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="139"/>
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="156"/>
       <source>Cannot write hostname to target system</source>
-      <translation type="unfinished"/>
+      <translation>ჰოსტის სახელის ჩაწერის შეცდომა სამიზნე სისტემაზე</translation>
     </message>
   </context>
   <context>
@@ -3926,43 +3931,43 @@ Output:
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="66"/>
       <source>Setting keyboard model to %1, layout as %2-%3…</source>
       <comment>@status, %1 model, %2 layout, %3 variant</comment>
-      <translation type="unfinished"/>
+      <translation>კლავიატურის მოდელის დაყენება %1-ზე, განლაგების %2-%3-ზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="371"/>
       <source>Failed to write keyboard configuration for the virtual console.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>ვირტუალური კონსოლისთვის კლავიატურის კონფიგურაცია ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="372"/>
       <source>Failed to write to %1</source>
       <comment>@error, %1 is virtual console configuration path</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ის ჩაწერის შეცდომა</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="399"/>
       <source>Failed to write keyboard configuration for X11.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>X11-ისთვის კლავიატურის კონფიგურაციის ჩაწერა ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="400"/>
       <source>Failed to write to %1</source>
       <comment>@error, %1 is keyboard configuration path</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ში ჩაწერა ჩავარდა</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="416"/>
       <source>Failed to write keyboard configuration to existing /etc/default directory.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>არსებულ /etc/default საქაღალდეში კლავიატურის კონფიგურაციის ჩაწერა ჩავარდა.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="417"/>
       <source>Failed to write to %1</source>
       <comment>@error, %1 is default keyboard path</comment>
-      <translation type="unfinished"/>
+      <translation>%1-ში ჩაწერა ჩავარდა</translation>
     </message>
   </context>
   <context>
@@ -3971,96 +3976,96 @@ Output:
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="44"/>
       <source>Set flags on partition %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება დანაყოფზე %1</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="50"/>
       <source>Set flags on %1MiB %2 partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება %1მიბ %2 დანაყოფზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="54"/>
       <source>Set flags on new partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება ახალ დანაყოფზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="65"/>
       <source>Clear flags on partition &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="71"/>
       <source>Clear flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება %1მიბ &lt;strong&gt;%2&lt;/strong&gt; დანაყოფზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="75"/>
       <source>Clear flags on new partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება ახალ დანაყოფზე</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="80"/>
       <source>Set flags on partition &lt;strong&gt;%1&lt;/strong&gt; to &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt; მნიშვნელობაზე &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="88"/>
       <source>Set flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition to &lt;strong&gt;%3&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება %1მიბ &lt;strong&gt;%2&lt;/strong&gt; დანაყოფზე მნიშვნელობებზე &lt;strong&gt;%3&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="94"/>
       <source>Set flags on new partition to &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება ახალ დანაყოფზე მნიშვნელობაზე &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="105"/>
       <source>Clearing flags on partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="112"/>
       <source>Clearing flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება %1მიბ &lt;strong&gt;%2&lt;/strong&gt; დანაყოფზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="117"/>
       <source>Clearing flags on new partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების გასუფთავება ახალ დანაყოფზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="122"/>
       <source>Setting flags &lt;strong&gt;%2&lt;/strong&gt; on partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება &lt;strong&gt;%2&lt;/strong&gt; დანაყოფზე &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="130"/>
       <source>Setting flags &lt;strong&gt;%3&lt;/strong&gt; on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების დაყენება &lt;strong&gt;%3&lt;/strong&gt; %1მიბ &lt;strong&gt;%2&lt;/strong&gt; დანაყოფზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="136"/>
       <source>Setting flags &lt;strong&gt;%1&lt;/strong&gt; on new partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ალმების&lt;strong&gt;%1&lt;/strong&gt; დაყენება ახალ დანაყოფზე…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="149"/>
       <source>The installer failed to set flags on partition %1.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების პროგრამამ ვერ დააყენა ალმები დანაყოფზე %1.</translation>
     </message>
   </context>
   <context>
@@ -4068,18 +4073,18 @@ Output:
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="38"/>
       <source>Set password for user %1</source>
-      <translation type="unfinished"/>
+      <translation>პაროლის დაყენება მომხმარებლისთვის %1</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="44"/>
       <source>Setting password for user %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>პაროლის დაყენება მომხმარებლისთვის %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="80"/>
       <source>Bad destination system path.</source>
-      <translation type="unfinished"/>
+      <translation>არასწორი სამიზნე სისტემის ბილიკი.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="81"/>
@@ -4089,18 +4094,18 @@ Output:
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="89"/>
       <source>Cannot disable root account.</source>
-      <translation type="unfinished"/>
+      <translation>root ანგარიშის გამორთვა შეუძლებელია.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="90"/>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="108"/>
       <source>usermod terminated with error code %1.</source>
-      <translation type="unfinished"/>
+      <translation>usermod შეწყდა შეცდომის კოდით %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="107"/>
       <source>Cannot set password for user %1.</source>
-      <translation type="unfinished"/>
+      <translation>პაროლის დაყენების შეცდომა მომხმარებლისთვის %1.</translation>
     </message>
   </context>
   <context>
@@ -4109,13 +4114,13 @@ Output:
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="32"/>
       <source>Setting timezone to %1/%2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>დროის სარტყლის დაყენება მნიშვნელობაზე %1/%2…</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="60"/>
       <source>Cannot access selected timezone path.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>არჩეული დროის სარტყლის ბილიკთან წვდომა აკრძალულია.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="61"/>
@@ -4134,13 +4139,13 @@ Output:
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="71"/>
       <source>Link creation failed, target: %1; link name: %2</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>ბმულის შექმნა ჩავარდა. სამიზნე: %1. ბმულის სახელი: %2</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="81"/>
       <source>Cannot open /etc/timezone for writing</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>/etc/timezone-ის ჩასაწერად გახსნა ჩავარდა</translation>
     </message>
   </context>
   <context>
@@ -4149,18 +4154,18 @@ Output:
       <location filename="../src/modules/users/MiscJobs.cpp" line="181"/>
       <source>Preparing groups…</source>
       <comment>@status</comment>
-      <translation>ჯგუფების მომზადება...</translation>
+      <translation>ჯგუფების მომზადება…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="193"/>
       <location filename="../src/modules/users/MiscJobs.cpp" line="198"/>
       <source>Could not create groups in target system</source>
-      <translation type="unfinished"/>
+      <translation>ჯგუფების შექმნის შეცდომა სამიზნე სისტემაში</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="199"/>
       <source>These groups are missing in the target system: %1</source>
-      <translation type="unfinished"/>
+      <translation>ეს ჯგუფები აკლია სამიზნე სისტემას: %1</translation>
     </message>
   </context>
   <context>
@@ -4169,17 +4174,17 @@ Output:
       <location filename="../src/modules/users/MiscJobs.cpp" line="34"/>
       <source>Configuring &lt;pre&gt;sudo&lt;/pre&gt; users…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;pre&gt;sudo&lt;/pre&gt;-ის მომხმარებლების მორგება…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="70"/>
       <source>Cannot chmod sudoers file.</source>
-      <translation type="unfinished"/>
+      <translation>sudoers ფაილის chmod-ის შეცდომა.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="75"/>
       <source>Cannot create sudoers file for writing.</source>
-      <translation type="unfinished"/>
+      <translation>sudoers ფაილის ჩასაწერად შექმნა შეუძლებელია.</translation>
     </message>
   </context>
   <context>
@@ -4188,7 +4193,7 @@ Output:
       <location filename="../src/modules/shellprocess/ShellProcessJob.cpp" line="38"/>
       <source>Running shell processes…</source>
       <comment>@status</comment>
-      <translation>გარსის პროცესების გაშვება...</translation>
+      <translation>გარსის პროცესების შესრულება…</translation>
     </message>
   </context>
   <context>
@@ -4235,32 +4240,32 @@ Output:
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
       <source>Invalid tarball configuration</source>
-      <translation type="unfinished"/>
+      <translation>არასწორი tarball-ის კონფიგურაცია</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
       <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
-      <translation type="unfinished"/>
+      <translation>წყარო არქივი &lt;i&gt;%1&lt;/i&gt; არ არსებობს.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
       <source>Missing tools</source>
-      <translation>აკლია პროგრამები</translation>
+      <translation>ნაკლული ხელსაწყოები</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
       <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
-      <translation type="unfinished"/>
+      <translation>სისტემაში ხელსაწყო &lt;i&gt;%1&lt;/i&gt; დაყენებული არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
       <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;i&gt;%1&lt;/i&gt;-ისთვის სამიზნე აღმოჩენილი არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
       <source>Tarball extract file %1</source>
-      <translation type="unfinished"/>
+      <translation>.tar ფაილის გაშლა %1</translation>
     </message>
   </context>
   <context>
@@ -4274,12 +4279,12 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="106"/>
       <source>Sending installation feedback…</source>
       <comment>@status</comment>
-      <translation>დაყენების უკუკავშირის გაგზავნა....</translation>
+      <translation>იგზავნება დაყენების უკუკავშირი…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="124"/>
       <source>Internal error in install-tracking.</source>
-      <translation type="unfinished"/>
+      <translation>დაყენების ტრეკინგის შიდა შეცდომა.</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="125"/>
@@ -4298,23 +4303,23 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="198"/>
       <source>Configuring KDE user feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>KDE-ის მომხმარებლის უკუკავშირის მორგება…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="220"/>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="228"/>
       <source>Error in KDE user feedback configuration.</source>
-      <translation type="unfinished"/>
+      <translation>შეცდომა KDE-ის მომხმარებლის უკუკავშირის კონფიგურაციაში.</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="221"/>
       <source>Could not configure KDE user feedback correctly, script error %1.</source>
-      <translation type="unfinished"/>
+      <translation>KDE-ის მომხმარებლის უკუკავშირის სწორად მორგება შეუძლებელია. სკრიპტის შეცდომა %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="229"/>
       <source>Could not configure KDE user feedback correctly, Calamares error %1.</source>
-      <translation type="unfinished"/>
+      <translation>KDE-ის მომხმარებლის უკუკავშირის სწორად მორგება შეუძლებელია. Calamares-ის შეცდომა %1.</translation>
     </message>
   </context>
   <context>
@@ -4328,23 +4333,23 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="141"/>
       <source>Configuring machine feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>მანქანის უკუკავშირის მორგება…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="164"/>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="173"/>
       <source>Error in machine feedback configuration.</source>
-      <translation type="unfinished"/>
+      <translation>შეცდომა მანქანის უკუკავშირის კონფიგურაციაში.</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="166"/>
       <source>Could not configure machine feedback correctly, script error %1.</source>
-      <translation type="unfinished"/>
+      <translation>მანქანის უკუკავშირის სწორად მორგება შეუძლებელია. სკრიპტის შეცდომა %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="175"/>
       <source>Could not configure machine feedback correctly, Calamares error %1.</source>
-      <translation type="unfinished"/>
+      <translation>მანქანის უკუკავშირის სწორად მორგება შეუძლებელია. Calamares-ის შეცდომა %1.</translation>
     </message>
   </context>
   <context>
@@ -4357,7 +4362,7 @@ Output:
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="76"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to send &lt;span style=" font-weight:600;"&gt;no information at all&lt;/span&gt; about your installation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;დააწკაპუნეთ აქ, რომ თქვენი მანქანის შესახებ &lt;span style=" font-weight:600;"&gt;ინფორმაცია საერთოდ არ&lt;/span&gt; გაიგზავნოს.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="275"/>
@@ -4400,7 +4405,7 @@ Output:
       <location filename="../src/modules/umount/UmountJob.cpp" line="39"/>
       <source>Unmounting file systems…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>ფაილური სისტემების მიმაგრების მოხსნა…</translation>
     </message>
     <message>
       <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
@@ -4427,32 +4432,32 @@ Output:
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
       <source>Invalid unsquash configuration</source>
-      <translation type="unfinished"/>
+      <translation>არასწორი unsquash-ის კონფიგურაცია</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
       <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
-      <translation type="unfinished"/>
+      <translation>წყარო არქივი &lt;i&gt;%1&lt;/i&gt; არ არსებობს.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
       <source>Missing tools</source>
-      <translation>აკლია პროგრამები</translation>
+      <translation>ნაკლული ხელსაწყოები</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
       <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
-      <translation type="unfinished"/>
+      <translation>სისტემაში ხელსაწყო &lt;i&gt;%1&lt;/i&gt; დაყენებული არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
       <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>&lt;i&gt;%1&lt;/i&gt;-ისთვის სამიზნე აღმოჩენილი არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
       <source>Unsquash file %1</source>
-      <translation type="unfinished"/>
+      <translation>%1 ფაილის Unsquash</translation>
     </message>
   </context>
   <context>
@@ -4509,7 +4514,7 @@ Output:
     <message>
       <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="24"/>
       <source>List of Physical Volumes</source>
-      <translation type="unfinished"/>
+      <translation>ფიზიკური ტომების სია</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="34"/>
@@ -4558,7 +4563,7 @@ Output:
       <location filename="../src/modules/welcome/WelcomePage.ui" line="79"/>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="98"/>
       <source>Select application and system language</source>
-      <translation type="unfinished"/>
+      <translation>აპლიკაციისა და სისტემის ენის არჩევა</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="140"/>
@@ -4573,7 +4578,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="153"/>
       <source>Open help and support website</source>
-      <translation type="unfinished"/>
+      <translation>დახმარებისა და მხარდაჭერის ვებსაიტის გახსნა</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="156"/>
@@ -4583,7 +4588,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="166"/>
       <source>Open issues and bug-tracking website</source>
-      <translation type="unfinished"/>
+      <translation>პრობლემებისა და შეცდომების ვებსაიტის გახსნა</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="169"/>
@@ -4593,7 +4598,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="179"/>
       <source>Open release notes website</source>
-      <translation type="unfinished"/>
+      <translation>გამოცემის შენიშვნების ვებგვერდის გახსნა</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.ui" line="182"/>
@@ -4643,12 +4648,12 @@ Output:
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="102"/>
       <source>Creating ZFS pools and datasets…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>იქმნება ZFS-ის პულები და მონაცემთა ნაკრებები…</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="162"/>
       <source>Failed to create zpool on </source>
-      <translation type="unfinished"/>
+      <translation>zpool-ის შექმნა ჩავარდა დანაყოფისთვის </translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="180"/>
@@ -4658,7 +4663,7 @@ Output:
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="181"/>
       <source>No partitions are available for ZFS.</source>
-      <translation type="unfinished"/>
+      <translation>ZFS-ისთვის დანაყოფები ხელმისაწვდომი არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="192"/>
@@ -4669,17 +4674,17 @@ Output:
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="192"/>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="264"/>
       <source>Failed to create zpool</source>
-      <translation type="unfinished"/>
+      <translation>zpool-ის შექმნა ჩავარდა</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="336"/>
       <source>Failed to create dataset</source>
-      <translation type="unfinished"/>
+      <translation>მონაცემთა ნაკრების შექმნა ჩავარდა</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="337"/>
       <source>The output was: </source>
-      <translation>გამოტანილი ინფორმაცია:</translation>
+      <translation>გამოტანილი ინფორმაცია იყო: </translation>
     </message>
   </context>
   <context>
@@ -4704,7 +4709,7 @@ Output:
       <location filename="../src/calamares/CalamaresWindow.cpp" line="159"/>
       <source>Show information about Calamares</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>ინფორმაციის ჩვენება Calamares-ის შესახებ</translation>
     </message>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="173"/>
@@ -4730,7 +4735,8 @@ Output:
       <location filename="../src/modules/finishedq/finishedq.qml" line="43"/>
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart into your new system, or continue using the Live environment.</source>
-      <translation type="unfinished"/>
+      <translation>%1 დაყენებულია თქვენს კომპიუტერზე.&lt;br/&gt;
+      შეგიძლიათ, გადაიტვირთოთ ახალ სისტემაში, ან გააგრძელოთ ცოცხალი სისტემის გამოყენება.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="65"/>
@@ -4746,7 +4752,8 @@ Output:
       <location filename="../src/modules/finishedq/finishedq.qml" line="89"/>
       <source>&lt;p&gt;A full log of the install is available as installation.log in the home directory of the Live user.&lt;br/&gt;
             This log is copied to /var/log/installation.log of the target system.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;p&gt;დაყენების სრული ჟურნალი ხელმისაწვდომია ცოცხალი მომხმარებლის ძირითად საქაღალდეში ფაილში სახელით installation.log.&lt;br/&gt;
+        ეს ჟურნალი დაკოპირდება სამიზნე სისტემის ფაილში /var/log/installation.log.&lt;/p&gt;</translation>
     </message>
   </context>
   <context>
@@ -4762,7 +4769,8 @@ Output:
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart into your new system, or continue using the Live environment.</source>
       <comment>@info, %1 is the product name</comment>
-      <translation type="unfinished"/>
+      <translation>%1 დაყენებულია თქვენს კომპიუტერზე.&lt;br/&gt;
+      შეგიძლიათ, გადაიტვირთოთ ახალ სისტემაში, ან გააგრძელოთ ცოცხალი სისტემის გამოყენება.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="65"/>
@@ -4781,7 +4789,8 @@ Output:
       <source>&lt;p&gt;A full log of the install is available as installation.log in the home directory of the Live user.&lt;br/&gt;
             This log is copied to /var/log/installation.log of the target system.&lt;/p&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;p&gt;დაყენების სრული ჟურნალი ხელმისაწვდომია ცოცხალი მომხმარებლის ძირითად საქაღალდეში ფაილში სახელით installation.log.&lt;br/&gt;
+        ეს ჟურნალი დაკოპირდება სამიზნე სისტემის ფაილში /var/log/installation.log.&lt;/p&gt;</translation>
     </message>
   </context>
   <context>
@@ -4797,7 +4806,8 @@ Output:
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart your device.</source>
       <comment>@info, %1 is the product name</comment>
-      <translation type="unfinished"/>
+      <translation>%1 დაყენებულია თქვენს კომპიუტერზე.&lt;br/&gt;
+        შეგიძლიათ, გადატვირთოთ თქვენი მოწყობილობა.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq@mobile.qml" line="66"/>
@@ -4818,7 +4828,7 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="61"/>
       <source>Select a layout to activate keyboard preview</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ განლაგება კლავიატურის მინიატურის გასააქტიურებლად</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="144"/>
@@ -4842,7 +4852,7 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="311"/>
       <source>Type here to test your keyboard…</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>კლავიატურის შესამოწმებლად აკრიფეთ აქ…</translation>
     </message>
   </context>
   <context>
@@ -4851,7 +4861,7 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="61"/>
       <source>Select a layout to activate keyboard preview</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ განლაგება კლავიატურის მინიატურის გასააქტიურებლად</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="144"/>
@@ -4875,7 +4885,7 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="311"/>
       <source>Type here to test your keyboard…</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>კლავიატურის შესამოწმებლად აკრიფეთ აქ…</translation>
     </message>
   </context>
   <context>
@@ -4892,14 +4902,16 @@ Output:
       <source>&lt;h3&gt;Languages&lt;/h3&gt; &lt;/br&gt;
                             The system locale setting affects the language and character set for some command line user interface elements. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;ენები&lt;/h3&gt; &lt;/br&gt;
+                            სისტემის ლოკალის პარამეტრს გავლენა აქვს ენაზე და სიმბოლოების ნაკრებზე ზოგიერთი ბრძანების სტრიქონის მომხმარებლის ინტერფეისის ელემენტებზე მიმდინარე მნიშვნელობაა &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/localeq.qml" line="213"/>
       <source>&lt;h3&gt;Locales&lt;/h3&gt; &lt;/br&gt;
                                 The system locale setting affects the numbers and dates format. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;ლოკალები&lt;/h3&gt; &lt;/br&gt;
+                                სისტემის ლოკალის პარამეტრს გავლენა აქვს რიცხვებისა და თარიღის ფორმატზე. მიმდინარე პარამეტრია &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
   </context>
   <context>
@@ -4916,14 +4928,16 @@ Output:
       <source>&lt;h3&gt;Languages&lt;/h3&gt; &lt;/br&gt;
                             The system locale setting affects the language and character set for some command line user interface elements. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;ენები&lt;/h3&gt; &lt;/br&gt;
+                            სისტემის ლოკალის პარამეტრს გავლენა აქვს ენაზე და სიმბოლოების ნაკრებზე ზოგიერთი ბრძანების სტრიქონის მომხმარებლის ინტერფეისის ელემენტებზე მიმდინარე მნიშვნელობაა &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/localeq-qt6.qml" line="213"/>
       <source>&lt;h3&gt;Locales&lt;/h3&gt; &lt;/br&gt;
                                 The system locale setting affects the numbers and dates format. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;ლოკალები&lt;/h3&gt; &lt;/br&gt;
+                                სისტემის ლოკალის პარამეტრს გავლენა აქვს რიცხვებისა და თარიღის ფორმატზე. მიმდინარე პარამეტრია &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
   </context>
   <context>
@@ -5070,7 +5084,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="80"/>
       <source>What name do you want to use to log in?</source>
-      <translation type="unfinished"/>
+      <translation>რა სახელი გნებავთ, გამოიყენოთ შესასვლელად?</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="87"/>
@@ -5085,12 +5099,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="129"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>დაშვებულია, მხოლოდ, პატარა ასოები, ციფრები, ქვედა ტირე და ტირე.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="138"/>
       <source>root is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>root არ არის ნებადართული მომხმარებლის სახელი.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="147"/>
@@ -5115,12 +5129,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="202"/>
       <source>localhost is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>localhost ნებადართული ჰოსტის სახელი არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="211"/>
       <source>Choose a password to keep your account safe.</source>
-      <translation type="unfinished"/>
+      <translation>შეიყვანეთ პაროლი თქვენი ანგარიშის დასაცავად.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="221"/>
@@ -5140,17 +5154,17 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="297"/>
       <source>Reuse user password as root password</source>
-      <translation type="unfinished"/>
+      <translation>მომხმარებლის პაროლის გამოყენება root პაროლად</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="305"/>
       <source>Use the same password for the administrator account.</source>
-      <translation type="unfinished"/>
+      <translation>იგივე პაროლის გამოყენება ადმინისტრატორის ანგარიშისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="318"/>
       <source>Choose a root password to keep your account safe.</source>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ root-ის პაროლი თქვენი ანგარიშის დასაცავად.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="328"/>
@@ -5170,7 +5184,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="402"/>
       <source>Log in automatically without asking for the password</source>
-      <translation type="unfinished"/>
+      <translation>ავტომატური შესვლა პაროლის კითხვის გარეშე</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="410"/>
@@ -5203,7 +5217,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="79"/>
       <source>What name do you want to use to log in?</source>
-      <translation type="unfinished"/>
+      <translation>რა სახელი გნებავთ, გამოიყენოთ შესასვლელად?</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="86"/>
@@ -5218,12 +5232,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="128"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>დაშვებულია, მხოლოდ, პატარა ასოები, ციფრები, ქვედა ტირე და ტირე.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="137"/>
       <source>root is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>root არ არის ნებადართული მომხმარებლის სახელი.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="146"/>
@@ -5248,12 +5262,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="201"/>
       <source>localhost is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>localhost ნებადართული ჰოსტის სახელი არაა.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="210"/>
       <source>Choose a password to keep your account safe.</source>
-      <translation type="unfinished"/>
+      <translation>შეიყვანეთ პაროლი თქვენი ანგარიშის დასაცავად.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="220"/>
@@ -5273,17 +5287,17 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="296"/>
       <source>Reuse user password as root password</source>
-      <translation type="unfinished"/>
+      <translation>მომხმარებლის პაროლის გამოყენება root პაროლად</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="304"/>
       <source>Use the same password for the administrator account.</source>
-      <translation type="unfinished"/>
+      <translation>იგივე პაროლის გამოყენება ადმინისტრატორის ანგარიშისთვის.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="317"/>
       <source>Choose a root password to keep your account safe.</source>
-      <translation type="unfinished"/>
+      <translation>აირჩიეთ root-ის პაროლი თქვენი ანგარიშის დასაცავად.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="327"/>
@@ -5303,7 +5317,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="401"/>
       <source>Log in automatically without asking for the password</source>
-      <translation type="unfinished"/>
+      <translation>ავტომატური შესვლა პაროლის კითხვის გარეშე</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="409"/>

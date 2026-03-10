@@ -1134,17 +1134,17 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="66"/>
       <source>This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;Setup can continue, but some features might be disabled.</source>
-      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои танзимкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
+      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои танзимкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="70"/>
       <source>This computer does not satisfy some of the recommended requirements for installing %1.&lt;br/&gt;Installation can continue, but some features might be disabled.</source>
-      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;Насбкунӣ идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
+      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;Насбкунӣ идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="80"/>
       <source>This program will ask you some questions and set up %2 on your computer.</source>
-      <translation>Ин барнома аз Шумо якчанд савол мепурсад ва %2-ро дар компютери шумо танзим мекунад.</translation>
+      <translation>Ин барнома аз шумо якчанд савол мепурсад ва «%2»-ро дар компютери шумо танзим мекунад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="264"/>
@@ -3676,7 +3676,7 @@ Output:
       <location filename="../src/modules/welcomeq/Recommended.qml" line="40"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.&lt;/p&gt;</translation>
     </message>
   </context>
@@ -3716,14 +3716,14 @@ Output:
       <location filename="../src/modules/welcomeq/Requirements.qml" line="37"/>
       <source>&lt;p&gt;This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;
         Installation cannot continue.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба талаботи камтарин барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба талаботи камтарин барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Насбкунӣ идома дода намешавад.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/Requirements.qml" line="39"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.&lt;/p&gt;</translation>
     </message>
   </context>

@@ -493,7 +493,7 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="339"/>
       <source>The %1 setup program is about to make changes to your disk in order to set up %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
       <comment>%1 is short product name, %2 is short product name with version</comment>
-      <translation>תכנית ההתקנה של %1 עומדת לבצע שינויים בכונן הקשיח שלך לטובת התקנת %2.&lt;br/&gt;&lt;strong&gt;לא תהיה לך אפשרות לבטל את השינויים האלה.&lt;/strong&gt;</translation>
+      <translation>תוכנית ההתקנה של %1 עומדת לבצע שינויים בכונן שלך לטובת התקנת %2.&lt;br/&gt;&lt;strong&gt;לא תהיה אפשרות לבטל את שינויים אלה.&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="343"/>
@@ -535,7 +535,7 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="404"/>
       <source>Setup is complete. Close the setup program.</source>
       <comment>@tooltip</comment>
-      <translation>ההתקנה הושלמה. נא לסגור את תכנית ההתקנה.</translation>
+      <translation>ההתקנה הושלמה. נא לסגור את תוכנית ההתקנה.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="405"/>
@@ -638,7 +638,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="405"/>
       <source>%1 Setup Program</source>
-      <translation>תכנית התקנת %1</translation>
+      <translation>תוכנית ההתקנה של %1</translation>
     </message>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="406"/>
@@ -934,7 +934,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/Config.cpp" line="143"/>
       <source>Installation Failed</source>
       <comment>@title</comment>
-      <translation>ההתקנה נכשלה</translation>
+      <translation>התקנת המערכת נכשלה</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="145"/>
@@ -958,7 +958,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/Config.cpp" line="151"/>
       <source>Installation Complete</source>
       <comment>@title</comment>
-      <translation>ההתקנה הושלמה</translation>
+      <translation>התקנת המערכת הושלמה</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="153"/>
@@ -970,7 +970,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/Config.cpp" line="154"/>
       <source>The installation of %1 is complete.</source>
       <comment>@info</comment>
-      <translation>ההתקנה של %1 הושלמה.</translation>
+      <translation>התקנת המערכת של %1 הושלמה.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
@@ -982,13 +982,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
-      <translation>פריסת המקלדת הוגדרה לכדי %1/%2.</translation>
+      <translation>הוגדרה פריסת המקלדת %1/%2.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/Config.cpp" line="381"/>
       <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>הגדרת אזור הזמן ל־%1.</translation>
+      <translation>הגדרת אזור הזמן בתור %1.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/Config.cpp" line="418"/>
@@ -1020,7 +1020,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="59"/>
       <source>Network Installation. (Disabled: Unable to fetch package lists, check your network connection)</source>
-      <translation>התקנה מהרשת. (מושבתת: לא ניתן לקבל רשימות של חבילות תכנה, נא לבדוק את החיבור לרשת)</translation>
+      <translation>התקנה מהרשת. (מושבתת: לא ניתן לקבל רשימות של חבילות תוכנה, נא לבדוק את החיבור לרשת)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="61"/>
@@ -1146,12 +1146,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="80"/>
       <source>This program will ask you some questions and set up %2 on your computer.</source>
-      <translation>תכנית זו תשאל אותך מספר שאלות ותתקין את %2 על המחשב שלך.</translation>
+      <translation>תוכנית זו תשאל אותך מספר שאלות ותתקין את %2 במחשבך.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="264"/>
       <source>&lt;h1&gt;Welcome to the Calamares setup program for %1&lt;/h1&gt;</source>
-      <translation>&lt;h1&gt;ברוך בואך לתכנית ההתקנה Calamares עבור %1&lt;/h1&gt;</translation>
+      <translation>&lt;h1&gt;ברוך בואך לתוכנית ההתקנה Calamares עבור %1&lt;/h1&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="265"/>
@@ -1228,7 +1228,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="191"/>
       <source>Flags:</source>
-      <translation>סימונים:</translation>
+      <translation>דגלונים:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="224"/>
@@ -1803,7 +1803,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="80"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the setup program.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;אם תיבה זו מסומנת, המערכת שלך תופעל מחדש מיידית עם הלחיצה על &lt;span style="font-style:italic;"&gt;סיום&lt;/span&gt; או עם סגירת תכנית ההתקנה.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;אם תיבה זו מסומנת, המערכת שלך תופעל מחדש מיידית עם הלחיצה על &lt;span style="font-style:italic;"&gt;סיום&lt;/span&gt; או עם סגירת תוכנית ההתקנה.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="89"/>
@@ -1815,7 +1815,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="95"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the installer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;אם תיבה זו מסומנת, המערכת שלך תופעל מחדש מיידית עם הלחיצה על &lt;span style="font-style:italic;"&gt;סיום&lt;/span&gt; או עם סגירת תכנית ההתקנה.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;אם תיבה זו מסומנת, המערכת שלך תופעל מחדש מיידית עם הלחיצה על &lt;span style="font-style:italic;"&gt;סיום&lt;/span&gt; או עם סגירת תוכנית ההתקנה.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="109"/>
@@ -1915,7 +1915,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="185"/>
       <source>The system is not plugged in to a power source.</source>
-      <translation>המערכת לא מחוברת לספק חשמל חיצוני.</translation>
+      <translation>המערכת לא מחוברת למקור חשמל חיצוני.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="192"/>
@@ -1935,12 +1935,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="204"/>
       <source>The setup program is not running with administrator rights.</source>
-      <translation>תכנית ההתקנה אינה פועלת עם הרשאות ניהול.</translation>
+      <translation>תוכנית ההתקנה אינה פועלת עם הרשאות ניהול.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="205"/>
       <source>The installer is not running with administrator rights.</source>
-      <translation>אשף ההתקנה לא רץ עם הרשאות מנהל.</translation>
+      <translation>אשף ההתקנה לא פועל עם הרשאות מנהל.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="213"/>
@@ -1950,12 +1950,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="217"/>
       <source>The screen is too small to display the setup program.</source>
-      <translation>המסך קטן מכדי להציג את תכנית ההתקנה.</translation>
+      <translation>המסך קטן מכדי להציג את תוכנית ההתקנה.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="218"/>
       <source>The screen is too small to display the installer.</source>
-      <translation>גודל המסך קטן מכדי להציג את תכנית ההתקנה.</translation>
+      <translation>גודל המסך קטן מכדי להציג את תוכנית ההתקנה.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="227"/>
@@ -2183,7 +2183,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicensePage.cpp" line="149"/>
       <source>This setup procedure will install proprietary software that is subject to licensing terms.</source>
       <comment>@info</comment>
-      <translation>תהליך התקנה זה יתקין תכנה קניינית שכפופה לתנאי רישוי.</translation>
+      <translation>תהליך התקנה זה יתקין תוכנה קניינית שכפופה לתנאי רישוי.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="154"/>
@@ -2195,7 +2195,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicensePage.cpp" line="159"/>
       <source>This setup procedure can install proprietary software that is subject to licensing terms in order to provide additional features and enhance the user experience.</source>
       <comment>@info</comment>
-      <translation>תהליך התקנה זה יכול להתקין תכנה קניינית שכפופה לתנאי רישוי כדי לספק תכונות נוספות ולשפר את חוויית המשתמש.</translation>
+      <translation>תהליך התקנה זה יכול להתקין תוכנה קניינית שכפופה לתנאי רישוי כדי לספק תכונות נוספות ולשפר את חוויית המשתמש.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="165"/>
@@ -2446,7 +2446,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="51"/>
       <source>Office software</source>
-      <translation>תכנה של כלים משרדיים</translation>
+      <translation>תוכנות משרדיות</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="52"/>
@@ -2456,7 +2456,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="53"/>
       <source>Browser software</source>
-      <translation>תכנה של דפדפן</translation>
+      <translation>תוכנות דפדפן</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/NetInstallViewStep.cpp" line="54"/>
@@ -3009,7 +3009,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="124"/>
       <source>What name do you want to use to log in?</source>
-      <translation>איזה שם ברצונך שישמש אותך לכניסה?</translation>
+      <translation>עם איזה שם ברצונך להיכנס?</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="148"/>
@@ -3019,12 +3019,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="223"/>
       <source>What is the name of this computer?</source>
-      <translation>מהו השם של המחשב הזה?</translation>
+      <translation>מה השם של מחשב זה?</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="247"/>
       <source>&lt;small&gt;This name will be used if you make the computer visible to others on a network.&lt;/small&gt;</source>
-      <translation>&lt;small&gt;בשם זה ייעשה שימוש לטובת זיהוי מול מחשבים אחרים ברשת במידת הצורך.&lt;/small&gt;</translation>
+      <translation>&lt;small&gt;ייעשה שימוש בשם זה אם המחשב יוגדר להיות גלוי לשאר הרשת.&lt;/small&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="250"/>
@@ -3067,7 +3067,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="465"/>
       <source>Log in automatically without asking for the password.</source>
-      <translation>להיכנס אוטומטית מבלי להידרש למלא סיסמה.</translation>
+      <translation>כניסה אוטומטית מבלי להידרש להקליד סיסמה.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="472"/>
@@ -3083,12 +3083,12 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/users/page_usersetup.ui" line="519"/>
       <location filename="../src/modules/users/page_usersetup.ui" line="544"/>
       <source>&lt;small&gt;Enter the same password twice, so that it can be checked for typing errors.&lt;/small&gt;</source>
-      <translation>&lt;small&gt;יש להקליד את אותה הסיסמה פעמיים כדי לאפשר זיהוי של שגיאות הקלדה.&lt;/small&gt;</translation>
+      <translation>&lt;small&gt;יש להקליד את אותה הסיסמה פעמיים כדי לזהות שגיאות הקלדה אפשריות.&lt;/small&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="627"/>
       <source>Use Active Directory</source>
-      <translation>להשתמש ב־Active Directory</translation>
+      <translation>שימוש ב־Active Directory</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="638"/>
@@ -3116,19 +3116,19 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="178"/>
       <source>Root</source>
-      <translation>מערכת הפעלה Root</translation>
+      <translation>שורש (Root)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="182"/>
       <source>Home</source>
       <comment>@label</comment>
-      <translation>בית Home</translation>
+      <translation>בית (Home)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="186"/>
       <source>Boot</source>
       <comment>@label</comment>
-      <translation>טעינה Boot</translation>
+      <translation>טעינת המערכת (Boot)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="191"/>
@@ -3140,7 +3140,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="195"/>
       <source>Swap</source>
       <comment>@label</comment>
-      <translation>דפדוף Swap</translation>
+      <translation>דפדוף (Swap)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="199"/>
@@ -3384,12 +3384,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
-      <translation>מחיצת מערכת EFI נחוצה להפעלת %1. &lt;br/&gt;&lt;br/&gt;כדי להפעיל מחיצת מערכת EFI, יש לחזור ולבחור או ליצור מערכת קבצים מתאימה.</translation>
+      <translation>נחוצה מחיצת מערכת EFI להפעלת %1. &lt;br/&gt;&lt;br/&gt;כדי להפעיל מחיצת מערכת EFI, יש לחזור ולבחור או ליצור מערכת קבצים מתאימה.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
-      <translation>צריך מחיצת EFI של המערכת כדי להפעיל את %1.&lt;br/&gt;&lt;br/&gt;מחיצת המערכת EFI לא עומדת בדרישות המומלצות. כדאי לחזור וליצור מערכת קבצים מתאימה.</translation>
+      <translation>נחוצה מחיצת EFI של המערכת להפעלת %1.&lt;br/&gt;&lt;br/&gt;מחיצת המערכת EFI לא עומדת בדרישות המומלצות. כדאי לחזור וליצור מערכת קבצים מתאימה.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
@@ -3410,7 +3410,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
-      <translation>גודל מערכת הקבצים חייב להיות לפחות ‎%1 MIB.</translation>
+      <translation>גודל מערכת הקבצים חייב להיות לפחות ‎%1 MiB.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
@@ -3455,7 +3455,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
-      <translation>מחיצת האתחול (Boot) אינה מוצפנת</translation>
+      <translation>מחיצת טעינת המערכת (Boot) אינה מוצפנת</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
@@ -3641,13 +3641,13 @@ Output:
       <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
-      <translation>דפדוף swap</translation>
+      <translation>דפדוף (swap)</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/keyboardwidget/keyboardglobal.cpp" line="145"/>
       <location filename="../src/modules/keyboard/keyboardwidget/keyboardglobal.cpp" line="192"/>
       <source>Default</source>
-      <translation>בררת מחדל</translation>
+      <translation>ברירת מחדל</translation>
     </message>
     <message>
       <location filename="../src/modules/machineid/MachineIdJob.cpp" line="101"/>
@@ -4128,7 +4128,7 @@ Output:
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="32"/>
       <source>Setting timezone to %1/%2…</source>
       <comment>@status</comment>
-      <translation>אזור הזמן מוגדר לכדי %1/%2…</translation>
+      <translation>אזור הזמן מוגדר בתור %1/%2…</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="60"/>
@@ -4207,7 +4207,7 @@ Output:
       <location filename="../src/modules/shellprocess/ShellProcessJob.cpp" line="38"/>
       <source>Running shell processes…</source>
       <comment>@status</comment>
-      <translation>תהליכים מעטפת מופעלים…</translation>
+      <translation>תהליכי מעטפת מופעלים…</translation>
     </message>
   </context>
   <context>
@@ -4629,7 +4629,7 @@ Output:
       <location filename="../src/calamares/DebugWindow.cpp" line="238"/>
       <source>About %1 Installer</source>
       <comment>@title</comment>
-      <translation>על תוכנית התקנת %1</translation>
+      <translation>על תוכנית ההתקנה %1</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.cpp" line="213"/>
@@ -5150,7 +5150,7 @@ ls -l /home
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="147"/>
       <source>What is the name of this computer?</source>
-      <translation>מהו השם של המחשב הזה?</translation>
+      <translation>מה השם של מחשב זה?</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="153"/>
@@ -5160,7 +5160,7 @@ ls -l /home
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="180"/>
       <source>This name will be used if you make the computer visible to others on a network.</source>
-      <translation>השם הזה יהיה בשימוש אם המחשב הזה יהיה גלוי לשאר הרשת.</translation>
+      <translation>ייעשה שימוש בשם זה אם המחשב יוגדר להיות גלוי לשאר הרשת.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="193"/>
@@ -5283,7 +5283,7 @@ ls -l /home
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="146"/>
       <source>What is the name of this computer?</source>
-      <translation>מהו השם של המחשב הזה?</translation>
+      <translation>מה השם של מחשב זה?</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="152"/>
@@ -5293,7 +5293,7 @@ ls -l /home
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="179"/>
       <source>This name will be used if you make the computer visible to others on a network.</source>
-      <translation>השם הזה יהיה בשימוש אם המחשב הזה יהיה גלוי לשאר הרשת.</translation>
+      <translation>ייעשה שימוש בשם זה אם המחשב יוגדר להיות גלוי לשאר הרשת.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="192"/>
@@ -5353,12 +5353,12 @@ ls -l /home
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="371"/>
       <source>Enter the same password twice, so that it can be checked for typing errors.</source>
-      <translation>נא להקליד את הסיסמה פעמיים כדי לאפשר זיהוי של שגיאות הקלדה.</translation>
+      <translation>נא להקליד את הסיסמה פעמיים כדי לזהות שגיאות הקלדה אפשריות.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="401"/>
       <source>Log in automatically without asking for the password</source>
-      <translation>להיכנס אוטומטית מבלי לבקש סיסמה</translation>
+      <translation>כניסה אוטומטית מבלי להידרש להקליד סיסמה</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="409"/>
@@ -5377,8 +5377,8 @@ ls -l /home
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="38"/>
       <source>&lt;h3&gt;Welcome to the %1 &lt;quote&gt;%2&lt;/quote&gt; installer&lt;/h3&gt;
             &lt;p&gt;This program will ask you some questions and set up %1 on your computer.&lt;/p&gt;</source>
-      <translation>&lt;h3&gt;ברוך בואך לתכנית ההתקנה של %1 &lt;quote&gt;%2&lt;/quote&gt;&lt;/h3&gt;
-            &lt;p&gt;תכנית זו תשאל אותך מספר שאלות ותתקין את %1 על המחשב שלך.&lt;/p&gt;</translation>
+      <translation>&lt;h3&gt;ברוך בואך לתוכנית ההתקנה של %1 &lt;quote&gt;%2&lt;/quote&gt;&lt;/h3&gt;
+            &lt;p&gt;תוכנית זו תשאל אותך מספר שאלות ותתקין את %1 במחשבך.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="69"/>
@@ -5407,8 +5407,8 @@ ls -l /home
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="38"/>
       <source>&lt;h3&gt;Welcome to the %1 &lt;quote&gt;%2&lt;/quote&gt; installer&lt;/h3&gt;
             &lt;p&gt;This program will ask you some questions and set up %1 on your computer.&lt;/p&gt;</source>
-      <translation>&lt;h3&gt;ברוך בואך לתכנית ההתקנה של %1 &lt;quote&gt;%2&lt;/quote&gt;&lt;/h3&gt;
-            &lt;p&gt;תכנית זו תשאל אותך מספר שאלות ותתקין את %1 על המחשב שלך.&lt;/p&gt;</translation>
+      <translation>&lt;h3&gt;ברוך בואך לתוכנית ההתקנה של %1 &lt;quote&gt;%2&lt;/quote&gt;&lt;/h3&gt;
+            &lt;p&gt;תוכנית זו תשאל אותך מספר שאלות ותתקין את %1 במחשבך.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="69"/>
