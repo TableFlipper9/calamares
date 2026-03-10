@@ -168,16 +168,15 @@ set(CALAMARES_DESCRIPTION_SUMMARY "The distribution-independent installer framew
 # NOTE: update these lines by running `txstats.py`, or for full automation
 #       `txstats.py -e`. See also
 #
-# Total 79 languages
-set( _tx_complete ar az ca de en es es_AR fi_FI he hu ja ko pl
-    pt_BR ru sv tr_TR uk zh_CN zh_TW )  # 20 languages
-set( _tx_good az_AZ bg fr fur hr is it_IT lt pt_PT sk sq uz )  # 12 languages
-set( _tx_ok as ast be bn ca@valencia cs_CZ da el en_GB eo es_MX et
-    eu fa gl hi ia id ka ml mr nb nl oc ro si sl sr sr@latin tg th vi
-    )  # 32 languages
-set( _tx_incomplete es_PR gu ie ja-Hira kk kn lo lv mk ne_NP ta_IN
-    te ur zh zh_HK )  # 15 languages
-# Total 79 languages
+# Total 82 languages
+set( _tx_complete ar az ca cs_CZ de en es es_AR fi_FI fr he hu id
+    ja kk ko lg nb pl pt_BR ru sv tg tr_TR uk zh_CN zh_TW )  # 27 languages
+set( _tx_good az_AZ bg fur hr is it_IT ka lt pt_PT sk sq uz )  # 12 languages
+set( _tx_ok as ast be bn ca@valencia da el en_GB eo es_MX et eu fa
+    gl hi ia ml mr nl oc ro si sl sr sr@latin th vi )  # 27 languages
+set( _tx_incomplete bs es_PR fr_CA gu ie ja-Hira kn lo lv mk ne_NP
+    ta_IN te ur zh zh_HK )  # 16 languages
+# Total 82 languages
 
 ### Required versions
 #
