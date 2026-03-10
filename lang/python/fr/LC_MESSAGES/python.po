@@ -12,7 +12,7 @@
 # Seboss666 <sebastien_verdet@seboss666.info>, 2019
 # Florian B <florianb3522@gmail.com>, 2019
 # Arnaud Ferraris <arnaud.ferraris@gmail.com>, 2019
-# roxfr <roxfr@outlook.fr>, 2022
+# roxfr, 2022
 # David D, 2023
 # 
 #, fuzzy

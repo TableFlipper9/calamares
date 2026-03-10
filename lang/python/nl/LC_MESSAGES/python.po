@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Tristan <tristan@thewoosh.me>, 2020
+# Tristan Gerritsen <tristan@thewoosh.me>, 2020
 # Adriaan de Groot <groot@kde.org>, 2020
 # 
 #, fuzzy

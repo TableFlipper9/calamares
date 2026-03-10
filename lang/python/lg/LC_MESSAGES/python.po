@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026
+# Kizito Birabwa <kbirabwa@yahoo.co.uk>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -13,109 +13,115 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026\n"
-"Language-Team: Kazakh (https://app.transifex.com/calamares/teams/20061/kk/)\n"
+"Last-Translator: Kizito Birabwa <kbirabwa@yahoo.co.uk>, 2025\n"
+"Language-Team: Luganda (https://app.transifex.com/calamares/teams/20061/lg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: kk\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Language: lg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/bootloader/main.py:46
 msgid "Install bootloader."
-msgstr "Жүктеушіні орнату."
+msgstr "Teekako puloguramu ekoleeza kompyuta"
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
 msgstr ""
-"Grub орнату сәтсіз аяқталды, глобалды сақтауышта ешқандай бөлім анықталмаған"
+"Tewali kifo kyonna kompyuta mw'esobola okutereka data ekyaategekedwamu "
+"ekibondo. Kino kiremesezza okuteekako grub"
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
-msgstr "Жүктеушіні орнату қатесі"
+msgstr "Okuteekako puloguramu ekoleeza kompyuta kuzzeemu kiremya"
 
 #: src/modules/bootloader/main.py:932
 msgid ""
 "The bootloader could not be installed. The installation command "
 "<pre>{!s}</pre> returned error code {!s}."
 msgstr ""
-"Жүктеуші орнатылмады. Орнату командасы <pre>{!s}</pre> келесі қате кодын "
-"қайтарды: {!s}."
+"Okuteekako puloguramu ekoleeza kompyuta kulemye. Ekiragiro <pre>{!s}</pre> "
+"kireese ennamba ya kiremya {!s}."
 
 #: src/modules/displaymanager/main.py:525
 msgid "Cannot write LXDM configuration file"
-msgstr "LXDM конфигурациялық файлын жазу мүмкін емес"
+msgstr "Sisobola okuwandika fayiro ey'enteekateeka za LXDM"
 
 #: src/modules/displaymanager/main.py:526
 msgid "LXDM config file {!s} does not exist"
-msgstr "LXDM {!s} конфигурациялық файлы жоқ"
+msgstr "Fayiro {!s} ey'enteekateeka za LXDM teeriwo"
 
 #: src/modules/displaymanager/main.py:614
 msgid "Cannot write LightDM configuration file"
-msgstr "LightDM конфигурациялық файлын жазу мүмкін емес"
+msgstr "Sisobola okuwandika fayiro ey'enteekateeka za LightDM"
 
 #: src/modules/displaymanager/main.py:615
 msgid "LightDM config file {!s} does not exist"
-msgstr "LightDM {!s} конфигурациялық файлы жоқ"
+msgstr "Fayiro {!s} ey'enteekateeka za LightDM teeriwo"
 
 #: src/modules/displaymanager/main.py:700
 msgid "Cannot configure LightDM"
-msgstr "LightDM баптау мүмкін емес"
+msgstr "Sisobola okuteekateeka LightDM"
 
 #: src/modules/displaymanager/main.py:701
 msgid "No LightDM greeter installed."
-msgstr "Орнатылған LightDM қарсы алушысы жоқ."
+msgstr "Sisitemu tekuli puloguramu tandikalutuula ekola ne LightDM."
 
 #: src/modules/displaymanager/main.py:732
 msgid "Cannot write SLIM configuration file"
-msgstr "SLIM конфигурациялық файлын жазу мүмкін емес"
+msgstr "Sisobola okuwandika fayiro ey'enteekateeka za SLIM"
 
 #: src/modules/displaymanager/main.py:733
 msgid "SLIM config file {!s} does not exist"
-msgstr "SLIM {!s} конфигурациялық файлы жоқ"
+msgstr "Fayiro {!s} ey'enteekateeka za SLIM teeriwo"
 
 #: src/modules/displaymanager/main.py:956
 msgid "No display managers selected for the displaymanager module."
-msgstr "displaymanager модулі үшін ешқандай дисплей менеджері таңдалмаған."
+msgstr ""
+"Enyingo ya displaymanger teragidwa puloguramu tandikalutuula ki z'eba "
+"eteekateeka."
 
 #: src/modules/displaymanager/main.py:957
 msgid ""
 "The displaymanagers list is empty or undefined in both globalstorage and "
 "displaymanager.conf."
 msgstr ""
-"globalstorage және displaymanager.conf ішінде дисплей менеджерлерінің тізімі"
-" бос немесе анықталмаған."
+"Olukalala enyingo ya displaymanger lw'esoma okumanya puloguramu "
+"tandikalutuula z'eba eteekateeka lwereere oba teruliiwo. Lunoonyezedwa mu "
+"fayiro displaymanager.conf n'awalala wonna kompyuta w'esobola okutereka "
+"data."
 
 #: src/modules/displaymanager/main.py:1044
 msgid "Display manager configuration was incomplete"
-msgstr "Дисплей менеджерін баптау толық аяқталмаған"
+msgstr "Okuteekateeka puloguramu tandikalutuula tekwawedde"
 
 #: src/modules/dracut/main.py:29
 msgid "Creating initramfs with dracut."
-msgstr "Dracut көмегімен initramfs жасау."
+msgstr "Nkozesa dracut okukolawo initramfs"
 
 #: src/modules/dracut/main.py:63
 msgid "Failed to run dracut"
-msgstr "Dracut-ты іске қосу сәтсіз аяқталды"
+msgstr "Nnemedwa okutandika dracut"
 
 #: src/modules/dracut/main.py:64
 #, python-brace-format
 msgid "Dracut failed to run on the target with return code: {return_code}"
 msgstr ""
-"Мақсатта dracut-ты іске қосу сәтсіз аяқталды, қайтару коды: {return_code}"
+"Dracut eremedwa okukola ku sisitemu etegekebwa. Ezzizza ennamba y'emmala: "
+"{return_code}"
 
 #: src/modules/dummypython/main.py:35
 msgid "Dummy python job."
-msgstr "Python сынақ жұмысы."
+msgstr "Omulimu gwa mu python omukuumakifo."
 
 #: src/modules/dummypython/main.py:37 src/modules/dummypython/main.py:104
 #: src/modules/dummypython/main.py:105
 msgid "Dummy python step {}"
-msgstr "Python-ның {} сынақ қадамы"
+msgstr "Ekikolwa kya mu mulimu gwa mu python omukuumakifo {}"
 
 #: src/modules/fstab/main.py:29
 msgid "Writing fstab."
-msgstr "fstab жазу."
+msgstr "Mpandika fstab."
 
 #: src/modules/fstab/main.py:382 src/modules/fstab/main.py:388
 #: src/modules/fstab/main.py:416 src/modules/initcpiocfg/main.py:267
@@ -125,295 +131,308 @@ msgstr "fstab жазу."
 #: src/modules/openrcdmcryptcfg/main.py:72
 #: src/modules/openrcdmcryptcfg/main.py:76 src/modules/rawfs/main.py:165
 msgid "Configuration Error"
-msgstr "Конфигурация қатесі"
+msgstr "Waliwo kiremya ku nteekateeka"
 
 #: src/modules/fstab/main.py:383 src/modules/initramfscfg/main.py:86
 #: src/modules/mount/main.py:345 src/modules/openrcdmcryptcfg/main.py:73
 #: src/modules/rawfs/main.py:166
 msgid "No partitions are defined for <pre>{!s}</pre> to use."
-msgstr "<pre>{!s}</pre> қолдануы үшін ешқандай бөлім анықталмаған."
+msgstr "<pre>{!s}</pre> tetegekedwa bibondo by'eneekozesa."
 
 #: src/modules/fstab/main.py:389 src/modules/initramfscfg/main.py:90
 #: src/modules/localecfg/main.py:141 src/modules/networkcfg/main.py:107
 #: src/modules/openrcdmcryptcfg/main.py:77
 msgid "No root mount point is given for <pre>{!s}</pre> to use."
-msgstr "<pre>{!s}</pre> қолдануы үшін түбірлік тіркеу нүктесі көрсетілмеген."
+msgstr "Tewali kiraga <pre>{!s}</pre> awawangirwa w'eneekozesa."
 
 #: src/modules/fstab/main.py:417
 msgid "No <pre>{!s}</pre> configuration is given for <pre>{!s}</pre> to use."
 msgstr ""
-"<pre>{!s}</pre> қолдануы үшін <pre>{!s}</pre> конфигурациясы берілмеген."
+"Tewali kiraga enteekateeka ya <pre>{!s}</pre> <pre>{!s}</pre> gy'eneekozesa."
 
 #: src/modules/grubcfg/main.py:30
 msgid "Configure GRUB."
-msgstr "GRUB баптау."
+msgstr "Teekateeka GRUB."
 
 #: src/modules/hwclock/main.py:26
 msgid "Setting hardware clock."
-msgstr "Аппараттық сағатты орнату."
+msgstr "Ntegeka ssaawa ya mu byuma bya kompyuta."
 
 #: src/modules/initcpiocfg/main.py:27
 msgid "Configuring mkinitcpio."
-msgstr "mkinitcpio баптау."
+msgstr "Nteekataaka mkinitcpio."
 
 #: src/modules/initcpiocfg/main.py:268
 msgid "No partitions are defined for <pre>initcpiocfg</pre>."
-msgstr "<pre>initcpiocfg</pre> үшін ешқандай бөлім анықталмаған."
+msgstr "<pre>initcpiocfg</pre> terina bibondo bigitegekedwa."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr "<pre>initcpiocfg</pre> үшін түбірлік тіркеу нүктесі жоқ."
+msgstr "<pre>initcpiocfg</pre> tetegekedwa omusingi gwa yo we gunaawangirwa."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
-msgstr "initramfs баптау."
+msgstr "Nteekateeka initramfs."
 
 #: src/modules/localecfg/main.py:31
 msgid "Configuring locales."
-msgstr "Локальдерді баптау."
+msgstr "Nteekateeka lokale."
 
 #: src/modules/mkinitfs/main.py:27
 msgid "Creating initramfs with mkinitfs."
-msgstr "mkinitfs көмегімен initramfs жасау."
+msgstr "Nkozesa mkinitfs okukolawo initramfs"
 
 #: src/modules/mkinitfs/main.py:49
 msgid "Failed to run mkinitfs on the target"
-msgstr "Мақсатта mkinitfs-ті орындау сәтсіз аяқталды"
+msgstr "mkinitfs eremedwa okukola ku sisitemu etegekebwa"
 
 #: src/modules/mkinitfs/main.py:50
 msgid "The exit code was {}"
-msgstr "Шығу коды {} болды"
+msgstr "Ezzizza ennamba y'emmala {}"
 
 #: src/modules/mount/main.py:43
 msgid "Mounting partitions."
-msgstr "Бөлімдерді тіркеу."
+msgstr "Mpanga ebibondo."
 
 #: src/modules/mount/main.py:171 src/modules/mount/main.py:207
 msgid "Internal error mounting zfs datasets"
-msgstr "zfs деректер жиынтығын тіркеу кезінде ішкі қате туындады"
+msgstr "Puloguramu ezzemu kiremya nga ewanga data enkuŋaanye eza zfs"
 
 #: src/modules/mount/main.py:183
 msgid "Failed to import zpool"
-msgstr "zpool импорттау сәтсіз аяқталды"
+msgstr "Nnemedwa okuyingiza zpool"
 
 #: src/modules/mount/main.py:199
 msgid "Failed to unlock zpool"
-msgstr "zpool құлпын ашу сәтсіз аяқталды"
+msgstr "Nnemedwa okukisulula zpool"
 
 #: src/modules/mount/main.py:216 src/modules/mount/main.py:221
 msgid "Failed to set zfs mountpoint"
-msgstr "zfs тіркеу нүктесін орнату сәтсіз аяқталды"
+msgstr "Nnemedwa okutegeka zfs w'eneewangibwa"
 
 #: src/modules/mount/main.py:386
 msgid "zfs mounting error"
-msgstr "zfs тіркеу қатесі"
+msgstr "Okuwanga zfs kuzzeemu kiremya"
 
 #: src/modules/networkcfg/main.py:30
 msgid "Saving network configuration."
-msgstr "Желі конфигурациясын сақтау."
+msgstr "Nkazza enteekateeka ya kayungirizi."
 
 #: src/modules/openrcdmcryptcfg/main.py:26
 msgid "Configuring OpenRC dmcrypt service."
-msgstr "OpenRC dmcrypt қызметін баптау."
+msgstr "Nteekateeka dmcrypt ekozesebwa OpenRC."
 
 #: src/modules/packages/main.py:54 src/modules/packages/main.py:65
 #: src/modules/packages/main.py:75
 msgid "Install packages."
-msgstr "Дестелерді орнату."
+msgstr "Teekako sofutiweya."
 
 #: src/modules/packages/main.py:63
 #, python-format
 msgid "Processing packages (%(count)d / %(total)d)"
-msgstr "Дестелерді өңдеу (%(count)d / %(total)d)"
+msgstr "Nkola ku miganda gya sofutiweya (%(count)d / %(total)d)"
 
 #: src/modules/packages/main.py:68
 #, python-format
 msgid "Installing one package."
 msgid_plural "Installing %(num)d packages."
-msgstr[0] "Бір десте орнатылуда."
-msgstr[1] "%(num)d десте орнатылуда."
+msgstr[0] "Nteekako omuganda gwa sofutiweya gumu."
+msgstr[1] "Nteekako emiganda gya sofutiweya %(num)d."
 
 #: src/modules/packages/main.py:71
 #, python-format
 msgid "Removing one package."
 msgid_plural "Removing %(num)d packages."
-msgstr[0] "Бір дестені өшіру."
-msgstr[1] "%(num)d дестені өшіру."
+msgstr[0] "Nzigyako omiganda gwa sofutiweya gumu."
+msgstr[1] "Nzigyako emiganda gya sofutiweya %(num)d."
 
 #: src/modules/packages/main.py:775 src/modules/packages/main.py:787
 #: src/modules/packages/main.py:815
 msgid "Package Manager error"
-msgstr "Десте менеджерінің қатесі"
+msgstr "Ekiteekateeka sofutiweya kizzeeko kiremya"
 
 #: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
-"Десте менеджері жаңартуларды дайындай алмады. <pre>{!s}</pre> командасы "
-"келесі қате кодын қайтарды: {!s}."
+"Ekiteekateeka sofutiweya kiremedwa okutegeka entumbuzi. Ekiragiro "
+"<pre>{!s}</pre> kireese ennamba ya kiremya {!s}."
 
 #: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
-"Десте менеджері жүйені жаңарта алмады. <pre>{!s}</pre> командасы келесі қате"
-" кодын қайтарды: {!s}."
+"Ekiteekateeka sofutiweya kiremedwa okutumbula sisitemu. Ekiragiro "
+"<pre>{!s}</pre> kireese ennamba ya kiremya {!s}."
 
 #: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
 msgstr ""
-"Десте менеджері орнатылған жүйеге өзгерістер енгізе алмады. <pre>{!s}</pre> "
-"командасы келесі қате кодын қайтарды: {!s}."
+"Ekiteekateeka sofutiweya kiremedwa okukola enkyukakyuka mu sisitemu eriwo. "
+"Ekiragiro <pre>{!s}</pre> kireese ennamba ya kiremya {!s}."
 
 #: src/modules/plymouthcfg/main.py:27
 msgid "Configure Plymouth theme"
-msgstr "Plymouth темасын баптау"
+msgstr "Teekateeka Endabika ya Plymouth"
 
 #: src/modules/rawfs/main.py:26
 msgid "Installing data."
-msgstr "Деректерді орнату."
+msgstr "Nteekako data."
 
 #: src/modules/services-openrc/main.py:29
 msgid "Configure OpenRC services"
-msgstr "OpenRC қызметтерін баптау"
+msgstr "Teekateeka ebikozesebwa OpenRC"
 
 #: src/modules/services-openrc/main.py:57
 msgid "Cannot add service {name!s} to run-level {level!s}."
-msgstr "{name!s} қызметін {level!s} орындалу деңгейіне қосу мүмкін емес."
+msgstr ""
+"Enkola ya sisitemu namba {level!s} nnemedwa okugiteekamu obusobozi "
+"obweyazikibwa obwa {name!s}."
 
 #: src/modules/services-openrc/main.py:59
 msgid "Cannot remove service {name!s} from run-level {level!s}."
-msgstr "{name!s} қызметін {level!s} орындалу деңгейінен өшіру мүмкін емес."
+msgstr ""
+"Enkola ya sisitemu namba {level!s} nnemedwa okugigyamu obusobozi "
+"obweyazikibwa obwa {name!s}."
 
 #: src/modules/services-openrc/main.py:61
 msgid ""
 "Unknown service-action <code>{arg!s}</code> for service {name!s} in run-"
 "level {level!s}."
 msgstr ""
-"{level!s} орындалу деңгейіндегі {name!s} қызметі үшін белгісіз "
-"<code>{arg!s}</code> әрекеті."
+"Mu nkola ya sisitemu namba {level!s} puloguramu {name!s} ewa obusobozi "
+"obweyazikibwa ewebwa ekiragiro <code>{arg!s}</code> ekitategeerese."
 
 #: src/modules/services-openrc/main.py:93
 msgid "Cannot modify service"
-msgstr "Қызметті өзгерту мүмкін емес"
+msgstr "Nnemedwa okukyusa mu busobozi obweyazikibwa"
 
 #: src/modules/services-openrc/main.py:94
 msgid ""
 "<code>rc-update {arg!s}</code> call in chroot returned error code {num!s}."
 msgstr ""
-"chroot ішіндегі <code>rc-update {arg!s}</code> шақыруы {num!s} қате кодын "
-"қайтарды."
+"Mu chroot ekiragiro ekitandisi <code>rc-update {arg!s}</code> kireese "
+"ennamba ya kiremya {num!s}."
 
 #: src/modules/services-openrc/main.py:101
 msgid "Target runlevel does not exist"
-msgstr "Мақсатты орындалу деңгейі жоқ"
+msgstr "Enkola ya sisitemu eragidwa teeriyo"
 
 #: src/modules/services-openrc/main.py:102
 msgid ""
 "The path for runlevel {level!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
-"{level!s} орындалу деңгейінің жолы <code>{path!s}</code>, бірақ ол жоқ."
+"Ekkubo ery'obusangiro eritegekedwa enkola ya sisitemu namba {level!s}, "
+"<code>{path!s}</code>, teririiyo."
 
 #: src/modules/services-openrc/main.py:110
 msgid "Target service does not exist"
-msgstr "Мақсатты қызмет жоқ"
+msgstr "Obusobozi obweyazikibwa obulagidwa tebuliiyo"
 
 #: src/modules/services-openrc/main.py:111
 msgid ""
 "The path for service {name!s} is <code>{path!s}</code>, which does not "
 "exist."
-msgstr "{name!s} қызметінің жолы <code>{path!s}</code>, бірақ ол жоқ."
+msgstr ""
+"Ekkubo ery'obusangiro eritegekedwa obusobozi obweyazikibwa {name!s}, "
+"<code>{path!s}</code>, teririiyo."
 
 #: src/modules/services-systemd/main.py:26
 msgid "Configure systemd units"
-msgstr "systemd юниттерін баптау"
+msgstr "Tegeka fayiro ez'enteekateeka z'ebifunibwa systemd by'erabirira"
 
 #: src/modules/services-systemd/main.py:64
 msgid "Cannot modify unit"
-msgstr "Юнитті өзгерту мүмкін емес"
+msgstr ""
+"Nnemedwa okukyusa mu uniti - fayiro ey'enteekateeka z'ekifunibwa "
+"ekirabirirwa systemd"
 
 #: src/modules/services-systemd/main.py:65
 msgid ""
 "<code>systemctl {_action!s}</code> call in chroot returned error code "
 "{_exit_code!s}."
 msgstr ""
-"chroot ішіндегі <code>systemctl {_action!s}</code> шақыруы {_exit_code!s} "
-"қате кодын қайтарды."
+"Mu chroot ekiragiro ekitandisi <code>systemctl {_action!s}</code> kireese "
+"ennamba ya kiremya {_exit_code!s}."
 
 #: src/modules/services-systemd/main.py:66
 msgid "Cannot {_action!s} systemd unit <code>{_name!s}</code>."
-msgstr "<code>{_name!s}</code> systemd юнитін {_action!s} мүмкін емес."
+msgstr ""
+"Uniti eya systemd <code>{_name!s}</code> nnemedwa okugikolako {_action!s}."
 
 #: src/modules/unpackfs/main.py:34
 msgid "Filling up filesystems."
-msgstr "Файлдық жүйелерді толтыру."
+msgstr "Nzijuza sisitemu eza fayiro."
 
 #: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
-msgstr "rsync {} қате кодымен сәтсіз аяқталды."
+msgstr "Omulimu gwa rsync gugaanye. Guleese ennamba ya kiremya {}."
 
 #: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
-msgstr "{}/{} бейнесін, {}/{} файлын тарқату"
+msgstr "Mpakulula ekikwate ky'ekibondo {}/{}, fayiro {}/{}"
 
 #: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
-msgstr "{} тарқатуды бастау"
+msgstr "Ntandika okupakulula {}"
 
 #: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
-msgstr "\"{}\" бейнесін тарқату сәтсіз аяқталды"
+msgstr "Nnemedwa okupakulula ekikwate ky'ekibondo \"{}\""
 
 #: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
-msgstr "Түбірлік бөлім үшін тіркеу нүктесі жоқ"
+msgstr "Ekibondo eky'omusingi gwa sisitemu tekirina we kinaawangibwa"
 
 #: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
-msgstr "globalstorage ішінде \"rootMountPoint\" кілті жоқ."
+msgstr "globalstorage tekongojja endagakifo ya \"rootMountPoint\"."
 
 #: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
-msgstr "Түбірлік бөлім үшін тіркеу нүктесі жарамсыз"
+msgstr "Ekitegekedwa nga awawangirwa ekibondo eky'omusingi kisobi"
 
 #: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
-msgstr "rootMountPoint мәні — \"{}\", бірақ ол жоқ."
+msgstr "rootMountPoint eraga \"{}\", ekitaliiyo."
 
 #: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
 #: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
 #: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
-msgstr "unpackfs конфигурациясы жарамсыз"
+msgstr "Enteekateeka ya unpackfs erimu ensobi"
 
 #: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
-msgstr "Конфигурациялық ақпарат жоқ."
+msgstr "Tewali biragirira nteekateeka."
 
 #: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
-msgstr "\"{}\" ({}) файлдық жүйесіне ағымдағы ядро қолдау көрсетпейді"
+msgstr ""
+"Ennombe sisitemu yo gy'ekozesa kakano tetegeera sisitemu ya fayiro eya "
+"\"{}\" ({})"
 
 #: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
-msgstr "Бастапқы \"{}\" файлдық жүйесі жоқ"
+msgstr "Sisitemu ya fayiro ey'obunonero \"{}\" teeriiyo"
 
 #: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr ""
-"unsquashfs табылмады, squashfs-tools дестесі орнатылғанына көз жеткізіңіз."
+"unsquashfs ebuze, sooka okakase nti omuganda gwa sofutiweya squashfs-tools "
+"kweguli ku sisitemu yo."
 
 #: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
-msgstr "Мақсатты жүйедегі \"{}\" мекенжайы бума емес"
+msgstr "Ekigenderwa \"{}\" ku sisitemu ekolebwako ssi tterekero"
 
 #: src/modules/zfshostid/main.py:27
 msgid "Copying zfs generated hostid."
-msgstr "zfs жасаған hostid көшіру."
+msgstr "Nkwata ennamba hostid, endagasisitemu, zfs gy'ekozewo."
