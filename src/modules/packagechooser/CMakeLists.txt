@@ -50,3 +50,7 @@ calamares_add_test(
     SOURCES Tests.cpp
     LIBRARIES ${packagechooser_TARGET}
 )
+target_compile_definitions(
+    packagechoosertest
+    PRIVATE SOURCE_DIRECTORY="${CMAKE_SOURCE_DIR}/"
+)
