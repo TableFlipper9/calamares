@@ -664,16 +664,20 @@ class DMlightdm(DisplayManager):
         a .desktop file that specifies where the actual executable is. May return
         None to indicate nothing-was-found.
         """
-        greeters_dir = "usr/share/xgreeters"
-        greeters_target_path = os.path.join(self.root_mount_point, greeters_dir)
-        available_names = os.listdir(greeters_target_path)
-        available_names.sort()
-        desktop_names = [n for n in self.preferred_greeters if n in available_names] # Preferred ones
-        if desktop_names:
-            return desktop_names[0]
-        desktop_names = [n for n in available_names if n.endswith(".desktop")] # .. otherwise any .desktop
-        if desktop_names:
-            return desktop_names[0]
+        for greeters_dir in ( "usr/share/xgreeters", "usr/share/lightdm/greeters", ):
+            greeters_target_path = os.path.join(self.root_mount_point, greeters_dir)
+            available_names = []
+            try:
+                available_names = os.listdir(greeters_target_path)
+            except FileNotFoundError:
+                continue
+            available_names.sort()
+            desktop_names = [n for n in self.preferred_greeters if n in available_names] # Preferred ones
+            if desktop_names:
+                return desktop_names[0]
+            desktop_names = [n for n in available_names if n.endswith(".desktop")] # .. otherwise any .desktop
+            if desktop_names:
+                return desktop_names[0]
         return None
 
     def greeter_setup(self):
