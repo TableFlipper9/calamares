@@ -1,0 +1,519 @@
+#!/usr/bin/env python3
+import os
+import shutil
+import urllib.request
+import tarfile
+import subprocess
+import libcalamares
+import glob
+import re
+import sys
+import time
+import hashlib
+import multiprocessing
+
+def _progress_hook(count, block_size, total_size):
+    _check_parent_alive()
+    percent = int(count * block_size * 100 / total_size)
+    if percent > 100:
+        percent = 100
+    libcalamares.job.setprogress(percent / 2)
+
+def _check_parent_alive():
+    if os.getppid() == 1:
+        sys.exit(1)
+
+def _check_global_storage_keys():
+    """Check if required global storage keys are set and have values."""
+    print("Checking global storage keys...")
+    
+    if not libcalamares.globalstorage.contains("FINAL_DOWNLOAD_URL"):
+        raise Exception("FINAL_DOWNLOAD_URL key is not set in global storage")
+    
+    if not libcalamares.globalstorage.contains("STAGE_NAME_TAR"):
+        raise Exception("STAGE_NAME_TAR key is not set in global storage")
+    
+    final_download_url = libcalamares.globalstorage.value("FINAL_DOWNLOAD_URL")
+    stage_name_tar = libcalamares.globalstorage.value("STAGE_NAME_TAR")
+    
+    if final_download_url.endswith('/'):
+        final_download_url = final_download_url.rstrip('/')
+    
+    if not final_download_url:
+        raise Exception("FINAL_DOWNLOAD_URL key exists but has no value")
+    
+    if not stage_name_tar:
+        raise Exception("STAGE_NAME_TAR key exists but has no value")
+    
+    print(f"FINAL_DOWNLOAD_URL variable: {final_download_url}")
+    print(f"STAGE_NAME_TAR variable: {stage_name_tar}")
+    
+    return final_download_url, stage_name_tar
+
+def _safe_run(cmd):
+    _check_parent_alive()
+    try:
+        proc = subprocess.Popen(cmd)
+        while True:
+            retcode = proc.poll()
+            if retcode is not None:
+                if retcode != 0:
+                    sys.exit(1) 
+                return retcode
+            if os.getppid() == 1:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                sys.exit(1)
+            time.sleep(1)
+    except subprocess.SubprocessError:
+        sys.exit(1)
+
+def verify_pgp_signature_gemato(filepath, data_file=None):
+    _check_parent_alive()
+    gentoo_keys = "/usr/share/openpgp-keys/gentoo-release.asc"
+    expected_key_id = "13EBBDBEDE7A12775DFDB1BABB572E0E2D182910"
+    
+    try:
+        if data_file:
+            cmd = ["gemato", "openpgp-verify-detached", "-K", gentoo_keys, filepath, data_file]
+        else:
+            cmd = ["gemato", "openpgp-verify", "-K", gentoo_keys, filepath]
+        
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=False
+        )
+        
+        if result.returncode == 0:
+            output = result.stdout + result.stderr
+            if expected_key_id in output or expected_key_id.lower() in output.lower():
+                if result.stdout:
+                    print(result.stdout.strip())
+                if result.stderr:
+                    print(result.stderr.strip())
+                return (True, "Verified with gemato")
+            else:
+                libcalamares.utils.error(f"Signature not from expected key {expected_key_id}")
+                return (False, "Wrong signing key")
+        else:
+            libcalamares.utils.error(f"PGP signature verification failed for {filepath}")
+            if result.stderr:
+                libcalamares.utils.error(result.stderr.strip())
+            return (False, "Verification failed")
+    except FileNotFoundError:
+        libcalamares.utils.error("gemato command not found")
+        return (False, "gemato not found")
+    except Exception as e:
+        libcalamares.utils.error(f"Error verifying PGP signature: {str(e)}")
+        return (False, str(e))
+
+def calculate_hash(filepath, hash_type):
+    _check_parent_alive()
+    try:
+        if hash_type == "SHA512":
+            hasher = hashlib.sha512()
+        elif hash_type == "BLAKE2B":
+            hasher = hashlib.blake2b(digest_size=64)
+        else:
+            print(f"FAILURE: Unsupported hash type: {hash_type}")
+            return None
+        with open(filepath, 'rb') as f:
+            while chunk := f.read(8192):
+                _check_parent_alive()
+                hasher.update(chunk)
+        return hasher.hexdigest()
+    except Exception as e:
+        print(f"FAILURE: Error calculating {hash_type} hash: {str(e)}")
+        return None
+
+def verify_hash(filepath, hash_type, expected_hash):
+    calculated_hash = calculate_hash(filepath, hash_type)
+    if calculated_hash is None:
+        return False
+    if calculated_hash.lower() == expected_hash.lower():
+        return True
+    else:
+        print(f"FAILURE: {hash_type} verification for {os.path.basename(filepath)}")
+        print(f"Expected: {expected_hash}")
+        print(f"Got:      {calculated_hash}")
+        return False
+
+def parse_digests_file(digests_path):
+    _check_parent_alive()
+    file_hashes = {}
+    current_hash_type = None
+    try:
+        with open(digests_path, 'r') as f:
+            for line in f:
+                _check_parent_alive()
+                line = line.strip()
+                if line.startswith('-') or line.startswith('Hash:'):
+                    continue
+                hash_header_match = re.match(r'^#\s+([A-Z0-9]+)\s+HASH$', line)
+                if hash_header_match:
+                    current_hash_type = hash_header_match.group(1)
+                    continue
+                if current_hash_type:
+                    hash_line_match = re.match(r'^([0-9a-f]+)\s+(.+)$', line)
+                    if hash_line_match:
+                        hash_value = hash_line_match.group(1)
+                        filename = hash_line_match.group(2)
+                        if filename not in file_hashes:
+                            file_hashes[filename] = {}
+                        file_hashes[filename][current_hash_type] = hash_value
+        return file_hashes
+    except Exception as e:
+        print(f"FAILURE: Error parsing DIGESTS file: {str(e)}")
+        return {}
+
+def verify_stage3_with_digests(digests_path, stage3_path):
+    success, msg = verify_pgp_signature_gemato(digests_path)
+    if not success:
+        libcalamares.utils.error("DIGESTS signature verification failed")
+        return False
+    else:
+        print(f"DIGESTS PGP verification: {msg}")
+    
+    file_hashes = parse_digests_file(digests_path)
+    if not file_hashes:
+        print("FAILURE: No files found in DIGESTS")
+        return False
+    
+    stage3_name = os.path.basename(stage3_path)
+    if stage3_name not in file_hashes:
+        print(f"FAILURE: {stage3_name} not found in DIGESTS file")
+        return False
+    
+    hashes = file_hashes[stage3_name]
+    all_valid = True
+    for hash_type, expected_hash in hashes.items():
+        if not verify_hash(stage3_path, hash_type, expected_hash):
+            all_valid = False
+    return all_valid
+
+def write_makeopts(make_conf_path):
+    """Write MAKEOPTS to make.conf for parallel compilation.
+    Sets -j based on CPU count and -s for silent make to speed up compilation.
+    """
+    numcpu = multiprocessing.cpu_count()
+
+    with open(make_conf_path, 'a') as f:
+        f.write("\n# MAKEOPTS is set automatically by Calamares installer.\n")
+        f.write(f'MAKEOPTS="-j{numcpu} -s"\n')
+
+
+def run():
+    if (libcalamares.globalstorage.contains("GENTOO_LIVECD") and 
+        libcalamares.globalstorage.value("GENTOO_LIVECD") == "yes"):
+        print("GENTOO_LIVECD is set to 'yes', copying /run/rootfsbase to rootMountPoint")
+        
+        root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+        if not root_mount_point:
+            raise Exception("rootMountPoint not set in global storage")
+        
+        _safe_run(["rsync", "-aXA", "--hard-links", "--info=progress2", "/run/rootfsbase/", root_mount_point + "/"])
+        libcalamares.job.setprogress(50)
+
+        make_conf_path = os.path.join(root_mount_point, "etc/portage/make.conf")
+        write_makeopts(make_conf_path)
+        
+        package_use_dir = os.path.join(root_mount_point, "etc/portage/package.use")
+        os.makedirs(package_use_dir, exist_ok=True)
+        
+        partitions = libcalamares.globalstorage.value("partitions")
+        is_encrypted = False
+        if partitions:
+            for partition in partitions:
+                if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+                    is_encrypted = True
+                    break
+        
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
+            f.write("# use dracut as the initramfs generator for installkernel, required for our dracut-based setup\n")
+            f.write(">=sys-kernel/installkernel-50 dracut\n")
+        
+        write_dracut_config(root_mount_point, "openrc")
+        ensure_grub_d_directory(root_mount_point)
+        
+        libcalamares.job.setprogress(70)
+        
+        gentoo_repo = os.path.join(root_mount_point, "var/db/repos/gentoo")
+        if not os.path.exists(gentoo_repo):
+            _safe_run(["rsync", "-L", "/etc/resolv.conf", os.path.join(root_mount_point, "etc/resolv.conf")])
+            _safe_run(["chroot", root_mount_point, "/bin/bash", "-c", "emerge-webrsync -q"])
+        
+        libcalamares.job.setprogress(90)
+        
+        return None
+
+    final_download_url, stage_name_tar = _check_global_storage_keys()
+    
+    full_tarball_url = final_download_url
+    full_sha256_url = final_download_url + ".sha256"
+    full_tarball_asc_url = final_download_url + ".asc"
+    base_url = '/'.join(final_download_url.split('/')[:-1])
+    full_digests_url = base_url + "/" + stage_name_tar + ".DIGESTS"
+
+    root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+    if not root_mount_point:
+        raise Exception("rootMountPoint not set in global storage")
+    extract_path = root_mount_point
+
+    download_path = os.path.join(root_mount_point, stage_name_tar)
+    sha256_path = os.path.join(root_mount_point, f"{stage_name_tar}.sha256")
+    tarball_asc_path = os.path.join(root_mount_point, f"{stage_name_tar}.asc")
+    digests_path = os.path.join(root_mount_point, f"{stage_name_tar}.DIGESTS")
+
+    if os.path.exists(download_path):
+        os.remove(download_path)
+    if os.path.exists(sha256_path):
+        os.remove(sha256_path)
+    if os.path.exists(tarball_asc_path):
+        os.remove(tarball_asc_path)
+    if os.path.exists(digests_path):
+        os.remove(digests_path)
+
+    urllib.request.urlretrieve(full_tarball_url, download_path, _progress_hook)
+    libcalamares.job.setprogress(30)
+    
+    urllib.request.urlretrieve(full_sha256_url, sha256_path)
+    libcalamares.job.setprogress(35)
+    
+    try:
+        urllib.request.urlretrieve(full_tarball_asc_url, tarball_asc_path)
+    except Exception as e:
+        print(f"WARNING: Could not download tarball .asc file: {str(e)}")
+    libcalamares.job.setprogress(38)
+    
+    try:
+        urllib.request.urlretrieve(full_digests_url, digests_path)
+    except Exception as e:
+        print(f"WARNING: Could not download DIGESTS file: {str(e)}")
+    libcalamares.job.setprogress(40)
+
+    # the .sha256 file is PGP-signed, so we must find the actual hash line
+    # by looking for a line matching: <hex>  <filename>
+    expected_sha256 = None
+    recorded_filename = None
+    with open(sha256_path, "r") as f:
+        for line in f:
+            line = line.strip()
+            match = re.match(r'^([0-9a-f]{64})\s+(\S+)$', line)
+            if match:
+                expected_sha256 = match.group(1)
+                recorded_filename = match.group(2)
+                break
+    if not expected_sha256:
+        libcalamares.utils.error("Could not find SHA256 hash line in .sha256 file")
+        sys.exit(1)
+    if recorded_filename and recorded_filename != stage_name_tar:
+        libcalamares.utils.error(
+            f"SHA256 file refers to '{recorded_filename}', expected '{stage_name_tar}'"
+        )
+        sys.exit(1)
+    hasher = hashlib.sha256()
+    with open(download_path, "rb") as f:
+        while chunk := f.read(8192):
+            _check_parent_alive()
+            hasher.update(chunk)
+    if hasher.hexdigest().lower() != expected_sha256.lower():
+        libcalamares.utils.error("SHA256 verification of tarball failed")
+        sys.exit(1)
+    libcalamares.job.setprogress(43)
+
+    if os.path.isfile(tarball_asc_path):
+        success, msg = verify_pgp_signature_gemato(tarball_asc_path, download_path)
+        if not success:
+            libcalamares.utils.error("Tarball PGP signature verification failed")
+            sys.exit(1)
+        else:
+            print(f"Tarball PGP verification: {msg}")
+    else:
+        libcalamares.utils.error("No PGP signature file for tarball")
+        sys.exit(1)
+    libcalamares.job.setprogress(46)
+
+    if os.path.isfile(digests_path) and not verify_stage3_with_digests(digests_path, download_path):
+        libcalamares.utils.error("DIGESTS verification failed")
+        sys.exit(1)
+    libcalamares.job.setprogress(50)
+
+    with tarfile.open(download_path, "r:xz") as tar:
+        members = tar.getmembers()
+        total_members = len(members)
+        for i, member in enumerate(members):
+            _check_parent_alive()
+            try:
+                tar.extract(member, extract_path, filter='tar')
+            except OSError as e:
+                if e.errno != 17:
+                    raise
+            libcalamares.job.setprogress(50 + (i * 50 / total_members))
+
+    os.remove(download_path)
+    if os.path.exists(sha256_path):
+        os.remove(sha256_path)
+    if os.path.exists(tarball_asc_path):
+        os.remove(tarball_asc_path)
+    if os.path.exists(digests_path):
+        os.remove(digests_path)
+
+    shutil.copy2("/etc/resolv.conf", os.path.join(extract_path, "etc", "resolv.conf"))
+
+    make_conf_path = os.path.join(extract_path, "etc/portage/make.conf")
+    write_makeopts(make_conf_path)
+
+    os.makedirs(os.path.join(extract_path, "etc/portage/binrepos.conf"), exist_ok=True)
+    
+    gentoobinhost_source = "/etc/portage/binrepos.conf/gentoobinhost.conf"
+    if os.path.exists(gentoobinhost_source):
+        shutil.copy2(
+            gentoobinhost_source,
+            os.path.join(extract_path, "etc/portage/binrepos.conf/gentoobinhost.conf")
+        )
+    else:
+        print(f"Warning: {gentoobinhost_source} does not exist, skipping copy")
+
+    package_use_dir = os.path.join(extract_path, "etc/portage/package.use")
+    os.makedirs(package_use_dir, exist_ok=True)
+    
+    partitions = libcalamares.globalstorage.value("partitions")
+    is_encrypted = False
+    if partitions:
+        for partition in partitions:
+            if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+                is_encrypted = True
+                break
+    
+    with open(os.path.join(package_use_dir, "00-livecd.package.use"), "w", encoding="utf-8") as f:
+        f.write("# use dracut as the initramfs generator for installkernel, required for Gentoo dracut-based setup\n")
+        f.write(">=sys-kernel/installkernel-50 dracut grub\n")
+
+    is_systemd = "systemd" in stage_name_tar.lower()
+    is_selinux = "selinux" in stage_name_tar.lower()
+    is_musl = "musl" in stage_name_tar.lower()
+
+    if is_encrypted and is_systemd:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("# enable cryptsetup USE flag for systemd so it can unlock LUKS volumes at boot\n")
+            f.write("sys-apps/systemd cryptsetup\n")
+    
+    if is_selinux or is_musl:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("# SELinux and musl profiles require the dbus USE flag for wpa_supplicant\n")
+            f.write("# This is required by NetworkManager's wifi support (when not using iwd backend)\n")
+            f.write("# required by net-misc/networkmanager-1.52.1::gentoo[-iwd,wifi]\n")
+            f.write("net-wireless/wpa_supplicant dbus\n")
+    write_dracut_config(extract_path, stage_name_tar)
+    ensure_grub_d_directory(extract_path)
+
+    _safe_run(["chroot", extract_path, "getuto"])
+
+    _safe_run([
+        "chroot", extract_path, "/bin/bash", "-c",
+        'emerge-webrsync -q'
+    ])
+
+    # rebuild systemd with the cryptsetup USE flag enabled so it can unlock LUKS volumes at boot;
+    # the USE flag was set earlier in 00-livecd.package.use
+    # this is happening only if the user chooses encryption
+    if is_encrypted and is_systemd:
+        _safe_run([
+            "chroot", extract_path, "/bin/bash", "-c",
+            'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/systemd'
+        ])
+
+    packages = "sys-boot/grub net-misc/networkmanager net-wireless/iwd"
+
+    # for OpenRC stages, cryptsetup must always be installed.
+    # systemd dracut handles cryptsetup internally, so it is not needed as a separate package.
+    if not is_systemd:
+        packages += " sys-fs/cryptsetup"
+
+    _safe_run([
+        "chroot", extract_path, "/bin/bash", "-c",
+        f'EMERGE_DEFAULT_OPTS="${{EMERGE_DEFAULT_OPTS}} --getbinpkg" emerge -q {packages}'
+    ])
+
+    # calamares requires sys-apps/dbus and sys-libs/timezone-data to determine
+    # host timezone and locale details during the installation process
+    # they're not necessary after the installation process
+    _safe_run([
+        "chroot", extract_path, "/bin/bash", "-c",
+        'EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --getbinpkg" emerge -q1 sys-apps/dbus sys-libs/timezone-data'
+    ])
+
+    for folder in ["distfiles", "binpkgs", "binhost"]:
+        path = os.path.join(extract_path, f"var/cache/{folder}")
+        if os.path.exists(path):
+            for entry in glob.glob(path + "/*"):
+                if os.path.isfile(entry) or os.path.islink(entry):
+                    os.unlink(entry)
+                elif os.path.isdir(entry):
+                    shutil.rmtree(entry)
+
+    return None
+
+def write_dracut_config(root_mount_point, stage_name_tar):
+    """Write dracut configuration before kernel installation to prevent warnings.
+    
+    This runs BEFORE gentoopkg installs gentoo-kernel-bin, so when installkernel's
+    dracut hook runs, it will find this config and generate correct initramfs first time.
+    """
+    dracut_conf_dir = os.path.join(root_mount_point, "etc/dracut.conf.d")
+    os.makedirs(dracut_conf_dir, exist_ok=True)
+    
+    dracut_conf_path = os.path.join(dracut_conf_dir, "10-calamares.conf")
+    
+    partitions = libcalamares.globalstorage.value("partitions")
+    is_encrypted = False
+    if partitions:
+        for partition in partitions:
+            if partition.get("mountPoint") == "/" and "luksMapperName" in partition:
+                is_encrypted = True
+                break
+    
+    is_systemd = "systemd" in stage_name_tar.lower()
+    
+    with open(dracut_conf_path, 'w') as conf_file:
+        conf_file.write("# Generated by Calamares installer\n")
+        conf_file.write("# Configuration for dracut initramfs generation\n\n")
+        
+        conf_file.write('hostonly="yes"\n')
+        conf_file.write('hostonly_cmdline="yes"\n\n')
+        
+        if not is_systemd:
+            conf_file.write("# Exclude systemd modules\n")
+            conf_file.write('omit_dracutmodules+=" systemd systemd-initrd systemd-networkd dracut-systemd plymouth "\n\n')
+            
+            if is_encrypted:
+                conf_file.write("# Add encryption support (OpenRC)\n")
+                conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
+            else:
+                conf_file.write("# Omit encryption modules (no encryption)\n")
+                conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
+        else:
+            conf_file.write("# Omit unnecessary modules (systemd system)\n")
+            conf_file.write('omit_dracutmodules+=" plymouth "\n')
+            
+            if is_encrypted:
+                conf_file.write("\n# Add encryption support (systemd)\n")
+                conf_file.write('add_dracutmodules+=" crypt dm rootfs-block "\n')
+            else:
+                conf_file.write("\n# Omit encryption modules (no encryption)\n")
+                conf_file.write('omit_dracutmodules+=" crypt crypt-gpg crypt-loop "\n')
+
+    print(f"Pre-configured dracut at {dracut_conf_path} (systemd={is_systemd}, encrypted={is_encrypted})")
+
+def ensure_grub_d_directory(root_mount_point):
+    """Ensure /etc/default/grub.d directory exists for grubcfg module.
+    This directory is used when prefer_grub_d is enabled in grubcfg.conf,
+    allowing Calamares to write configuration that survives package updates.
+    """
+    _safe_run(["chroot", root_mount_point, "mkdir", "-p", "/etc/default/grub.d"])
+    print("Ensured /etc/default/grub.d directory exists in chroot")
