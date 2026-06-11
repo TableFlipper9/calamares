@@ -20,17 +20,17 @@ def find_latest_gentoo_initramfs():
 
     def extract_version(path):
         basename = os.path.basename(path)
-        match = re.search(r'initramfs-(\d+\.\d+\.\d+)-gentoo-dist\.img', basename)
+        match = re.search(r'initramfs-(.+?)-gentoo-dist\.img', basename)
         if match:
-            return tuple(map(int, match.group(1).split('.')))
-        return (0, 0, 0)
+            return tuple(int(n) for n in re.findall(r'\d+', match.group(1)))
+        return (0,)
 
     candidates.sort(key=lambda x: extract_version(x), reverse=True)
     return candidates[0]
 
 def extract_kernel_simple_version(initramfs_path):
     basename = os.path.basename(initramfs_path)
-    match = re.search(r'initramfs-(\d+\.\d+\.\d+)-gentoo-dist\.img', basename)
+    match = re.search(r'initramfs-(.+?)-gentoo-dist\.img', basename)
     if match:
         return match.group(1)
     raise ValueError(f"Could not extract simple version from initramfs filename: {basename}")
