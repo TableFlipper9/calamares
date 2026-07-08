@@ -13,9 +13,9 @@ def find_latest_gentoo_initramfs():
     
     libcalamares.utils.debug(f"Searching in: {target_boot_path}")
     libcalamares.utils.debug(f"rootMountPoint = {root_mount_point}")
-    
+
     target_boot_path = os.path.join(root_mount_point, 'boot')
-    search_pattern = os.path.join(target_boot_path, 'initramfs-*-gentoo-dist.img')
+    search_pattern = os.path.join(target_boot_path, 'initramfs-*-gentoo-dist-bin.img')
     candidates = glob.glob(search_pattern)
     
     if not candidates:
@@ -23,7 +23,7 @@ def find_latest_gentoo_initramfs():
 
     def extract_version(path):
         basename = os.path.basename(path)
-        match = re.search(r'initramfs-(.+?)-gentoo-dist\.img', basename)
+        match = re.search(r'initramfs-(.+?)-gentoo-dist-bin\.img', basename)
         if match:
             return tuple(int(n) for n in re.findall(r'\d+', match.group(1)))
         return (0,)
@@ -33,7 +33,7 @@ def find_latest_gentoo_initramfs():
 
 def extract_kernel_simple_version(initramfs_path):
     basename = os.path.basename(initramfs_path)
-    match = re.search(r'initramfs-(.+?)-gentoo-dist\.img', basename)
+    match = re.search(r'initramfs-(.+?)-gentoo-dist-bin\.img', basename)
     if match:
         return match.group(1)
     raise ValueError(f"Could not extract simple version from initramfs filename: {basename}")
@@ -58,10 +58,10 @@ def run():
         
         latest_initramfs = find_latest_gentoo_initramfs()
         simple_version = extract_kernel_simple_version(latest_initramfs)
-        dracut_options.append(f'--kver={simple_version}-gentoo-dist')
+        dracut_options.append(f'--kver={simple_version}-gentoo-dist-bin')
         
         result = target_env_process_output(['dracut'] + dracut_options)
-        libcalamares.utils.debug(f"Successfully created initramfs for kernel {simple_version}-gentoo-dist")
+        libcalamares.utils.debug(f"Successfully created initramfs for kernel {simple_version}-gentoo-dist-bin")
         
     except FileNotFoundError as e:
         libcalamares.utils.warning(f"No Gentoo initramfs found: {e}")
