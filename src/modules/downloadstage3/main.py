@@ -243,6 +243,10 @@ def run():
     else:
         os.makedirs(extract_path, exist_ok=True)
 
+    root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
+    if not root_mount_point:
+        raise ValueError("rootMountPoint not set in global storage")
+
     download_path = os.path.join(root_mount_point, stage_name_tar)
     sha256_path = os.path.join(root_mount_point, f"{stage_name_tar}.sha256")
     tarball_asc_path = os.path.join(root_mount_point, f"{stage_name_tar}.asc")
