@@ -11,6 +11,9 @@ def find_latest_gentoo_initramfs():
     if not root_mount_point:
         raise ValueError("rootMountPoint not set in global storage")
     
+    libcalamares.utils.debug(f"Searching in: {target_boot_path}")
+    libcalamares.utils.debug(f"rootMountPoint = {root_mount_point}")
+    
     target_boot_path = os.path.join(root_mount_point, 'boot')
     search_pattern = os.path.join(target_boot_path, 'initramfs-*-gentoo-dist.img')
     candidates = glob.glob(search_pattern)
