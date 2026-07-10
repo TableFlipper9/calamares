@@ -23,8 +23,13 @@ properties:
         default: []
 
     package_use:
-        type: object
-        additionalProperties: { type: string }
+        oneOf:
+          - type: object
+            additionalProperties: { type: string }
+          - type: array
+            items:
+                type: object
+                additionalProperties: { type: string }
         default: {}
 
     operations:
