@@ -22,6 +22,11 @@ properties:
             type: string
         default: []
 
+    package_use:
+        type: object
+        additionalProperties: { type: string }
+        default: {}
+
     operations:
         type: array
         items:
