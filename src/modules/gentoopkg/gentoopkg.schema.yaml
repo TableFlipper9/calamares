@@ -19,7 +19,10 @@ properties:
     accept_keywords:
         type: array
         items:
-            type: string
+            oneOf:
+              - type: string
+              - type: object
+                additionalProperties: { type: string }
         default: []
 
     package_use:
