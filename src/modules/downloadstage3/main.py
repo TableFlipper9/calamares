@@ -397,6 +397,7 @@ def run():
     is_systemd = "systemd" in stage_name_tar.lower()
     is_selinux = "selinux" in stage_name_tar.lower()
     is_musl = "musl" in stage_name_tar.lower()
+    is_hardened = "hardened" in stage_name_tar.lower()
 
     if is_encrypted and is_systemd:
         with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
@@ -408,6 +409,12 @@ def run():
             f.write("# SELinux and musl profiles require the dbus USE flag for wpa_supplicant\n")
             f.write("# This is required by NetworkManager's wifi support (when not using iwd backend)\n")
             f.write("# required by net-misc/networkmanager-1.52.1::gentoo[-iwd,wifi]\n")
+            f.write("net-wireless/wpa_supplicant dbus\n")
+
+    if is_hardened and is_systemd:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("# hardened systemd: wpa_supplicant needs the dbus USE flag\n")
+            f.write("# required by net-misc/networkmanager[wifi,-iwd]\n")
             f.write("net-wireless/wpa_supplicant dbus\n")
     write_dracut_config(extract_path, stage_name_tar)
     ensure_grub_d_directory(extract_path)
