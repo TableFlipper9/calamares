@@ -420,6 +420,19 @@ def run():
     write_dracut_config(extract_path, stage_name_tar)
     ensure_grub_d_directory(extract_path)
 
+    # calamares bind-mounts /dev non-recursively, so /dev/shm and /dev/pts are
+    # missing in the chroot
+    for mount_cmd in (
+        ["mount", "-t", "tmpfs", "-o", "mode=1777,nosuid,nodev", "tmpfs",
+         os.path.join(extract_path, "dev/shm")],
+        ["mount", "-t", "devpts", "-o", "gid=5,mode=620,ptmxmode=666", "devpts",
+         os.path.join(extract_path, "dev/pts")],
+    ):
+        mount_target = mount_cmd[-1]
+        os.makedirs(mount_target, exist_ok=True)
+        if not os.path.ismount(mount_target):
+            _safe_run(mount_cmd)
+
     _safe_run(["chroot", extract_path, "getuto"])
 
     _safe_run([
