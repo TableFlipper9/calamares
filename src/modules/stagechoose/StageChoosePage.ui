@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StageChoosePage</class>
+ <widget class="QWidget" name="StageChoosePage">
+  <layout class="QVBoxLayout" name="outerVerticalLayout">
+
+   <item>
+    <spacer name="verticalSpacerTop">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <layout class="QHBoxLayout" name="horizontalCenteringLayout">
+     <item>
+      <spacer name="horizontalSpacerLeft">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+      </spacer>
+     </item>
+
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="mirrorInfoLabel">
+          <property name="text">
+            <string>If you leave mirror link blank, it will choose the default option.</string>
+          </property>
+            <property name="wordWrap">
+            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        
+       <item>
+        <layout class="QHBoxLayout" name="mirrorLayout">
+         <item>
+          <widget class="QLabel" name="mirrorLabel">
+           <property name="text">
+            <string>Mirror Link:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="mirrorLineEdit">
+           <property name="placeholderText">
+            <string>https://distfiles.gentoo.org/releases/</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <layout class="QHBoxLayout" name="topLabelsLayout">
+         <item>
+          <widget class="QLabel" name="archLabel">
+           <property name="text">
+            <string>Select Architecture:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="variantLabel">
+           <property name="text">
+            <string>Select Stage3 Option:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <layout class="QHBoxLayout" name="comboBoxesLayout">
+         <item>
+          <widget class="QComboBox" name="architectureComboBox">
+           <property name="minimumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+           <property name="maximumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="variantComboBox">
+           <property name="minimumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+           <property name="maximumSize">
+            <size><width>200</width><height>25</height></size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <widget class="QLabel" name="selectedTarballLabel">
+         <property name="text">
+          <string>Selected: </string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QLabel" name="fetcherStatusLabel">
+         <property name="text">
+          <string>Status: Idle</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="restartFetcherButton">
+         <property name="text">
+          <string>Restart Fetcher</string>
+         </property>
+         <property name="visible">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+     <item>
+      <spacer name="horizontalSpacerRight">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacerBottom">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
