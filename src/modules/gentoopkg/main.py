@@ -137,7 +137,7 @@ class GentooPackageManager:
             # or as a YAML list of single-entry maps:
             #     package_use:
             #       - "cat/pkg": "flag1 flag2"
-            # ormalize both into a flat dict of package -> flags.
+            # normalize both into a flat dict of package -> flags.
             if isinstance(self.package_use, dict):
                 entries = self.package_use
             elif isinstance(self.package_use, list):
