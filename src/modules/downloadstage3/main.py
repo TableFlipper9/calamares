@@ -419,6 +419,8 @@ def run():
     is_musl = "musl" in stage_name_tar.lower()
     is_hardened = "hardened" in stage_name_tar.lower()
     is_llvm = "llvm" in stage_name_tar.lower()
+    is_openrc = "openrc" in stage_name_tar.lower()
+    is_splitusr = "splitusr" in stage_name_tar.lower()
 
     if is_encrypted and is_systemd:
         with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
@@ -435,6 +437,12 @@ def run():
     if is_hardened or (is_llvm and is_systemd):
         with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
             f.write("# hardened (openrc/systemd) and llvm systemd: wpa_supplicant needs the dbus USE flag\n")
+            f.write("# required by net-misc/networkmanager[wifi,-iwd]\n")
+            f.write("net-wireless/wpa_supplicant dbus\n")
+
+    if is_openrc or is_splitusr:
+        with open(os.path.join(package_use_dir, "00-livecd.package.use"), "a", encoding="utf-8") as f:
+            f.write("# openrc and splitusr: wpa_supplicant needs the dbus USE flag\n")
             f.write("# required by net-misc/networkmanager[wifi,-iwd]\n")
             f.write("net-wireless/wpa_supplicant dbus\n")
     write_dracut_config(extract_path, stage_name_tar)
