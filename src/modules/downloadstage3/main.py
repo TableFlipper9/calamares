@@ -50,15 +50,15 @@ def _check_global_storage_keys():
     
     return final_download_url, stage_name_tar
 
-def _safe_run(cmd):
+def _safe_run(cmd, allowed_returncodes=()):
     _check_parent_alive()
     try:
         proc = subprocess.Popen(cmd)
         while True:
             retcode = proc.poll()
             if retcode is not None:
-                if retcode != 0:
-                    sys.exit(1) 
+                if retcode != 0 and retcode not in allowed_returncodes:
+                    sys.exit(1)
                 return retcode
             if os.getppid() == 1:
                 proc.terminate()
@@ -216,7 +216,19 @@ def run():
         if not root_mount_point:
             raise Exception("rootMountPoint not set in global storage")
         
-        _safe_run(["rsync", "-aXA", "--hard-links", "--info=progress2", "/run/rootfsbase/", root_mount_point + "/"])
+        # calamares' mount module has already mounted /proc, /sys, /dev and /run
+        # so we exclude them rsync operation
+        rsync_excludes = [
+            "--exclude=/proc/*", "--exclude=/sys/*", "--exclude=/dev/*",
+            "--exclude=/run/*", "--exclude=/tmp/*", "--exclude=/mnt/*",
+            "--exclude=/media/*",
+        ]
+        _safe_run(
+            ["rsync", "-aXA", "--one-file-system", "--hard-links",
+             "--info=progress2"] + rsync_excludes
+            + ["/run/rootfsbase/", root_mount_point + "/"],
+            allowed_returncodes=(23, 24),
+        )
         libcalamares.job.setprogress(50)
 
         make_conf_path = os.path.join(root_mount_point, "etc/portage/make.conf")
@@ -237,7 +249,15 @@ def run():
             f.write("# use dracut as the initramfs generator for installkernel, required for our dracut-based setup\n")
             f.write(">=sys-kernel/installkernel-50 dracut\n")
         
-        write_dracut_config(root_mount_point, "openrc")
+        # the live system we just cloned may be systemd or OpenRC. write_dracut_config
+        # only looks for "systemd" in this sequence, so detect the running init somehow (the
+        # canonical /run/systemd/system) and fall back to inspecting the clone.
+        if os.path.isdir("/run/systemd/system") or os.path.exists(
+                os.path.join(root_mount_point, "usr/lib/systemd/systemd")):
+            live_init = "systemd"
+        else:
+            live_init = "openrc"
+        write_dracut_config(root_mount_point, live_init)
         ensure_grub_d_directory(root_mount_point)
         
         libcalamares.job.setprogress(70)
